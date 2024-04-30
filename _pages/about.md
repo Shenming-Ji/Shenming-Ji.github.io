@@ -7,10 +7,10 @@ redirect_from:
   - /about.html
 ---
 
-Hi! I'm Shenming, a third year undergraduate student from [School of Advanced Technology](https://www.xjtlu.edu.cn/en/study/departments/school-of-advanced-technology), [Xi'an Jiaotong-Liverpool University](https://www.xjtlu.edu.cn/en). My research interest includes computer graphics, machine learning, and social computing.
+Hi! I'm Shenming, a third year undergraduate student at [Xi'an Jiaotong-Liverpool University](https://www.xjtlu.edu.cn/en), majoring in Information and Computing Science. 
 
-I am very fortunate to be advised by [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa) in Summer Undergraduate Research Fellowships from [Department of Computing](https://scholar.xjtlu.edu.cn/en/organisations/department-of-computing), Xi'an Jiaotong-Liverpool University.
+My interests mainly focus on Machine Learning, Human-Computer Interaction and Social Computing. As an undergraduate student majoring in Computer Science, I am deeply passionate about exploration and pushing the boundaries of knowledge. I am dedicated to exploring diverse interdisciplinary fields, driven by curiosity and a desire to innovate.
+
+I am very fortunate to be advised by [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa) in Summer Undergraduate Research Fellowships from [Department of Computing](https://scholar.xjtlu.edu.cn/en/organisations/department-of-computing), Xi'an Jiaotong-Liverpool University. 
 
 You can find my CV here: [Shenming's Curriculum Vitae](../assets/Curriculum_Vitae.pdf).
-
-[Email](Shenming.Ji21@student.xjtlu.edu.cn) / [Github](https://github.com/Shenming-Ji)
