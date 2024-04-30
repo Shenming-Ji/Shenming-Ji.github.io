@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Hi there!"
+title: "Hi there!:sunglasses:"
 author_profile: true
 redirect_from: 
   - /about/
