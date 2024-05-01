@@ -1,13 +1,13 @@
 ---
 permalink: /
-title: "Hi there! 😊"
+title: "😊Hello there, I'm Shenming!"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-I'm Shenming, a third-year undergraduate student at [Xi'an Jiaotong-Liverpool University](https://www.xjtlu.edu.cn/en), majoring in Information and Computing Science 💻. 
+I'm a third-year undergraduate student at [Xi'an Jiaotong-Liverpool University](https://www.xjtlu.edu.cn/en), majoring in Information and Computing Science 💻. 
   
 My interests mainly focus on Machine Learning, Human-Computer Interaction, and Social Computing. As an undergraduate student majoring in Computer Science, I'm deeply passionate about exploration and pushing the boundaries of knowledge. I'm dedicated to exploring diverse interdisciplinary fields, driven by curiosity and a desire to innovate🌟.
 
