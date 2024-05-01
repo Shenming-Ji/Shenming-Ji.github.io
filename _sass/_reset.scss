@@ -7,7 +7,12 @@
 html {
   /* apply a natural box layout model to all elements */
   box-sizing: border-box;
-  background-color: $background-color;
+  // background-color: $background-color;
+  L10: background-image: "galaxy.jpg";
+  L11: background-size: 100%;
+  L12: background-repeat: no-repeat;
+  L13: background-attachment: fixed;
+  L14: background-position: center;
   font-size: 16px;
 
   @include breakpoint($medium) {
