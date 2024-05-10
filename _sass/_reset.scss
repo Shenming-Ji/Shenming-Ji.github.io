@@ -7,12 +7,17 @@
 html {
   /* apply a natural box layout model to all elements */
   box-sizing: border-box;
-  background-color: $background-color;
+  // background-color: $background-color;
   /* background-image: url(https://github.com/Shenming-Ji/Shenming-Ji.github.io/blob/master/images/galaxy.png); */
   /* background-size: 100%; */
   /* background-repeat: no-repeat; */
   /* background-attachment: fixed; */
   /* background-position: center; */
+  background-image: url("https://github.com/Shenming-Ji/Shenming-Ji.github.io/blob/master/images/galaxy.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover; 
   font-size: 16px;
    
   @include breakpoint($medium) {
