@@ -13,7 +13,7 @@ redirect_from:
 
 🌟 I had the privilege of being supervised by [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa) during the Summer Undergraduate Research Fellowships at Xi'an Jiaotong-Liverpool University. Additionally, I spent the past summer as a visiting research intern in the [Dream Lab](https://www.xiameng.org/DreamLab/) at Texas A&M University, under the guidance of [Prof. Meng Xia](https://www.xiameng.org/).
 
-🧠 Currently, I am working on my graduation project under the supervision of [Prof. Qi Jun](https://scholar.xjtlu.edu.cn/en/persons/JunQi), focusing on epilepsy diagnosis based on EEG signals.
+🧠 Currently, I am working on my graduation project under the supervision of [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi), focusing on epilepsy diagnosis based on EEG signals.
 
 # Education
 
