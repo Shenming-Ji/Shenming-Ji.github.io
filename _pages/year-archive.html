@@ -47,14 +47,17 @@ redirect_from:
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s ease;
-            width: 100%;
+            width: 300px; /* Fixed width */
+            height: 200px; /* Fixed height */
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            position: relative;
         }
         .gallery-item img {
             width: 100%;
-            height: auto; /* Ensure the image is fully displayed without cropping */
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the whole area without stretching */
         }
         .title-container {
             text-align: center;
