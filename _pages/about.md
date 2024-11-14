@@ -17,17 +17,13 @@ redirect_from:
 
 # Education
 
-- **Xi'an Jiaotong-Liverpool University (XJTLU)**  
-  Bachelor of Science in Information and Computing Science  
-  *September 2021 - Present*  
-
 - **University of Liverpool (UoL)**  
   Bachelor of Science in Computer Science  
   *September 2021 - Present*  
 
-- **Texas A&M University (TAMU) - Visiting Student**  
-  Research Internship, Dream Lab  
-  *Summer 2024*  
+- **Xi'an Jiaotong-Liverpool University (XJTLU)**  
+  Bachelor of Science in Information and Computing Science  
+  *September 2021 - Present*  
 
 You can find my CV [here](../assets/Curriculum_Vitae.pdf).
 
