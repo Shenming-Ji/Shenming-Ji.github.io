@@ -7,7 +7,7 @@ redirect_from:
   - /wordpress/blog-posts/
 ---
 
-{% include base_path %}
+<!-- {% include base_path %}
 {% capture written_year %}'None'{% endcapture %}
 {% for post in site.posts %}
   {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
@@ -16,4 +16,108 @@ redirect_from:
     {% capture written_year %}{{ year }}{% endcapture %}
   {% endif %}
   {% include archive-single.html %}
-{% endfor %}
+{% endfor %} -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的Plog - 摄影作品集</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .gallery-item .content {
+            padding: 15px;
+        }
+        .gallery-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .gallery-item p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>我的摄影Plog</h1>
+    <p>记录那些值得纪念的瞬间</p>
+</header>
+
+<div class="container">
+    <section class="gallery">
+        <!-- 这里是每一张图片的展示 -->
+        <div class="gallery-item">
+            <img src="image1.jpg" alt="摄影作品1">
+            <div class="content">
+                <h3>作品标题1</h3>
+                <p>这是我的第一张作品，拍摄地点是xxxx，捕捉了xxxx的瞬间。</p>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="image2.jpg" alt="摄影作品2">
+            <div class="content">
+                <h3>作品标题2</h3>
+                <p>这是我的第二张作品，拍摄地点是xxxx，捕捉了xxxx的瞬间。</p>
+            </div>
+        </div>
+
+        <!-- 你可以继续添加更多的图片项 -->
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 我的Plog | 所有作品归我所有</p>
+</footer>
+
+</body>
+</html>
