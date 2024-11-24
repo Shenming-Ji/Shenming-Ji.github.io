@@ -27,5 +27,3 @@ redirect_from:
   Bachelor of Science in Information and Computing Science  
   *September 2021 - Present*  
 
-You can find my CV [here](../assets/Curriculum_Vitae.pdf).
-
