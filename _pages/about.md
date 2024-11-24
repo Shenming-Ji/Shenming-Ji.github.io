@@ -9,7 +9,7 @@ redirect_from:
 
 💻 I'm a fourth-year undergraduate student at Xi'an Jiaotong-Liverpool University, majoring in Information and Computing Science.
 
-🔬 My interests primarily lie in **Machine Learning**, **Human-Computer Interaction**, and **Medical AI**. As a senior undergraduate majoring in Computer Science, I am deeply passionate about exploring and advancing knowledge across interdisciplinary fields. Curiosity and a drive for innovation continue to fuel my academic journey.
+🔬 My interests primarily lie in **Machine Learning**, **Human-Computer Interaction**, and **AI in Healthcare**. As a senior undergraduate majoring in Computer Science, I am deeply passionate about exploring and advancing knowledge across interdisciplinary fields. Curiosity and a drive for innovation continue to fuel my academic journey.
 
 🌟 I was honored to be supervised by [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa) during the Summer Undergraduate Research Fellowships at Xi'an Jiaotong-Liverpool University. Later, I spent an inspiring summer as a visiting research intern at the [Dream Lab](https://www.xiameng.org/DreamLab/) at Texas A&M University. Under the mentorship of [Prof. Meng Xia](https://www.xiameng.org/), this experience proved to be both enlightening and transformative, deeply influencing my academic journey and personal development.
 
