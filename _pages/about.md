@@ -19,11 +19,15 @@ redirect_from:
 
 # Education
 
-- **University of Liverpool (UoL)**  
-  Bachelor of Science in Computer Science  
-  *September 2021 - Present*  
+- **Northwestern University**  
+  Master of Science in Computer Science  
+  Sep. 2025 - Jul. 2027 (Expected) 
 
-- **Xi'an Jiaotong-Liverpool University (XJTLU)**  
+- **University of Liverpool**  
+  Bachelor of Science in Computer Science  
+  Sep. 2021 - Jul. 2025  
+
+- **Xi'an Jiaotong-Liverpool University**  
   Bachelor of Science in Information and Computing Science  
-  *September 2021 - Present*  
+  Sep. 2021 - Jul. 2025  
 
