@@ -224,6 +224,16 @@ redirect_from:
     const photos = [
         {
             caption: "Road back home",
+            // *** 关键：修改图片路径 ***
+            // 确保你的图片文件夹 'images' 在你的 GitHub 仓库的根目录
+            // 或者根据你的实际图片存储位置调整路径
+            // 例如：如果你的仓库是 user.github.io/my-blog/ 且图片在 my-blog/images/
+            // 则路径可能是 "/my-blog/images/Road back home.JPG"
+            // 对于Jekyll项目，通常图片放在 'assets/images' 或者 'images' 目录下
+            // 最稳妥的方法是使用绝对路径，例如：
+            // img: "https://你的用户名.github.io/你的仓库名/images/Road%20back%20home.JPG"
+            // 或者对于 Jekyll，使用 {{ site.baseurl }}/images/Road back home.JPG
+            // 这里我们假设 'images' 文件夹直接在仓库根目录
             img: "/images/Road_back_home.JPG"
         },
         {
@@ -250,17 +260,39 @@ redirect_from:
         const start = (currentPage - 1) * PHOTOS_PER_PAGE;
         const end = start + PHOTOS_PER_PAGE;
         const pagePhotos = photos.slice(start, end);
+
         pagePhotos.forEach(photo => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.setAttribute('data-caption', photo.caption);
             item.setAttribute('data-img', photo.img);
-            item.innerHTML = `
-                <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
-                <div class="caption">${photo.caption}</div>
-            `;
+
+            const imgElement = document.createElement('img');
+            imgElement.src = photo.img;
+            imgElement.alt = photo.caption;
+            imgElement.loading = 'lazy';
+
+            // *** 图片加载检测：添加事件监听器 ***
+            imgElement.onload = () => {
+                console.log(`图片加载成功: ${photo.img}`);
+                // 可以在这里添加成功加载时的视觉反馈，例如移除加载指示器
+            };
+            imgElement.onerror = () => {
+                console.error(`图片加载失败: ${photo.img}`);
+                // 可以在这里显示一个占位符图片或者错误信息
+                imgElement.src = 'https://via.placeholder.com/250x250?text=Image+Load+Error'; // 示例占位符
+                item.innerHTML = `<div style="text-align: center; color: red;">图片加载失败: ${photo.caption}</div>`;
+            };
+
+            item.appendChild(imgElement);
+            const captionElement = document.createElement('div');
+            captionElement.className = 'caption';
+            captionElement.textContent = photo.caption;
+            item.appendChild(captionElement);
+
             gallery.appendChild(item);
         });
+
         // If less than PHOTOS_PER_PAGE, add placeholder
         if (pagePhotos.length < PHOTOS_PER_PAGE) {
             const placeholder = document.createElement('div');
@@ -268,6 +300,7 @@ redirect_from:
             placeholder.textContent = 'Waiting for the next moment...';
             gallery.appendChild(placeholder);
         }
+
         // Lightbox event
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', function() {
