@@ -1,7 +1,11 @@
 ---
+layout: archive
 permalink: /year-archive/
+title: ""
+author_profile: true
+redirect_from:
+  - /wordpress/blog-posts/
 ---
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -220,20 +224,21 @@ permalink: /year-archive/
     const photos = [
         {
             caption: "Road back home",
-            img: "images/Lib.JPG"
+            img: "/images/Road back home.JPG"
         },
         {
             caption: "IFS",
-            img: "images/IFS.JPG"
+            img: "/images/IFS.JPG"
         },
         {
             caption: "Library",
-            img: "images/Lib.JPG"
+            img: "/images/Lib.JPG"
         },
         {
             caption: "A&M Bell Tower",
-            img: "images/Lib.JPG"
-        }
+            img: "/images/Bell tower.JPG"
+        },
+        // Add more photo objects here as needed
     ];
 
     const PHOTOS_PER_PAGE = 6;
@@ -245,39 +250,17 @@ permalink: /year-archive/
         const start = (currentPage - 1) * PHOTOS_PER_PAGE;
         const end = start + PHOTOS_PER_PAGE;
         const pagePhotos = photos.slice(start, end);
-
         pagePhotos.forEach(photo => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.setAttribute('data-caption', photo.caption);
             item.setAttribute('data-img', photo.img);
-
-            const imgElement = document.createElement('img');
-            imgElement.src = photo.img;
-            imgElement.alt = photo.caption;
-            imgElement.loading = 'lazy';
-
-            // *** 图片加载检测：添加事件监听器 ***
-            imgElement.onload = () => {
-                console.log(`图片加载成功: ${photo.img}`);
-                // 可以在这里添加成功加载时的视觉反馈，例如移除加载指示器
-            };
-            imgElement.onerror = () => {
-                console.error(`图片加载失败: ${photo.img}`);
-                // 可以在这里显示一个占位符图片或者错误信息
-                imgElement.src = 'https://via.placeholder.com/250x250?text=Image+Load+Error'; // 示例占位符
-                item.innerHTML = `<div style="text-align: center; color: red;">图片加载失败: ${photo.caption}</div>`;
-            };
-
-            item.appendChild(imgElement);
-            const captionElement = document.createElement('div');
-            captionElement.className = 'caption';
-            captionElement.textContent = photo.caption;
-            item.appendChild(captionElement);
-
+            item.innerHTML = `
+                <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
+                <div class="caption">${photo.caption}</div>
+            `;
             gallery.appendChild(item);
         });
-
         // If less than PHOTOS_PER_PAGE, add placeholder
         if (pagePhotos.length < PHOTOS_PER_PAGE) {
             const placeholder = document.createElement('div');
@@ -285,7 +268,6 @@ permalink: /year-archive/
             placeholder.textContent = 'Waiting for the next moment...';
             gallery.appendChild(placeholder);
         }
-
         // Lightbox event
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', function() {
@@ -340,3 +322,4 @@ permalink: /year-archive/
 
 </body>
 </html>
+
