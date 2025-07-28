@@ -68,6 +68,44 @@ redirect_from:
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
+            min-height: 540px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 32px 0 0 0;
+            gap: 32px;
+        }
+        .page-btn {
+            background: rgba(0,0,0,0.18);
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            position: relative;
+        }
+        .page-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .page-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: #fff;
+            opacity: 0.7;
+        }
+        .page-info {
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
         .gallery-item {
             background-color: #fff;
@@ -146,23 +184,7 @@ redirect_from:
             cursor: pointer;
             z-index: 10000;
         }
-        footer {
-            background: linear-gradient(90deg, #232526 0%, #414345 100%);
-            color: #e0e0e0;
-            text-align: center;
-            padding: 1.5rem 1rem 1.2rem 1rem;
-            border-radius: 24px 24px 0 0;
-            box-shadow: 0 -2px 16px rgba(0,0,0,0.10);
-            margin-top: 48px;
-            font-size: 1.08rem;
-            letter-spacing: 1px;
-            position: relative;
-        }
-        footer p {
-            margin: 0;
-            font-weight: 500;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.10);
-        }
+        /* footer removed to avoid overlap */
     </style>
 </head>
 <body>
@@ -173,30 +195,18 @@ redirect_from:
 </header>
 
 <div class="container">
-    <section class="gallery">
-        <!-- Each photo item displayed here -->
-        <div class="gallery-item" data-caption="Road back home" data-img="../images/Road back home.JPG">
-            <img src="../images/Road back home.JPG" alt="Photo 1" loading="lazy">
-            <div class="caption">Road back home</div>
-        </div>
-        <div class="gallery-item" data-caption="IFS" data-img="../images/IFS.JPG">
-            <img src="../images/IFS.JPG" alt="Photo 2" loading="lazy">
-            <div class="caption">IFS</div>
-        </div>
-        <div class="gallery-item" data-caption="Library" data-img="../images/Lib.JPG">
-            <img src="../images/Lib.JPG" alt="Photo 3" loading="lazy">
-            <div class="caption">Library</div>
-        </div>
-        <div class="gallery-item" data-caption="A&M Bell Tower" data-img="../images/Bell tower.JPG">
-            <img src="../images/Bell tower.JPG" alt="Photo 4" loading="lazy">
-            <div class="caption">A&M Bell Tower</div>
-        </div>
-        <!-- Placeholder for the next moment -->
-        <div class="placeholder">
-            Waiting for the next moment...
-        </div>
-        <!-- Additional photo items can be added in the same structure -->
+    <section class="gallery" id="gallery">
+        <!-- Gallery items will be rendered here by JS -->
     </section>
+    <div class="pagination" style="margin-bottom: 60px;">
+        <button class="page-btn" id="prevBtn">
+            <svg viewBox="0 0 24 24"><polygon points="15.5,19 9.5,12 15.5,5"/></svg>
+        </button>
+        <span class="page-info" id="pageInfo"></span>
+        <button class="page-btn" id="nextBtn">
+            <svg viewBox="0 0 24 24"><polygon points="8.5,5 14.5,12 8.5,19"/></svg>
+        </button>
+    </div>
 </div>
 
 <!-- Lightbox 弹窗 -->
@@ -206,34 +216,109 @@ redirect_from:
     <div id="lightbox-caption" style="color:#fff;text-align:center;margin-top:10px;"></div>
 </div>
 
-<!-- <footer>
-    <p>&copy; 2025 My Plog | All rights reserved</p>
-</footer> -->
+
+
 
 <script>
-    // Lightbox 功能
-    document.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const imgSrc = this.getAttribute('data-img');
-            const caption = this.getAttribute('data-caption');
-            document.getElementById('lightbox-img').src = imgSrc;
-            document.getElementById('lightbox-caption').textContent = caption;
-            document.getElementById('lightbox').classList.add('active');
+    // Photo data (future: can be loaded from backend or JSON)
+    const photos = [
+        {
+            caption: "Road back home",
+            img: "../images/Road back home.JPG"
+        },
+        {
+            caption: "IFS",
+            img: "../images/IFS.JPG"
+        },
+        {
+            caption: "Library",
+            img: "../images/Lib.JPG"
+        },
+        {
+            caption: "A&M Bell Tower",
+            img: "../images/Bell tower.JPG"
+        },
+        // Add more photo objects here as needed
+    ];
+
+    const PHOTOS_PER_PAGE = 6;
+    let currentPage = 1;
+
+    function renderGallery() {
+        const gallery = document.getElementById('gallery');
+        gallery.innerHTML = '';
+        const start = (currentPage - 1) * PHOTOS_PER_PAGE;
+        const end = start + PHOTOS_PER_PAGE;
+        const pagePhotos = photos.slice(start, end);
+        pagePhotos.forEach(photo => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.setAttribute('data-caption', photo.caption);
+            item.setAttribute('data-img', photo.img);
+            item.innerHTML = `
+                <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
+                <div class="caption">${photo.caption}</div>
+            `;
+            gallery.appendChild(item);
         });
-    });
+        // If less than PHOTOS_PER_PAGE, add placeholder
+        if (pagePhotos.length < PHOTOS_PER_PAGE) {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'placeholder';
+            placeholder.textContent = 'Waiting for the next moment...';
+            gallery.appendChild(placeholder);
+        }
+        // Lightbox event
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.getAttribute('data-img');
+                const caption = this.getAttribute('data-caption');
+                document.getElementById('lightbox-img').src = imgSrc;
+                document.getElementById('lightbox-caption').textContent = caption;
+                document.getElementById('lightbox').classList.add('active');
+            });
+        });
+    }
+
+    function updatePagination() {
+        const totalPages = Math.ceil(photos.length / PHOTOS_PER_PAGE) || 1;
+        document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+        document.getElementById('prevBtn').disabled = currentPage === 1;
+        document.getElementById('nextBtn').disabled = currentPage === totalPages;
+    }
+
+    document.getElementById('prevBtn').onclick = function() {
+        if (currentPage > 1) {
+            currentPage--;
+            renderGallery();
+            updatePagination();
+        }
+    };
+    document.getElementById('nextBtn').onclick = function() {
+        const totalPages = Math.ceil(photos.length / PHOTOS_PER_PAGE) || 1;
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderGallery();
+            updatePagination();
+        }
+    };
+
+    // Lightbox close
     document.getElementById('lightbox-close').onclick = function() {
         document.getElementById('lightbox').classList.remove('active');
         document.getElementById('lightbox-img').src = '';
     };
-    // 点击遮罩关闭
     document.getElementById('lightbox').onclick = function(e) {
         if(e.target === this) {
             this.classList.remove('active');
             document.getElementById('lightbox-img').src = '';
         }
     };
+
+    // Initial render
+    renderGallery();
+    updatePagination();
 </script>
 
 </body>
 </html>
-
