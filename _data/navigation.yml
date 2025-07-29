@@ -16,7 +16,10 @@ main:
     
   # - title: "Portfolio"
   #   url: /portfolio/
-        
+
+  - title: "Gallery"
+    url: /gallery.html
+    
   - title: "Plog Posts"
     url: /year-archive/
     
