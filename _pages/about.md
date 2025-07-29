@@ -24,11 +24,11 @@ redirect_from:
 <!-- Publication 1 -->
 <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
   <img src="images/CPVis.jpg" alt="Paper Image 1" style="width: 340px; max-width: 100%; border: 1px solid #ddd;">
-  <div style="font-size: 0.8em;">
-    <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br>
+  <div style="font-size: 0.85em; text-align: justify;">
+    <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br><br>
     Gefei Zhang, <strong>Shenming Ji</strong>, Yicao Li, Jingwei Tang, Jihong Ding, Meng Xia, Guodao Sun, Ronghua Liang<br>
     <span style="font-style: italic;">ACM CHI Conference on Human Factors in Computing Systems, 2025.</span><br>
-    <a href="https://arxiv.org/pdf/2502.17835">[paper]</a> <a href="#">[code]</a>
+    <a href="#">[paper]</a> <a href="#">[code]</a>
   </div>
 </div>
 
