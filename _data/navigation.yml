@@ -5,8 +5,8 @@
 # prevent it from being included in the site.
 
 main:
-  # - title: "Publications"
-  #   url: /publications/
+  - title: "Publications"
+    url: /publications/
 
   # - title: "Talks"
   #   url: /talks/    
@@ -16,15 +16,15 @@ main:
     
   # - title: "Portfolio"
   #   url: /portfolio/
-
-  - title: "Gallery"
-    url: /gallery.html
     
-  - title: "Plog Posts"
-    url: /year-archive/
+  # - title: "Plog Posts"
+  #   url: /year-archive/
     
   - title: "CV"
     url: /cv/
+
+  - title: "Plog Posts"
+    url: /gallery.html
     
   # - title: "Guide"
   #   url: /markdown/
