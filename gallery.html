@@ -223,7 +223,7 @@
 <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightbox-close">&times;</span>
     <img id="lightbox-img" src="" alt="Enlarged photo">
-    <div id="lightbox-caption" style="color:#fff;text-align:center;margin-top:10px;"></div>
+    <!-- caption removed from lightbox -->
 </div>
 
 <script>
@@ -231,7 +231,7 @@
     const photos = [
         {
             caption: "Road back home",
-            img: "images/Road_back_home.JPG"
+            img: "images/Road back home.JPG"
         },
         {
             caption: "IFS",
@@ -243,15 +243,19 @@
         },
         {
             caption: "A&M Bell Tower",
-            img: "images/Bell_tower.JPG"
+            img: "images/Bell tower.JPG"
+        },
+        {
+            caption: "Station",
+            img: "images/Station.JPG"
         },
         {
             caption: "Crowd",
             img: "images/Crowd.JPG"
         },
         {
-            caption: "Station",
-            img: "images/Station.JPG"
+            caption: "Crowd",
+            img: "images/Crowd.JPG"
         },
         // Add more photo objects here as needed
     ];
@@ -285,9 +289,7 @@
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', function() {
                 const imgSrc = this.getAttribute('data-img');
-                const caption = this.getAttribute('data-caption');
                 document.getElementById('lightbox-img').src = imgSrc;
-                document.getElementById('lightbox-caption').textContent = caption;
                 document.getElementById('lightbox').classList.add('active');
             });
         });
