@@ -10,10 +10,9 @@
   padding-right: 1em;
   animation: intro 0.3s both;
   animation-delay: 0.35s;
-
-  @include breakpoint($x-large) {
-    max-width: $x-large;
-  }
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .page {
@@ -25,7 +24,11 @@
 
   .page__inner-wrap {
     @include full();
+    max-width: 1300px;
     width: 110%;
+    margin-left: auto;
+    margin-right: auto;
+
     .page__content,
     .page__meta,
     .page__share {
