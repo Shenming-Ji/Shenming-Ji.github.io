@@ -17,7 +17,22 @@ redirect_from:
 
 **Personal Interests**: Outside of academics, I am passionate about ⚽**soccer**, 🎶**listening to music**, and 📷**photography**. Feel free to check out my Plog for a glimpse of my photography journey!
 
-# Education
+## Publications
+
+<hr style="border: 1px solid #ccc;">
+
+<!-- Publication 1 -->
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+  <img src="images/CPVis.jpg" alt="Paper Image 1" style="width: 340px; max-width: 100%; border: 1px solid #ddd;">
+  <div style="font-size: 0.8em;">
+    <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br>
+    Gefei Zhang, <strong>Shenming Ji</strong>, Yicao Li, Jingwei Tang, Jihong Ding, Meng Xia, Guodao Sun, Ronghua Liang<br>
+    <span style="font-style: italic;">ACM CHI Conference on Human Factors in Computing Systems, 2025.</span><br>
+    <a href="#">[paper]</a> <a href="#">[code]</a>
+  </div>
+</div>
+
+## Education
 
 - **Northwestern University**  
   Master of Science in Computer Science  
@@ -30,4 +45,3 @@ redirect_from:
 - **Xi'an Jiaotong-Liverpool University**  
   Bachelor of Science in Information and Computing Science  
   Sep. 2021 - Jul. 2025  
-
