@@ -15,14 +15,14 @@ redirect_from:
 
 🧠 Currently, I am working on my graduation project under the supervision of [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi), focusing on epilepsy diagnosis based on EEG signals.
 
+
 **Personal Interests**: Outside of academics, I am passionate about ⚽**soccer**, 🎶**listening to music**, and 📷**photography**. Feel free to check out my Plog for a glimpse of my photography journey!
+
 
 ## Publications
 
-<hr style="border: 1px solid #ccc;">
-
 <!-- Publication 1 -->
-<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;">
   <img src="images/CPVis.jpg" alt="Paper Image 1" style="width: 340px; max-width: 100%; border: 1px solid #ddd;">
   <div style="font-size: 0.85em; text-align: justify;">
     <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br><br>
@@ -32,16 +32,29 @@ redirect_from:
   </div>
 </div>
 
+
 ## Education
 
-- **Northwestern University**  
-  Master of Science in Computer Science  
-  Sep. 2025 - Jul. 2027 (Expected) 
+<div style="margin-bottom: 22px;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <span><strong>Northwestern University</strong></span>
+    <span style="font-size: 0.98em; color: #666;">Sep. 2025 - Jul. 2027 (Expected)</span>
+  </div>
+  <div style="margin-top: 2px; font-size: 1em; color: #444;">Master of Science in Computer Science</div>
+</div>
 
-- **University of Liverpool**  
-  Bachelor of Science in Computer Science  
-  Sep. 2021 - Jul. 2025  
+<div style="margin-bottom: 22px;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <span><strong>University of Liverpool</strong></span>
+    <span style="font-size: 0.98em; color: #666;">Sep. 2021 - Jul. 2025</span>
+  </div>
+  <div style="margin-top: 2px; font-size: 1em; color: #444;">Bachelor of Science in Computer Science</div>
+</div>
 
-- **Xi'an Jiaotong-Liverpool University**  
-  Bachelor of Science in Information and Computing Science  
-  Sep. 2021 - Jul. 2025  
+<div style="margin-bottom: 22px;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <span><strong>Xi'an Jiaotong-Liverpool University</strong></span>
+    <span style="font-size: 0.98em; color: #666;">Sep. 2021 - Jul. 2025</span>
+  </div>
+  <div style="margin-top: 2px; font-size: 1em; color: #444;">Bachelor of Science in Information and Computing Science</div>
+</div>
