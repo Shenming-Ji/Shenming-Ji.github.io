@@ -38,23 +38,23 @@ redirect_from:
 <div style="margin-bottom: 22px;">
   <div style="display: flex; justify-content: space-between; align-items: baseline;">
     <span><strong>Northwestern University</strong></span>
-    <span style="font-size: 0.98em; color: #666;">Sep. 2025 - Jul. 2027 (Expected)</span>
+    <span style="font-size: 0.98em; color: #000;">Sep. 2025 - Jul. 2027 (Expected)</span>
   </div>
-  <div style="margin-top: 2px; font-size: 1em; color: #444;">Master of Science in Computer Science</div>
+  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Master of Science in Computer Science</em></div>
 </div>
 
 <div style="margin-bottom: 22px;">
   <div style="display: flex; justify-content: space-between; align-items: baseline;">
     <span><strong>University of Liverpool</strong></span>
-    <span style="font-size: 0.98em; color: #666;">Sep. 2021 - Jul. 2025</span>
+    <span style="font-size: 0.98em; color: #000;">Sep. 2021 - Jul. 2025</span>
   </div>
-  <div style="margin-top: 2px; font-size: 1em; color: #444;">Bachelor of Science in Computer Science</div>
+  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Bachelor of Science in Computer Science</em></div>
 </div>
 
 <div style="margin-bottom: 22px;">
   <div style="display: flex; justify-content: space-between; align-items: baseline;">
     <span><strong>Xi'an Jiaotong-Liverpool University</strong></span>
-    <span style="font-size: 0.98em; color: #666;">Sep. 2021 - Jul. 2025</span>
+    <span style="font-size: 0.98em; color: #000;">Sep. 2021 - Jul. 2025</span>
   </div>
-  <div style="margin-top: 2px; font-size: 1em; color: #444;">Bachelor of Science in Information and Computing Science</div>
+  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Bachelor of Science in Information and Computing Science</em></div>
 </div>
