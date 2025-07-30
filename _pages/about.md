@@ -26,7 +26,7 @@ redirect_from:
   <img src="images/CPVis.jpg" alt="Paper Image 1" style="width: 340px; max-width: 100%; border: 1px solid #ddd;">
   <div style="font-size: 0.85em; text-align: justify;">
     <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br><br>
-    Gefei Zhang, <strong>Shenming Ji</strong>, Yicao Li, Jingwei Tang, Jihong Ding, Meng Xia, Guodao Sun, Ronghua Liang<br>
+    Gefei Zhang, <strong>Shenming Ji</strong>, Yicao Li, Jingwei Tang, Jihong Ding, Meng Xia, Guodao Sun, Ronghua Liang<br><br>
     <span style="font-style: italic;">CHI 2025, Yokohama, Japan</span><br>
     <a href="#">[paper]</a> <a href="#">[code]</a>
   </div>
