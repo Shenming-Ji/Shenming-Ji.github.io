@@ -28,7 +28,7 @@ redirect_from:
     <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br><br>
     Gefei Zhang, <strong>Shenming Ji</strong>, Yicao Li, Jingwei Tang, Jihong Ding, Meng Xia, Guodao Sun, Ronghua Liang<br><br>
     <span style="font-style: italic;">CHI 2025, Yokohama, Japan</span><br>
-    <a href="#">[paper]</a> <a href="#">[code]</a>
+    <a href="https://arxiv.org/pdf/2502.17835">[paper]</a> <a href="#">[code]</a>
   </div>
 </div>
 
