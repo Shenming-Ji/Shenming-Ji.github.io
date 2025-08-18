@@ -7,13 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-💻 I'm a fourth-year undergraduate student at Xi'an Jiaotong-Liverpool University, majoring in Information and Computing Science.
+I'm a fourth-year undergraduate student at Xi'an Jiaotong-Liverpool University, majoring in Information and Computing Science.
 
-🔬 My interests primarily lie in **Social Computing**, **Human-Computer Interaction**, and **AI in Healthcare**. As a senior undergraduate majoring in Computer Science, I am deeply passionate about exploring and advancing knowledge across interdisciplinary fields. Curiosity and a drive for innovation continue to fuel my academic journey.
+My interests primarily lie in **Social Computing**, **Human-Computer Interaction**, and **AI in Healthcare**. As a senior undergraduate majoring in Computer Science, I am deeply passionate about exploring and advancing knowledge across interdisciplinary fields. Curiosity and a drive for innovation continue to fuel my academic journey.
 
-🌟 I was honored to be supervised by [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa) during the Summer Undergraduate Research Fellowships at Xi'an Jiaotong-Liverpool University. Later, I spent an inspiring summer as a visiting research intern at the [Dream Lab](https://www.xiameng.org/DreamLab/) at Texas A&M University. Under the mentorship of [Prof. Meng Xia](https://www.xiameng.org/), this experience proved to be both enlightening and transformative, deeply influencing my academic journey and personal development.
+I was honored to be supervised by [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa) during the Summer Undergraduate Research Fellowships at Xi'an Jiaotong-Liverpool University. Later, I spent an inspiring summer as a visiting research intern at the [Dream Lab](https://www.xiameng.org/DreamLab/) at Texas A&M University. Under the mentorship of [Prof. Meng Xia](https://www.xiameng.org/), this experience proved to be both enlightening and transformative, deeply influencing my academic journey and personal development.
 
-🧠 Currently, I am working on my graduation project under the supervision of [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi), focusing on epilepsy diagnosis based on EEG signals.
+Currently, I am working on my graduation project under the supervision of [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi), focusing on epilepsy diagnosis based on EEG signals.
 
 
 **Personal Interests**: Outside of academics, I am passionate about ⚽**soccer**, 🎶**listening to music**, and 📷**photography**. Feel free to check out my Plog for a glimpse of my photography journey!
@@ -52,15 +52,7 @@ redirect_from:
 
 <div style="margin-bottom: 22px;">
   <div style="display: flex; justify-content: space-between; align-items: baseline;">
-    <span><strong>University of Liverpool</strong></span>
-    <span style="font-size: 0.98em; color: #000;">Sep. 2021 - Jul. 2025</span>
-  </div>
-  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Bachelor of Science in Computer Science</em></div>
-</div>
-
-<div style="margin-bottom: 22px;">
-  <div style="display: flex; justify-content: space-between; align-items: baseline;">
-    <span><strong>Xi'an Jiaotong-Liverpool University</strong></span>
+    <span><strong>Xi'an Jiaotong-Liverpool University (University of Liverpool)</strong></span>
     <span style="font-size: 0.98em; color: #000;">Sep. 2021 - Jul. 2025</span>
   </div>
   <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Bachelor of Science in Information and Computing Science</em></div>
