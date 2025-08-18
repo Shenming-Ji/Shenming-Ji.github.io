@@ -21,9 +21,9 @@ redirect_from:
 ## News
 
 <ul style="list-style: disc inside; font-size: 1em; color: #444; margin-bottom: 24px;">
-  <li><span style="font-weight: bold; color: #000;">[2025/05]</span> My paper EEGTBSANet is accepted by IEEE INDIN 2025!</li>
-  <li><span style="font-weight: bold; color: #000;">[2025/01]</span> One paper accepted by CHI 2025! See you in Yokohama!</li>
-  <li><span style="font-weight: bold; color: #000;">[2024/05]</span> Joined Dream Lab at Texas A&M University as a research intern.</li>
+  <li><span style="font-style: italic; color: #000;">[2025/05]</span> My paper EEGTBSANet is accepted by IEEE INDIN 2025!</li>
+  <li><span style="font-style: italic; color: #000;">[2025/01]</span> One paper accepted by CHI 2025! See you in Yokohama!</li>
+  <li><span style="font-style: italic; color: #000;">[2024/05]</span> Joined Dream Lab at Texas A&M University as a research intern.</li>
 </ul>
 
 ## Publications
