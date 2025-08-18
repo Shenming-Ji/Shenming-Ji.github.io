@@ -26,9 +26,9 @@ author:
   pronouns         : # example: "he"  
   bio              : "Stay Hungry, Stay Foolish✨"
   location         : "Chengdu/Wenzhou, China"
-  employer         : "Xi'an Jiaotong-Liverpool University"
+  # employer         : "Xi'an Jiaotong-Liverpool University"
   uri              : # URL
-  email            : "Shenming.Ji21@student.xjtlu.edu.cn" 
+  email            : "shenmingji2027@u.northwestern.edu" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
