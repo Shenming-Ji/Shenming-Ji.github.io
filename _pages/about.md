@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "😊Hello there, I'm Shenming!"
+title: "Hello there, I'm Shenming!😊"
 author_profile: true
 redirect_from: 
   - /about/
