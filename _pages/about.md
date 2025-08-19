@@ -9,7 +9,13 @@ redirect_from:
 
 I’m a first-year Master’s student in Computer Science at Northwestern University. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way.
 
-Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photography**. Feel free to check out my Plog for a glimpse of my photography journey!  
+Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photography**. Feel free to check out my Plog for a glimpse of my photography journey!
+
+<style>
+  .page__content a {
+    color: rgba(78, 42, 132, 1) !important;
+  }
+</style>
 
 ## News
 
