@@ -48,7 +48,7 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
 <div style="margin-bottom: 22px;">
   <div style="display: flex; justify-content: space-between; align-items: baseline;">
     <span><strong><a href="https://www.xiameng.org/DreamLab/">Dream Lab</a>, Texas A&M University</strong></span>
-    <span style="font-size: 0.98em; color: #000;">April 2024 - Sep. 2024</span>
+    <span style="font-size: 0.98em; color: #000;">Apr. 2024 - Sep. 2024</span>
   </div>
   <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Research Intern, Human-Computer Interaction</em></div>
   <ul style="margin-top: 6px;">
