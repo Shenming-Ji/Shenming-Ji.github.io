@@ -69,6 +69,18 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   </ul>
 </div>
 
+<div style="margin-bottom: 22px;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+    <span><strong>Xi'an Jiaotong-Liverpool University</strong></span>
+    <span style="font-size: 0.98em; color: #000;">Jun. 2023 - Sep. 2023</span>
+  </div>
+  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Research Assistant, Social Computing</em></div>
+  <ul style="margin-top: 6px;">
+    <li>Advised by Prof. <a href="https://scholar.xjtlu.edu.cn/en/persons/TengMa">Teng Ma</a>.</li>
+    <li>Gained insights into Bilibili creator growth and video performance through large-scale web scraping and network analysis.</li>
+  </ul>
+</div>
+
 ## Publications
 
 <!-- Publication 1 -->
