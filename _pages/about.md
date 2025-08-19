@@ -57,3 +57,10 @@ Currently, I am working on my graduation project under the supervision of [Prof.
   </div>
   <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Bachelor of Science in Information and Computing Science</em></div>
 </div>
+
+## Miscellaneous
+
+
+<div id="clustrmaps-widget" style="width: 200px; height: 200px; margin: 32px auto 8px auto;">
+  <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=y0GafFd3kI-G5QE9JKI-jfakL9ek4ck-VQxQM9biQg0"></script>
+</div>
