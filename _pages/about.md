@@ -77,7 +77,7 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Research Assistant, Social Computing</em></div>
   <ul style="margin-top: 6px;">
     <li>Advised by Prof. <a href="https://scholar.xjtlu.edu.cn/en/persons/TengMa">Teng Ma</a>.</li>
-    <li>Gained insights into Bilibili creator growth and video performance through large-scale web scraping and network analysis.</li>
+    <li>Gained insights into Bilibili creator growth by leveraging web scraping and network analysis.</li>
   </ul>
 </div>
 
