@@ -7,11 +7,11 @@ redirect_from:
   - /about.html
 ---
 
-I’m a first-year Master’s student in Computer Science at Northwestern University. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way.
+I’m a first-year Master’s student in Computer Science at Northwestern University. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way!
 
-My research interests include **Human-Computer Interaction, Computer-Supported Cooperative Work (CSCW), Social Computing, Conversational User Interfaces, and Human-Centered AI**. Recently, I focused on designing AI agents to help analyze human behavior and promote well-being. If you are interested in my work, feel free to reach out and I warmly welcome collaboration.
+My research interests include **Human-Computer Interaction, Computer-Supported Cooperative Work (CSCW), Social Computing, Conversational User Interfaces, and Human-Centered AI**. Recently, I focused on designing AI agents to help analyze human behavior and promote well-being. If you are interested in my work, feel free to reach out and I warmly welcome collaboration!
 
-Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photography**. Feel free to check out my Plog for a glimpse of my photography journey!
+Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photography**. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!
 
 <style>
   .page__content a {
