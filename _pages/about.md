@@ -96,6 +96,17 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   </div>
 </div>
 
+<!-- Publication 2 -->
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;">
+  <img src="images/EEG-TBSANet.jpg" alt="Paper Image 1" style="width: 340px; max-width: 100%; border: 1px solid #ddd;">
+  <div style="font-size: 0.85em; text-align: justify;">
+    <strong>EEG-TBSANet: Temporal-Spectral Fusion Network for Robust Epilepsy Diagnosis from EEG</strong><br><br>
+    <strong>Shenming Ji</strong>, Wei Wang, Jianjun Chen, Jun Qi<br><br>
+    <span style="font-style: italic;">IEEE INDIN 2025, Yunnan, China</span><br>
+    <a href="#">[paper]</a> <a href="#">[code]</a>
+  </div>
+</div>
+
 ## Miscellaneous
 
 <div id="clustrmaps-widget" style="width: 200px; height: 200px; margin: 32px auto 8px auto;">
