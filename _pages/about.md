@@ -14,8 +14,37 @@ My research interests include **Human-Computer Interaction, Computer-Supported C
 Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photography**. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!
 
 <style>
-  .page__content a {
-    color: rgba(78, 42, 132, 1) !important;
+  .pub-img {
+    width: 340px;            
+    height: 200px;            
+    object-fit: contain;     
+    background: #f9f9f9;    
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  .pub-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .pub-text {
+    font-size: 0.85em;
+    text-align: justify;
+  }
+
+  @media (max-width: 768px) {
+    .pub-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .pub-img {
+      width: 100%;
+      height: auto;
+    }
   }
 </style>
 
@@ -86,9 +115,11 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
 ## Publications
 
 <!-- Publication 1 -->
-<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;">
-  <img src="images/CPVis.jpg" alt="Paper Image 1" style="width: 340px; max-width: 100%; border: 1px solid #ddd;">
-  <div style="font-size: 0.85em; text-align: justify;">
+<div class="pub-item">
+  <a href="images/CPVis.jpg" target="_blank">
+    <img src="images/CPVis.jpg" alt="Paper Image 1" class="pub-img">
+  </a>
+  <div class="pub-text">
     <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br><br>
     Gefei Zhang, <strong>Shenming Ji</strong>, Yicao Li, Jingwei Tang, Jihong Ding, Meng Xia, Guodao Sun, Ronghua Liang<br><br>
     <span style="font-style: italic;">CHI 2025, Yokohama, Japan</span><br>
@@ -97,9 +128,11 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
 </div>
 
 <!-- Publication 2 -->
-<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;">
-  <img src="images/EEG-TBSANet.jpg" alt="Paper Image 1" style="width: 340px; max-width: 100%; border: 1px solid #ddd;">
-  <div style="font-size: 0.85em; text-align: justify;">
+<div class="pub-item">
+  <a href="images/EEG-TBSANet.jpg" target="_blank">
+    <img src="images/EEG-TBSANet.jpg" alt="Paper Image 2" class="pub-img">
+  </a>
+  <div class="pub-text">
     <strong>EEG-TBSANet: Temporal-Spectral Fusion Network for Robust Epilepsy Diagnosis from EEG</strong><br><br>
     <strong>Shenming Ji</strong>, Wei Wang, Jianjun Chen, Jun Qi<br><br>
     <span style="font-style: italic;">IEEE INDIN 2025, Yunnan, China</span><br>
