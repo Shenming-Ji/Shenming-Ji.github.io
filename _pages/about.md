@@ -42,6 +42,9 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     font-size: 0.85em;
     text-align: justify;
   }
+  .page__content a { 
+    color: rgba(78, 42, 132, 1) !important; 
+  }
   @media (max-width: 768px) {
     .pub-item {
       flex-direction: column;
