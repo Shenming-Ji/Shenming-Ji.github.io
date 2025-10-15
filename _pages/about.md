@@ -17,9 +17,9 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   .pub-frame {
     width: 340px;                
     height: 220px;               
-    background: #f7f5f5;         
+    background: #f0f0f0;         
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 6px;
     display: flex;
     justify-content: center;     
     align-items: center;       
