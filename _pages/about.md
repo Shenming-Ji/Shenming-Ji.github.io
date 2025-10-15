@@ -15,21 +15,21 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
 
 <style>
   .pub-frame {
-    width: 340px;                /* 背景板固定宽度 */
-    height: 220px;               /* 背景板固定高度 */
-    background: #f7f7f7;         /* 背景板颜色（可调整） */
+    width: 340px;                
+    height: 220px;               
+    background: #f7f5f5;         
     border: 1px solid #ddd;
     border-radius: 10px;
     display: flex;
-    justify-content: center;     /* 图片水平居中 */
-    align-items: center;         /* 图片垂直居中 */
-    overflow: hidden;            /* 防止图片超出容器 */
-    flex-shrink: 0;              /* 避免缩放 */
+    justify-content: center;     
+    align-items: center;       
+    overflow: hidden;           
+    flex-shrink: 0;         
   }
   .pub-img {
-    max-width: 90%;              /* 图片最大宽度占背景板 90% */
-    max-height: 90%;             /* 图片最大高度占背景板 90% */
-    object-fit: contain;         /* 完整显示图片 */
+    max-width: 95%;            
+    max-height: 95%;            
+    object-fit: contain;         
     border-radius: 6px;
   }
   .pub-item {
