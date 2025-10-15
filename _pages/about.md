@@ -14,40 +14,52 @@ My research interests include **Human-Computer Interaction, Computer-Supported C
 Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photography**. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!
 
 <style>
-  .pub-img {
-    width: 340px;            
-    height: 200px;            
-    object-fit: contain;     
-    background: #f9f9f9;    
+  .pub-frame {
+    width: 340px;                /* 背景板固定宽度 */
+    height: 220px;               /* 背景板固定高度 */
+    background: #f7f7f7;         /* 背景板颜色（可调整） */
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;     /* 图片水平居中 */
+    align-items: center;         /* 图片垂直居中 */
+    overflow: hidden;            /* 防止图片超出容器 */
+    flex-shrink: 0;              /* 避免缩放 */
+  }
+  .pub-img {
+    max-width: 90%;              /* 图片最大宽度占背景板 90% */
+    max-height: 90%;             /* 图片最大高度占背景板 90% */
+    object-fit: contain;         /* 完整显示图片 */
+    border-radius: 6px;
   }
   .pub-item {
     display: flex;
     align-items: center;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   .pub-text {
     font-size: 0.85em;
     text-align: justify;
   }
-
   @media (max-width: 768px) {
     .pub-item {
       flex-direction: column;
       align-items: flex-start;
     }
 
-    .pub-img {
+    .pub-frame {
       width: 100%;
       height: auto;
+      aspect-ratio: 16 / 9;     
+    }
+
+    .pub-img {
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 </style>
-
 ## News
 
 <ul style="list-style: disc inside; font-size: 1em; color: #444; margin-bottom: 24px;">
@@ -114,9 +126,9 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
 
 ## Publications
 
-<!-- Publication 1 -->
+<!-- ===== Publication 1 ===== -->
 <div class="pub-item">
-  <a href="images/CPVis.jpg" target="_blank">
+  <a href="images/CPVis.jpg" target="_blank" class="pub-frame">
     <img src="images/CPVis.jpg" alt="Paper Image 1" class="pub-img">
   </a>
   <div class="pub-text">
@@ -127,9 +139,9 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   </div>
 </div>
 
-<!-- Publication 2 -->
+<!-- ===== Publication 2 ===== -->
 <div class="pub-item">
-  <a href="images/EEG-TBSANet.jpg" target="_blank">
+  <a href="images/EEG-TBSANet.jpg" target="_blank" class="pub-frame">
     <img src="images/EEG-TBSANet.jpg" alt="Paper Image 2" class="pub-img">
   </a>
   <div class="pub-text">
