@@ -15,12 +15,14 @@
             background: linear-gradient(90deg, #232526 0%, #414345 100%);
             color: #fff;
             text-align: center;
-            padding: 2.5rem 1rem 1.5rem 1rem;
-            border-radius: 0 0 32px 32px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-            margin-bottom: 32px;
+            padding: 2.75rem 1rem 2rem 1rem;
+            border-radius: 18px; /* rounded on all corners for a softer look */
+            box-shadow: 0 8px 40px rgba(0,0,0,0.16);
+            margin: 20px auto 32px auto;
             position: relative;
             overflow: hidden;
+            max-width: 1200px; /* keep header nicely centered within container */
+            border: 1px solid rgba(255,255,255,0.03);
         }
         .back-btn {
             position: absolute;
@@ -75,11 +77,12 @@
             margin: 0 auto;
             padding: 20px;
         }
+        /* Gallery wrapper. We'll render the first row separately so it is strictly
+           top-aligned, then render the remaining photos below in a masonry-style
+           column flow so later rows can interleave. */
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            min-height: 540px;
+            display: block;
+            width: 100%;
         }
         .pagination {
             display: flex;
@@ -118,19 +121,36 @@
             font-weight: 500;
             letter-spacing: 1px;
         }
+        /* Gallery items used in the column layout. */
         .gallery-item {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: visible;
+            transition: transform 0.18s ease;
+            display: block;
             position: relative;
-            height: 250px;
             cursor: pointer;
         }
+
+        /* Columns container: we'll create `cols` columns and distribute images round-robin
+           so items fill left->right for the first row, then continue down each column.
+           This produces the interleaved (masonry-like) effect between rows. */
+        .columns {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start; /* top-align column tops */
+            margin-bottom: 20px;
+        }
+        .column {
+            flex: 0 0 calc((100% - 3 * 20px) / 4);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center; /* center items so each item shrinks to image width */
+            min-width: 0; /* allow column to shrink in flex layouts */
+        }
+        .column .gallery-item { width: auto; display: inline-block; }
         .gallery-item:hover {
             transform: scale(1.05);
             box-shadow: 0 8px 16px rgba(0,0,0,0.15);
@@ -147,25 +167,40 @@
             opacity: 0;
             transition: opacity 0.3s;
             text-align: center;
+            box-sizing: border-box; /* ensure padding doesn't expand width */
+            border-radius: 0 0 1px 1px; /* match image bottom corners */
         }
         .gallery-item:hover .caption {
             opacity: 1;
         }
+          /* Images keep their intrinsic proportions and won't be forced to a fixed card size.
+              They will scale down to the item width if too large. */
         .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+            width: auto;
+            height: auto;
+            max-width: 100%;
             display: block;
+            border-radius: 10px;
         }
-        .gallery-item, .placeholder {
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 250px;
+        .placeholder {
+            display: block;
+            width: 100%;
+            text-align: center;
+            color: #666;
+            padding: 12px 8px;
+            box-sizing: border-box;
+        }
+
+        /* Responsive: adjust number of columns (by changing column flex-basis) */
+        @media (max-width: 1100px) {
+            .column { flex: 0 0 calc((100% - 2 * 20px) / 3); }
+        }
+        @media (max-width: 800px) {
+            .column { flex: 0 0 calc((100% - 1 * 20px) / 2); }
+        }
+        @media (max-width: 480px) {
+            .columns { display: block; }
+            .column { flex: 0 0 100%; margin-bottom: 20px; }
         }
         .lightbox {
             display: none;
@@ -269,10 +304,10 @@
             caption: "San Francisco ChinaTown",
             img: "images/DSC_2974.JPG"
         },
-        {
-            caption: "Inception",
-            img: "images/DSC_2983.JPG"
-        },
+        // {
+        //     caption: "Inception",
+        //     img: "images/DSC_2983.JPG"
+        // },
         {
             caption: "Lake View (Chicago)",
             img: "images/Lakeview.JPG"
@@ -280,11 +315,31 @@
         {
             caption: "Silence",
             img: "images/f469249cd7dc29f9e1082b942ed40206.JPG"
+        },
+        {
+            caption: "Main Library",
+            img: "images/MainLibrary.JPG"
+        },
+        {
+            caption: "Tech",
+            img: "images/Tech.JPG"
+        },
+        {
+            caption: "Meditation",
+            img: "images/Zone.JPG"
+        },
+        {
+            caption: "Skyscraper",
+            img: "images/Skyscraper.JPG"
+        },
+        {
+            caption: "Aurora",
+            img: "images/Aurora.JPG"
         }
         // Add more photo objects here as needed
     ];
 
-    const PHOTOS_PER_PAGE = 6;
+    const PHOTOS_PER_PAGE = 12; // show 4x3 per page
     let currentPage = 1;
 
     function renderGallery() {
@@ -293,7 +348,20 @@
         const start = (currentPage - 1) * PHOTOS_PER_PAGE;
         const end = start + PHOTOS_PER_PAGE;
         const pagePhotos = photos.slice(start, end);
-        pagePhotos.forEach(photo => {
+        // Create column containers and distribute photos round-robin so columns
+        // render side-by-side and produce interleaving between rows.
+        const cols = 4;
+        const columnsWrapper = document.createElement('div');
+        columnsWrapper.className = 'columns';
+        const columns = [];
+        for (let i = 0; i < cols; i++) {
+            const c = document.createElement('div');
+            c.className = 'column';
+            columns.push(c);
+            columnsWrapper.appendChild(c);
+        }
+
+        pagePhotos.forEach((photo, idx) => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.setAttribute('data-caption', photo.caption);
@@ -302,13 +370,19 @@
                 <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
                 <div class="caption">${photo.caption}</div>
             `;
-            gallery.appendChild(item);
+            // round-robin into columns
+            const colIndex = idx % cols;
+            columns[colIndex].appendChild(item);
         });
+
+        gallery.appendChild(columnsWrapper);
+
         if (pagePhotos.length < PHOTOS_PER_PAGE) {
             const placeholder = document.createElement('div');
             placeholder.className = 'placeholder';
             placeholder.textContent = 'Waiting for the next moment...';
-            gallery.appendChild(placeholder);
+            // append placeholder to the last column so it appears in the flow
+            columns[columns.length - 1].appendChild(placeholder);
         }
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', function() {
