@@ -286,3 +286,33 @@
     background: rgba(0,0,0,0.08);
   }
 }
+
+/* News block inside the author profile (sidebar) */
+.author__news {
+  margin-top: 12px;
+
+  h4 {
+    margin: 0 0 8px 0;
+    font-size: $type-size-5; /* slightly larger News heading */
+    color: #222;
+  }
+
+  &-list {
+    list-style: none; /* remove bullets */
+    margin: 0 0 12px 0; /* add space after the list */
+    padding: 0;
+    color: #444;
+    font-size: 1em; /* slightly larger list text */
+
+    li {
+      margin: 0 0 10px 0; /* spacing between items */
+      padding-left: 0;
+    }
+  }
+
+  .news-date {
+    color: #000;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+}

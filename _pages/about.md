@@ -63,13 +63,13 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     }
   }
 </style>
-## News
+<!-- ## News
 
 <ul style="list-style: disc inside; font-size: 1em; color: #444; margin-bottom: 24px;">
   <li><span style="font-style: normal; color: #000;">[2025/05]</span> My paper EEG-TBSANet is accepted by IEEE INDIN 2025!</li>
   <li><span style="font-style: normal; color: #000;">[2025/01]</span> One paper accepted by CHI 2025! See you in Yokohama!</li>
   <li><span style="font-style: normal; color: #000;">[2024/05]</span> Joined Dream Lab at Texas A&M University as a research intern.</li>
-</ul>
+</ul> -->
 
 ## Education
 
