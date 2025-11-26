@@ -45,6 +45,18 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   .page__content a { 
     color: rgba(78, 42, 132, 1) !important; 
   }
+  .pub-text .pub-title {
+    color: #4e2a84;
+    /* Use text-decoration so each wrapped line gets its own dashed underline */
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #4e2a84;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    font-size: 1.2em; /* make publication titles larger */
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
   @media (max-width: 768px) {
     .pub-item {
       flex-direction: column;
@@ -135,10 +147,9 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     <img src="images/CPVis.jpg" alt="Paper Image 1" class="pub-img">
   </a>
   <div class="pub-text">
-    <strong>CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</strong><br><br>
+    <a class="pub-title" href="https://arxiv.org/pdf/2502.17835">CPVis: Evidence-based Multimodal Learning Analytics for Evaluation in Collaborative Programming</a><br><br>
     Gefei Zhang, <strong>Shenming Ji</strong>, Yicao Li, Jingwei Tang, Jihong Ding, Meng Xia, Guodao Sun, Ronghua Liang<br><br>
     <span style="font-style: italic;">CHI 2025, Yokohama, Japan</span><br>
-    <a href="https://arxiv.org/pdf/2502.17835">[paper]</a> <a href="#">[code]</a>
   </div>
 </div>
 
@@ -148,10 +159,9 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     <img src="images/EEG-TBSANet.jpg" alt="Paper Image 2" class="pub-img">
   </a>
   <div class="pub-text">
-    <strong>EEG-TBSANet: Temporal-Spectral Fusion Network for Robust Epilepsy Diagnosis from EEG</strong><br><br>
+    <a class="pub-title" href="#">EEG-TBSANet: Temporal-Spectral Fusion Network for Robust Epilepsy Diagnosis from EEG</a><br><br>
     <strong>Shenming Ji</strong>, Wei Wang, Jianjun Chen, Jun Qi<br><br>
     <span style="font-style: italic;">IEEE INDIN 2025, Yunnan, China</span><br>
-    <a href="#">[paper]</a> <a href="#">[code]</a>
   </div>
 </div>
 

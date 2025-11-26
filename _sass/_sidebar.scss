@@ -125,6 +125,12 @@
   font-size: $type-size-5;
 }
 
+/* Make author name color/weight consistent with News heading */
+.author__name, .sidebar .author__name {
+  color: #222;
+  font-weight: 700;
+}
+
 .sidebar .author__desktop {
   display: none;
   @media screen and (min-width: 1024px) {
@@ -157,7 +163,7 @@
   font-family: $sans-serif;
   z-index: 10;
   position: relative;
-  cursor: pointer;
+  cursor: default; /* don't show pointer for the whole wrapper; icons/btn keep pointer */
 
   li:last-child {
     a {
@@ -171,6 +177,7 @@
 
   button {
     margin-bottom: 0;
+    cursor: pointer;
 
     @include breakpoint($large) {
       display: none;
