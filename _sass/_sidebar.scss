@@ -255,3 +255,34 @@
     }
   }
 }
+
+/* Compact horizontal icon list used in the profile sidebar */
+.author__icons {
+  display: flex;
+  gap: 10px;
+  margin: 6px 0 0 0;
+  padding: 0;
+  list-style: none;
+  align-items: center;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.05);
+    color: inherit;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  a:hover {
+    background: rgba(0,0,0,0.08);
+  }
+}
