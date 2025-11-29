@@ -170,38 +170,4 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=y0GafFd3kI-G5QE9JKI-jfakL9ek4ck-VQxQM9biQg0"></script>
 </div>
 
-<script>
-  (function() {
-    var el = document.getElementById('dynamic-greeting');
-    if (!el) return;
-    var texts = ['Hello!', '你好！'];
-    var idx = 0;
-    var interval = 3500; // milliseconds
-
-    // ensure initial visibility
-    el.classList.remove('is-hidden');
-
-    function startToggle() {
-      setInterval(function() {
-        el.classList.add('is-hidden');
-      }, interval);
-    }
-
-    function onTransitionEnd(e) {
-      if (e.propertyName !== 'opacity') return;
-      if (el.classList.contains('is-hidden')) {
-        idx = (idx + 1) % texts.length;
-        el.textContent = texts[idx];
-        // ensure browser has applied the hidden state before showing
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            el.classList.remove('is-hidden');
-          });
-        });
-      }
-    }
-
-    el.addEventListener('transitionend', onTransitionEnd);
-    startToggle();
-  })();
-</script>
+<script src="{{ base_path }}/assets/js/greeting.js"></script>
