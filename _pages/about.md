@@ -1,12 +1,11 @@
 ---
 permalink: /
-title: "Hello there, I'm Shenming!😊"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
-
+<div id="dynamic-greeting" role="status" aria-live="polite" style="font-size:1.6em; font-family: 'Gill Sans', 'Microsoft YaHei', sans-serif; font-weight:700; margin-bottom:0.6em;">Hello</div>
 I’m a first-year Master’s student in Computer Science at Northwestern University. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way!
 
 My research interests include **Human-Computer Interaction, Computer-Supported Cooperative Work (CSCW), Social Computing, Conversational User Interfaces, and Human-Centered AI**. Recently, I focused on designing AI agents to help analyze human behavior and promote well-being. Feel free to contact me by email if you are interested in discussing or collaborating with me.
@@ -170,3 +169,28 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
 <div id="clustrmaps-widget" style="width: 200px; height: 200px; margin: 32px auto 8px auto;">
   <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=y0GafFd3kI-G5QE9JKI-jfakL9ek4ck-VQxQM9biQg0"></script>
 </div>
+
+<script>
+  (function() {
+    var el = document.getElementById('dynamic-greeting');
+    if (!el) return;
+    var texts = ['Hello!', '你好！'];
+    var idx = 0;
+    var interval = 3000; // milliseconds
+
+    // simple fade effect
+    el.style.transition = 'opacity 300ms ease-in-out';
+
+    function showNext() {
+      el.style.opacity = 0;
+      setTimeout(function() {
+        idx = (idx + 1) % texts.length;
+        el.textContent = texts[idx];
+        el.style.opacity = 1;
+      }, 320);
+    }
+
+    // start toggling
+    setInterval(showNext, interval);
+  })();
+</script>
