@@ -255,6 +255,23 @@ figcaption {
   }
 }
 
+/* Dynamic greeting styling */
+.dynamic-greeting {
+  font-size: 1.6rem; 
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', $sans-serif;
+  font-weight: 700;
+  color: $text-color;
+  margin-bottom: 0.6em;
+  will-change: opacity, transform;
+  transition: opacity 360ms cubic-bezier(.4,0,.2,1), transform 360ms cubic-bezier(.4,0,.2,1);
+  display: inline-block;
+}
+
+.dynamic-greeting.is-hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
 
 /* Fix IE9 SVG bug */
 

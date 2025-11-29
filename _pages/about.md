@@ -5,7 +5,7 @@ redirect_from:
   - /about/
   - /about.html
 ---
-<div id="dynamic-greeting" role="status" aria-live="polite" style="font-size:1.6em; font-family: 'Gill Sans', 'Microsoft YaHei', sans-serif; font-weight:700; margin-bottom:0.6em;">Hello</div>
+<div id="dynamic-greeting" class="dynamic-greeting" role="status" aria-live="polite">Hello!</div>
 I’m a first-year Master’s student in Computer Science at Northwestern University. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way!
 
 My research interests include **Human-Computer Interaction, Computer-Supported Cooperative Work (CSCW), Social Computing, Conversational User Interfaces, and Human-Centered AI**. Recently, I focused on designing AI agents to help analyze human behavior and promote well-being. Feel free to contact me by email if you are interested in discussing or collaborating with me.
@@ -176,21 +176,32 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     if (!el) return;
     var texts = ['Hello!', '你好！'];
     var idx = 0;
-    var interval = 3000; // milliseconds
+    var interval = 3500; // milliseconds
 
-    // simple fade effect
-    el.style.transition = 'opacity 300ms ease-in-out';
+    // ensure initial visibility
+    el.classList.remove('is-hidden');
 
-    function showNext() {
-      el.style.opacity = 0;
-      setTimeout(function() {
-        idx = (idx + 1) % texts.length;
-        el.textContent = texts[idx];
-        el.style.opacity = 1;
-      }, 320);
+    function startToggle() {
+      setInterval(function() {
+        el.classList.add('is-hidden');
+      }, interval);
     }
 
-    // start toggling
-    setInterval(showNext, interval);
+    function onTransitionEnd(e) {
+      if (e.propertyName !== 'opacity') return;
+      if (el.classList.contains('is-hidden')) {
+        idx = (idx + 1) % texts.length;
+        el.textContent = texts[idx];
+        // ensure browser has applied the hidden state before showing
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            el.classList.remove('is-hidden');
+          });
+        });
+      }
+    }
+
+    el.addEventListener('transitionend', onTransitionEnd);
+    startToggle();
   })();
 </script>
