@@ -158,7 +158,7 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     <img src="images/EEG-TBSANet.jpg" alt="Paper Image 2" class="pub-img">
   </a>
   <div class="pub-text">
-    <a class="pub-title" href="#">EEG-TBSANet: Temporal-Spectral Fusion Network for Robust Epilepsy Diagnosis from EEG</a><br><br>
+    <a class="pub-title" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11279416">EEG-TBSANet: Temporal-Spectral Fusion Network for Robust Epilepsy Diagnosis from EEG</a><br><br>
     <strong>Shenming Ji</strong>, Wei Wang, Jianjun Chen, Jun Qi<br><br>
     <span style="font-style: italic;">INDIN 2025, Yunnan, China</span><br>
   </div>
