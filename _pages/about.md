@@ -82,7 +82,7 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
   <li><span style="font-style: normal; color: #000;">[2024/05]</span> Joined Dream Lab at Texas A&M University as a research intern.</li>
 </ul> -->
 
-## Education
+<!-- ## Education
 
 <div style="margin-bottom: 22px;">
   <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -98,7 +98,7 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     <span style="font-size: 0.98em; color: #000;">Sep. 2021 - Jul. 2025</span>
   </div>
   <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Bachelor of Science in Information and Computing Science</em></div>
-</div>
+</div> -->
 
 ## Research Experience
 
