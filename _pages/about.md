@@ -6,7 +6,7 @@ redirect_from:
   - /about.html
 ---
 <div id="dynamic-greeting" class="dynamic-greeting" role="status" aria-live="polite">Hello!</div>
-I’m a first-year Master’s student in Computer Science at Northwestern University. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way!
+I’m a first-year Master’s student in Computer Science at Northwestern University<img src="images/N.svg" class="nu-icon" alt="Northwestern N" aria-hidden="true"/>. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way!
 
 My research interests include **Human-Computer Interaction, Computer-Supported Cooperative Work (CSCW), Social Computing, Conversational User Interfaces, and Human-Centered AI**. Recently, I focused on designing AI agents to help analyze human behavior and promote well-being. Feel free to contact me by email if you are interested in discussing or collaborating with me.
 
@@ -56,6 +56,18 @@ Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photogr
     margin-bottom: 8px;
     font-weight: 700;
   }
+  /* Northwestern inline SVG icon: matches text size and aligns with baseline */
+  .nu-icon {
+    width: 2.5em;
+    height: 1.6em;
+    display: inline-block;
+    vertical-align: baseline; /* align with text baseline */
+    margin-left: -0.5em;      /* no extra gap before */
+    margin-right: -0.8em;     /* tighten punctuation spacing (negative to overcome SVG glyph side-bearing) */
+    line-height: 1;
+    transform: translateY(0.5em); /* nudge down to correct upward offset */
+  }
+  .nu-icon text { font-family: inherit; font-weight:700; }
   @media (max-width: 768px) {
     .pub-item {
       flex-direction: column;
