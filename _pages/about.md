@@ -10,7 +10,7 @@ I’m a first-year Master’s student in Computer Science at Northwestern Univer
 
 My research interests include **Human-Computer Interaction, Computer-Supported Cooperative Work (CSCW), Social Computing, Conversational User Interfaces, and Human-Centered AI**. Recently, I focused on designing AI agents to help analyze human behavior and promote well-being. Feel free to contact me by email if you are interested in discussing or collaborating with me.
 
-Outside of academics, I enjoy ⚽ **soccer**, 🎶 **music**, and 📷 **photography**. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!
+Outside of academics, I enjoy **soccer**, **music**, and **photography**. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!
 
 <style>
   .pub-frame {
