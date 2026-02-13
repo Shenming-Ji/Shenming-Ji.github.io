@@ -136,7 +136,7 @@
         /* Layout: two-column page with a sticky sidebar and masonry gallery */
         .main-grid {
             display: grid;
-            grid-template-columns: 240px 1fr;
+            grid-template-columns: 180px 1fr;
             gap: 28px;
             max-width: 2000px; /* increased so images render larger */
             margin: 0 auto;
@@ -230,7 +230,7 @@
         /* Responsive: adjust number of columns (by changing column flex-basis) */
         /* responsive columns count */
         @media (max-width: 1199px) { .gallery.masonry { column-count: 3; } }
-        @media (max-width: 899px)  { .gallery.masonry { column-count: 2; } .main-grid { grid-template-columns: 220px 1fr; } }
+        @media (max-width: 899px)  { .gallery.masonry { column-count: 2; } .main-grid { grid-template-columns: 180px 1fr; } }
         @media (max-width: 599px)  { .gallery.masonry { column-count: 1; } .main-grid { grid-template-columns: 1fr; } .sidebar { order: -1; }
             .sidebar .filters { display:flex; gap:8px; overflow:auto; justify-content:flex-start; min-height: auto; padding: 8px 0; }
             .tags { flex-direction:row; }
@@ -311,7 +311,7 @@
         { caption: "Legacy & Vision", img: "images/DSC_2009.jpg", tags: "night" },
         { caption: "Lotus", img: "images/DSC_2428.jpg", tags: "day" },
         { caption: "Ancient Lighthouse", img: "images/DSC_2403.jpg", tags: "day" },
-        { caption: "San Francisco ChinaTown", img: "images/DSC_2974.JPG", tags: "day" },
+        // { caption: "San Francisco ChinaTown", img: "images/DSC_2974.JPG", tags: "day" },
         { caption: "Lake View", img: "images/Lakeview.JPG", tags: "day" },
         { caption: "Silence", img: "images/f469249cd7dc29f9e1082b942ed40206.JPG", tags: "day" },
         { caption: "Main Library", img: "images/MainLibrary.JPG", tags: "day" },
