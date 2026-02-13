@@ -133,27 +133,61 @@
             cursor: pointer;
         }
 
-        /* Columns container: we'll create `cols` columns and distribute images round-robin
-           so items fill left->right for the first row, then continue down each column.
-           This produces the interleaved (masonry-like) effect between rows. */
-        .columns {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start; /* top-align column tops */
-            margin-bottom: 20px;
+        /* Layout: two-column page with a sticky sidebar and masonry gallery */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 28px;
+            max-width: 2000px; /* increased so images render larger */
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .column {
-            flex: 0 0 calc((100% - 3 * 20px) / 4);
+        .sidebar {
+            width: 100%;
+        }
+        .sidebar .filters {
+            background: transparent; /* not a card - plain sidebar */
+            padding: 8px 0; /* small vertical spacing */
+            border-radius: 0;
+            box-shadow: none;
+            position: sticky;
+            top: 24px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            align-items: center; /* center items so each item shrinks to image width */
-            min-width: 0; /* allow column to shrink in flex layouts */
+            align-items: center; /* center contents horizontally */
+            justify-content: center; /* center vertically within sidebar */
+            min-height: 60vh; /* push content toward middle */
         }
-        .column .gallery-item { width: auto; display: inline-block; }
+        .sidebar .brand { margin: 0 0 12px 0; font-size: 2.2rem; font-family: "Brush Script MT", "Lucida Handwriting", cursive; font-weight: 600; text-align: center; transform: translateY(-18px); }
+        .sidebar .brand a { color: inherit; text-decoration: none; display: inline-block; }
+        .tags { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+        .tag-row { display:flex; gap:35px; flex-wrap:wrap; justify-content: center; }
+        /* equipment (removed) */
+        .tag-link {
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: #111;
+            text-decoration: none;
+            font-weight: 400; /* not bold */
+            cursor: pointer;
+            transition: color 0.18s, opacity 0.18s;
+        }
+        .tag-link:hover { opacity: 0.7; }
+        .tag-link.active { color: #6b7280; /* gray when active */ }
+
+        /* Masonry via CSS columns */
+        .gallery {
+            column-gap: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .gallery.masonry { column-count: 4; }
+        .gallery-item { display: inline-block; width: 100%; break-inside: avoid; margin-bottom: 16px; position: relative; transition: opacity 0.28s, transform 0.28s; }
         .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
         .gallery-item .caption {
             position: absolute;
@@ -168,7 +202,7 @@
             transition: opacity 0.3s;
             text-align: center;
             box-sizing: border-box; /* ensure padding doesn't expand width */
-            border-radius: 0 0 6.5px 6.5px; /* match image bottom corners */
+            border-radius: 0; /* square caption */
         }
         .gallery-item:hover .caption {
             opacity: 1;
@@ -176,12 +210,14 @@
           /* Images keep their intrinsic proportions and won't be forced to a fixed card size.
               They will scale down to the item width if too large. */
         .gallery-item img {
-            width: auto;
+            width: 100%;
             height: auto;
-            max-width: 100%;
             display: block;
-            border-radius: 10px;
+            border-radius: 0; /* remove rounded corners */
+            transition: transform 0.28s, box-shadow 0.28s;
         }
+
+        .gallery-item.hidden { opacity: 0; transform: scale(0.98); pointer-events: none; }
         .placeholder {
             display: block;
             width: 100%;
@@ -192,15 +228,12 @@
         }
 
         /* Responsive: adjust number of columns (by changing column flex-basis) */
-        @media (max-width: 1100px) {
-            .column { flex: 0 0 calc((100% - 2 * 20px) / 3); }
-        }
-        @media (max-width: 800px) {
-            .column { flex: 0 0 calc((100% - 1 * 20px) / 2); }
-        }
-        @media (max-width: 480px) {
-            .columns { display: block; }
-            .column { flex: 0 0 100%; margin-bottom: 20px; }
+        /* responsive columns count */
+        @media (max-width: 1199px) { .gallery.masonry { column-count: 3; } }
+        @media (max-width: 899px)  { .gallery.masonry { column-count: 2; } .main-grid { grid-template-columns: 220px 1fr; } }
+        @media (max-width: 599px)  { .gallery.masonry { column-count: 1; } .main-grid { grid-template-columns: 1fr; } .sidebar { order: -1; }
+            .sidebar .filters { display:flex; gap:8px; overflow:auto; justify-content:flex-start; min-height: auto; padding: 8px 0; }
+            .tags { flex-direction:row; }
         }
         .lightbox {
             display: none;
@@ -214,7 +247,7 @@
         .lightbox img {
             max-width: 90vw;
             max-height: 80vh;
-            border-radius: 10px;
+            border-radius: 0;
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
         }
         .lightbox.active {
@@ -233,26 +266,31 @@
 </head>
 <body>
 
-<header>
-    <a href="/" class="back-btn" title="Back to Home">
-        <svg viewBox="0 0 24 24"><polygon points="15,19 8,12 15,5"/></svg>
-        Home
-    </a>
-    <h1>My Photography Gallery</h1>
-    <p>Capturing those memorable moments</p>
-</header>
 
-<div class="container">
-    <section class="gallery" id="gallery"></section>
-    <div class="pagination" style="margin-bottom: 60px;">
-        <button class="page-btn" id="prevBtn">
-            <svg viewBox="0 0 24 24"><polygon points="15.5,19 9.5,12 15.5,5"/></svg>
-        </button>
-        <span class="page-info" id="pageInfo"></span>
-        <button class="page-btn" id="nextBtn">
-            <svg viewBox="0 0 24 24"><polygon points="8.5,5 14.5,12 8.5,19"/></svg>
-        </button>
-    </div>
+
+<div class="main-grid">
+    <aside class="sidebar">
+        <div class="filters">
+            <h1 class="brand"><a href="/">Simon Ji</a></h1>
+            <div class="tags tag-row">
+                <a class="tag-link" data-filter="day" href="?filter=day">Natural Light</a>
+                <a class="tag-link" data-filter="night" href="?filter=night">After Dark</a>
+                <a class="tag-link active" data-filter="all" href="?filter=all">All Frames</a>
+            </div>
+        </div>
+    </aside>
+    <main>
+        <section class="gallery masonry" id="gallery" aria-live="polite"></section>
+        <div class="pagination" style="margin-bottom: 60px;">
+            <button class="page-btn" id="prevBtn">
+                <svg viewBox="0 0 24 24"><polygon points="15.5,19 9.5,12 15.5,5"/></svg>
+            </button>
+            <span class="page-info" id="pageInfo"></span>
+            <button class="page-btn" id="nextBtn">
+                <svg viewBox="0 0 24 24"><polygon points="8.5,5 14.5,12 8.5,19"/></svg>
+            </button>
+        </div>
+    </main>
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -262,156 +300,76 @@
 </div>
 
 <script>
-    // Photo data
+    // Photo data (add 'tags' as space-separated keywords: day, night, gear)
     const photos = [
-        {
-            caption: "Road back home",
-            img: "images/Road_back_home.JPG"
-        },
-        {
-            caption: "IFS",
-            img: "images/IFS.JPG"
-        },
-        {
-            caption: "Library",
-            img: "images/Lib.JPG"
-        },
-        {
-            caption: "A&M Bell Tower",
-            img: "images/Bell_tower.JPG"
-        },
-        {
-            caption: "Station",
-            img: "images/Station.JPG"
-        },
-        {
-            caption: "Crowd",
-            img: "images/Crowd.JPG"
-        },
-        {
-            caption: "Legacy & Vision",
-            img: "images/DSC_2009.jpg"
-        },
-        {
-            caption: "Lotus",
-            img: "images/DSC_2428.jpg"
-        },
-        {
-            caption: "Ancient Lighthouse",
-            img: "images/DSC_2403.jpg"
-        },
-        {
-            caption: "San Francisco ChinaTown",
-            img: "images/DSC_2974.JPG"
-        },
-        // {
-        //     caption: "Inception",
-        //     img: "images/DSC_2983.JPG"
-        // },
-        {
-            caption: "Lake View",
-            img: "images/Lakeview.JPG"
-        },
-        {
-            caption: "Silence",
-            img: "images/f469249cd7dc29f9e1082b942ed40206.JPG"
-        },
-        {
-            caption: "Main Library",
-            img: "images/MainLibrary.JPG"
-        },
-        {
-            caption: "Tech",
-            img: "images/Tech.JPG"
-        },
-        {
-            caption: "Meditation",
-            img: "images/Zone.JPG"
-        },
-        {
-            caption: "Skyscraper",
-            img: "images/Skyscraper.JPG"
-        },
-        {
-            caption: "Aurora",
-            img: "images/Aurora.JPG"
-        },
-        {
-            caption: "Snow Fog",
-            img: "images/Snow fog.jpg"
-        },
-        {
-            caption: "CHRISTKINDL MARKET",
-            img: "images/CHRISTKINDL MARKET.JPG"
-        },
-        {
-            caption: "Christmas tree",
-            img: "images/Christmas tree.JPG"
-        },
-        {
-            caption: "Ferry",
-            img: "images/Ferry.JPG"
-        },
-        {
-            caption: "Lady Liberty",
-            img: "images/Lady Liberty.JPG"
-        },
-        {
-            caption: "Night NYC",
-            img: "images/Night NYC.jpg"
-        },
-        {
-            caption: "Ice Skating",
-            img: "images/Ice Skating.JPG"
-        }
-        // Add more photo objects here as needed
+        { caption: "Road back home", img: "images/Road_back_home.JPG", tags: "night" },
+        { caption: "IFS", img: "images/IFS.JPG", tags: "night" },
+        { caption: "Library", img: "images/Lib.JPG", tags: "night" },
+        { caption: "A&M Bell Tower", img: "images/Bell_tower.JPG", tags: "night" },
+        { caption: "Station", img: "images/Station.JPG", tags: "night" },
+        { caption: "Crowd", img: "images/Crowd.JPG", tags: "night" },
+        { caption: "Legacy & Vision", img: "images/DSC_2009.jpg", tags: "night" },
+        { caption: "Lotus", img: "images/DSC_2428.jpg", tags: "day" },
+        { caption: "Ancient Lighthouse", img: "images/DSC_2403.jpg", tags: "day" },
+        { caption: "San Francisco ChinaTown", img: "images/DSC_2974.JPG", tags: "day" },
+        { caption: "Lake View", img: "images/Lakeview.JPG", tags: "day" },
+        { caption: "Silence", img: "images/f469249cd7dc29f9e1082b942ed40206.JPG", tags: "day" },
+        { caption: "Main Library", img: "images/MainLibrary.JPG", tags: "day" },
+        { caption: "Tech", img: "images/Tech.JPG", tags: "day" },
+        { caption: "Meditation", img: "images/Zone.JPG", tags: "day" },
+        { caption: "Skyscraper", img: "images/Skyscraper.JPG", tags: "night" },
+        { caption: "Aurora", img: "images/Aurora.JPG", tags: "night" },
+        { caption: "Snow Fog", img: "images/Snow fog.jpg", tags: "day" },
+        { caption: "CHRISTKINDL MARKET", img: "images/CHRISTKINDL MARKET.JPG", tags: "night" },
+        { caption: "Christmas tree", img: "images/Christmas tree.JPG", tags: "day" },
+        { caption: "Ferry", img: "images/Ferry.JPG", tags: "day" },
+        { caption: "Lady Liberty", img: "images/Lady Liberty.JPG", tags: "day" },
+        { caption: "Night NYC", img: "images/Night NYC.jpg", tags: "night" },
+        { caption: "Ice Skating", img: "images/Ice Skating.JPG", tags: "night" }
     ];
 
-    const PHOTOS_PER_PAGE = 12; // show 4x3 per page
+    // newest first
+    const photosReversed = photos.slice().reverse();
+    const PHOTOS_PER_PAGE = 12;
     let currentPage = 1;
+    let activeFilter = 'all';
+
+    function getFilteredPhotos() {
+        if (activeFilter === 'all') return photosReversed.slice();
+        return photosReversed.filter(p => (p.tags || '').split(/\s+/).includes(activeFilter));
+    }
 
     function renderGallery() {
         const gallery = document.getElementById('gallery');
         gallery.innerHTML = '';
+        // ensure pagination visible for normal photos
+        document.querySelectorAll('.pagination').forEach(p => p.style.display = 'flex');
+        const source = getFilteredPhotos();
         const start = (currentPage - 1) * PHOTOS_PER_PAGE;
         const end = start + PHOTOS_PER_PAGE;
-        const pagePhotos = photos.slice(start, end);
-        // Create column containers and distribute photos round-robin so columns
-        // render side-by-side and produce interleaving between rows.
-        const cols = 4;
-        const columnsWrapper = document.createElement('div');
-        columnsWrapper.className = 'columns';
-        const columns = [];
-        for (let i = 0; i < cols; i++) {
-            const c = document.createElement('div');
-            c.className = 'column';
-            columns.push(c);
-            columnsWrapper.appendChild(c);
+        const pagePhotos = source.slice(start, end);
+
+        if (pagePhotos.length === 0 && currentPage > 1) {
+            currentPage = 1;
+            return renderGallery();
         }
 
-        pagePhotos.forEach((photo, idx) => {
+        pagePhotos.forEach(photo => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.setAttribute('data-caption', photo.caption);
             item.setAttribute('data-img', photo.img);
+            item.setAttribute('data-tags', photo.tags || '');
             item.innerHTML = `
                 <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
                 <div class="caption">${photo.caption}</div>
             `;
-            // round-robin into columns
-            const colIndex = idx % cols;
-            columns[colIndex].appendChild(item);
+            gallery.appendChild(item);
         });
 
-        gallery.appendChild(columnsWrapper);
+        // no placeholder text when fewer photos than a full page
 
-        if (pagePhotos.length < PHOTOS_PER_PAGE) {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'placeholder';
-            placeholder.textContent = 'Waiting for the next moment...';
-            // append placeholder to the last column so it appears in the flow
-            columns[columns.length - 1].appendChild(placeholder);
-        }
+        // click -> lightbox (preserve existing behavior)
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', function() {
                 const imgSrc = this.getAttribute('data-img');
@@ -422,7 +380,7 @@
     }
 
     function updatePagination() {
-        const totalPages = Math.ceil(photos.length / PHOTOS_PER_PAGE) || 1;
+        const totalPages = Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE) || 1;
         document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
         document.getElementById('prevBtn').disabled = currentPage === 1;
         document.getElementById('nextBtn').disabled = currentPage === totalPages;
@@ -436,13 +394,60 @@
         }
     };
     document.getElementById('nextBtn').onclick = function() {
-        const totalPages = Math.ceil(photos.length / PHOTOS_PER_PAGE) || 1;
+        const totalPages = Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE) || 1;
         if (currentPage < totalPages) {
             currentPage++;
             renderGallery();
             updatePagination();
         }
     };
+
+    // initialize active filter from URL (?filter=...)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('filter');
+    if (initialFilter) activeFilter = initialFilter;
+
+    // tag links behavior: update URL (pushState), apply filter in-page, and highlight
+    function updateTagLinksUI() {
+        document.querySelectorAll('.tag-link').forEach(b => b.classList.remove('active'));
+        if (activeFilter === 'all') {
+            document.querySelectorAll('.tag-link[data-filter="all"]').forEach(b => b.classList.add('active'));
+        } else {
+            document.querySelectorAll(`.tag-link[data-filter="${activeFilter}"]`).forEach(b => b.classList.add('active'));
+        }
+    }
+
+    document.querySelectorAll('.tag-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const filter = this.getAttribute('data-filter');
+            activeFilter = (filter === activeFilter) ? 'all' : filter;
+            // update URL without reload
+            const u = new URL(window.location.href);
+            u.searchParams.set('filter', activeFilter);
+            history.pushState({}, '', u);
+            updateTagLinksUI();
+            // (equipment removed) ensure no gear UI remains
+            currentPage = 1;
+            renderGallery();
+            updatePagination();
+        });
+    });
+
+    // gear removed: no handler
+
+    // handle back/forward navigation
+    window.addEventListener('popstate', function() {
+        const p = new URLSearchParams(window.location.search).get('filter') || 'all';
+        activeFilter = p;
+        updateTagLinksUI();
+        currentPage = 1;
+        renderGallery();
+        updatePagination();
+    });
+
+    // reflect initial filter UI
+    updateTagLinksUI();
 
     document.getElementById('lightbox-close').onclick = function() {
         document.getElementById('lightbox').classList.remove('active');
@@ -455,6 +460,7 @@
         }
     };
 
+    // initial render
     renderGallery();
     updatePagination();
 </script>
