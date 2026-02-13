@@ -143,16 +143,7 @@
             padding: 20px;
             box-sizing: border-box;
         }
-            .main-grid {
-                display: grid;
-                grid-template-columns: 180px 1fr;
-                gap: 28px;
-                max-width: 2000px; /* increased so images render larger */
-                margin: 0 auto;
-                padding: 20px;
-                box-sizing: border-box;
-                height: 100vh; /* keep grid full viewport so main can scroll internally */
-            }
+            /* duplicate grid declaration removed to allow page scrolling */
         .sidebar {
             width: 100%;
             position: sticky;
@@ -196,13 +187,18 @@
         .tag-link.active { color: #6b7280; /* gray when active */ }
 
         /* Masonry via CSS columns */
+        /* Use variables so column (horizontal) and row (vertical) gaps stay equal. */
         .gallery {
-            column-gap: 16px;
-            width: 100%;
+            --column-width: 500px; /* adjust this to control photo size */
+            --grid-gap: 16px; /* horizontal and vertical gap */
+            column-gap: var(--grid-gap);
             box-sizing: border-box;
+            column-width: var(--column-width);
+            max-width: calc(var(--column-width) * 2 + var(--grid-gap)); /* 2 columns + gap */
+            margin: 0 auto; /* center the gallery area */
         }
-        .gallery.masonry { column-count: 4; }
-        .gallery-item { display: inline-block; width: 100%; break-inside: avoid; margin-bottom: 16px; position: relative; transition: opacity 0.28s, transform 0.28s; }
+        .gallery.masonry { column-count: 2; }
+        .gallery-item { display: inline-block; width: 100%; break-inside: avoid; margin-bottom: var(--grid-gap); position: relative; transition: opacity 0.28s, transform 0.28s; }
         .gallery-item:hover {
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
@@ -247,8 +243,13 @@
 
         /* Responsive: adjust number of columns (by changing column flex-basis) */
         /* responsive columns count */
-        @media (max-width: 1199px) { .gallery.masonry { column-count: 3; } }
-        @media (max-width: 899px)  { .gallery.masonry { column-count: 2; } .main-grid { grid-template-columns: 180px 1fr; } }
+        @media (max-width: 1199px) { .gallery.masonry { column-count: 2; } }
+        @media (max-width: 899px)  {
+            .gallery.masonry { column-count: 1; }
+            .main-grid { grid-template-columns: 180px 1fr; }
+            /* reduce column width on narrower layouts to avoid overflow */
+            .gallery { --column-width: 420px; max-width: calc(var(--column-width) * 2 + 16px); }
+        }
         @media (max-width: 599px)  { .gallery.masonry { column-count: 1; } .main-grid { grid-template-columns: 1fr; } .sidebar { order: -1; }
             .sidebar .filters { display:flex; gap:8px; overflow:auto; justify-content:flex-start; min-height: auto; padding: 8px 0; }
             .tags { flex-direction:row; }
@@ -292,14 +293,7 @@
             padding: 4px 6px;
             text-align: center;
         }
-            /* make the right column scroll independently */
-            main {
-                height: 100vh;
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-                box-sizing: border-box;
-                padding-right: 12px;
-            }
+            /* removed internal scrolling on main so page scroll controls layout */
     </style>
 </head>
 <body>
@@ -340,7 +334,6 @@
 
 
 <script>
-    // Photo data (add 'tags' as space-separated keywords: day, night, gear)
     const photos = [
         { caption: "Road back home", img: "images/Road_back_home.JPG", tags: "night" },
         { caption: "IFS", img: "images/IFS.JPG", tags: "night" },
