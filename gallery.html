@@ -263,6 +263,50 @@
             justify-content: center;
             align-items: center;
         }
+        /* Equipment view: description on the left, photo on the right */
+        .equipment-view {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+            justify-content: center;
+            padding: 72px 20px;
+            box-sizing: border-box;
+            max-width: 1200px; /* larger overall equipment area */
+            margin: 0 auto; /* center the equipment view in the main area */
+        }
+        .equipment-view .equip-desc {
+            width: 36%;
+            font-size: 1.0rem;
+            color: #111;
+                text-align: left;
+                line-height: 1.5;
+                padding-right: 16px;
+                white-space: nowrap; /* keep description on a single line */
+                overflow: hidden;
+                text-overflow: ellipsis;
+            box-sizing: border-box;
+        }
+        .equipment-view .equip-image {
+            width: 64%;
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        .equipment-view .equip-image img {
+            max-width: 900px; /* increase image size */
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            background: #f4f4f4;
+        }
+        @media (max-width: 899px) {
+            .equipment-view { flex-direction: column; padding: 36px 12px; }
+            .equipment-view .equip-desc { width: 100%; text-align: center; padding-right: 0; margin-bottom: 12px; font-size: 1rem; }
+                .equipment-view .equip-desc { width: 100%; text-align: center; padding-right: 0; margin-bottom: 12px; font-size: 1rem; white-space: normal; }
+            .equipment-view .equip-image { width: 100%; justify-content: center; }
+            .equipment-view .equip-image img { width: 80%; max-width: 560px; }
+        }
         .lightbox img {
             max-width: 90vw;
             max-height: 80vh;
@@ -308,6 +352,7 @@
                 <a class="tag-link" data-filter="day" href="?filter=day">Natural Light</a>
                 <a class="tag-link" data-filter="night" href="?filter=night">After Dark</a>
                 <a class="tag-link active" data-filter="all" href="?filter=all">All Frames</a>
+                <a class="tag-link" data-filter="gear" href="?filter=gear">Gear</a>
             </div>
         </div>
         <div class="site-footer">© Copyright 2026 Simon Ji</div>
@@ -375,9 +420,21 @@
     function renderGallery() {
         const gallery = document.getElementById('gallery');
         gallery.innerHTML = '';
+        const source = getFilteredPhotos();
+        // If gear view is active, render equipment panel instead of photo tiles
+        if (activeFilter === 'gear') {
+            document.querySelectorAll('.pagination').forEach(p => p.style.display = 'none');
+            gallery.innerHTML = `
+                <div class="equipment-view">
+                    <div class="equip-desc">Nikon Z30 16-55MM + Viltrox 56 1.7</div>
+                    <div class="equip-image"><img src="images/NikonZ30.png" alt="Nikon Z30"></div>
+                </div>
+            `;
+            return;
+        }
         // ensure pagination visible for normal photos
         document.querySelectorAll('.pagination').forEach(p => p.style.display = 'flex');
-        const source = getFilteredPhotos();
+        
         const start = (currentPage - 1) * PHOTOS_PER_PAGE;
         const end = start + PHOTOS_PER_PAGE;
         const pagePhotos = source.slice(start, end);
