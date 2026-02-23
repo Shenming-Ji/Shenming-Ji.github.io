@@ -85,6 +85,16 @@ Outside of academics, I enjoy **soccer**, **music**, and **photography**. Feel f
       max-height: 100%;
     }
   }
+  /* Override: disable link-hover image shadow for research logos */
+  .research-logos a:hover img {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .research-logos img {
+    box-shadow: none !important;
+    transform: none !important;
+  }
 </style>
 <!-- ## News
 
@@ -113,41 +123,26 @@ Outside of academics, I enjoy **soccer**, **music**, and **photography**. Feel f
 </div> -->
 
 ## Research Experience
-
-<div style="margin-bottom: 22px;">
-  <div style="display: flex; justify-content: space-between; align-items: baseline;">
-    <span><strong>Xi'an Jiaotong-Liverpool University</strong></span>
-    <span style="font-size: 0.98em; color: #000;">Sep. 2024 - Jun. 2025</span>
+<div class="research-logos" style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;justify-content:center;margin-bottom:22px;">
+  <div class="research-logo" style="display:flex;align-items:center;gap:16px;max-width:480px;flex:1 1 360px;">
+    <a href="https://www.xjtlu.edu.cn/en" target="_blank" rel="noopener" style="flex:0 0 auto;">
+      <img src="images/XJTLU_Logo.png" alt="Xi'an Jiaotong-Liverpool University" style="width:170px;height:170px;object-fit:contain;display:block;">
+    </a>
+    <div style="font-size:0.96em;color:#444;text-align:left;">
+      <div style="font-weight:570;color:#111;">Suzhou, China</div>
+      <div style="font-size:0.9em;">Research Assistant, Jun. 2023 - Jun. 2025</div>
+    </div>
   </div>
-  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Research Assistant, AI in Healthcare</em></div>
-  <ul style="margin-top: 6px;">
-    <li>Advised by Prof. <a href="https://scholar.xjtlu.edu.cn/en/persons/JunQi">Jun Qi</a>.</li>
-    <li>Focused on epilepsy diagnosis using Machine Learning and EEG signals.</li>
-  </ul>
-</div>
 
-<div style="margin-bottom: 22px;">
-  <div style="display: flex; justify-content: space-between; align-items: baseline;">
-    <span><strong><a href="https://www.xiameng.org/DreamLab/">Dream Lab</a>, Texas A&M University</strong></span>
-    <span style="font-size: 0.98em; color: #000;">Apr. 2024 - Sep. 2024</span>
+  <div class="research-logo" style="display:flex;align-items:center;gap:16px;max-width:480px;flex:1 1 360px;">
+    <a href="https://www.xiameng.org/DreamLab/" target="_blank" rel="noopener" style="flex:0 0 auto;">
+      <img src="images/TAM-Horz-AllWhite-2.png" alt="Texas A&amp;M Dream Lab" style="width:170px;height:170px;object-fit:contain;display:block;">
+    </a>
+    <div style="font-size:0.96em;color:#444;text-align:left;">
+      <div style="font-weight:570;color:#111;">College Station, TX</div>
+      <div style="font-size:0.9em;">Visiting Research Intern, Apr. 2024 - Sep. 2024</div>
+    </div>
   </div>
-  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Research Intern, Human-Computer Interaction</em></div>
-  <ul style="margin-top: 6px;">
-    <li>Advised by Prof. <a href="https://www.xiameng.org/">Meng Xia</a>.</li>
-    <li>Worked on collaborative programming analytics and multimodal based research for Education.</li>
-  </ul>
-</div>
-
-<div style="margin-bottom: 22px;">
-  <div style="display: flex; justify-content: space-between; align-items: baseline;">
-    <span><strong>Xi'an Jiaotong-Liverpool University</strong></span>
-    <span style="font-size: 0.98em; color: #000;">Jun. 2023 - Sep. 2023</span>
-  </div>
-  <div style="margin-top: 2px; font-size: 1em; color: #444;"><em>Research Assistant, Social Computing</em></div>
-  <ul style="margin-top: 6px;">
-    <li>Advised by Prof. <a href="https://scholar.xjtlu.edu.cn/en/persons/TengMa">Teng Ma</a>.</li>
-    <li>Gained insights into Bilibili creator growth by leveraging web scraping and network analysis.</li>
-  </ul>
 </div>
 
 ## Publications

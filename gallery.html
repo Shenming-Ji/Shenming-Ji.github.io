@@ -199,24 +199,21 @@
         }
         .gallery.masonry { column-count: 2; }
         .gallery-item { display: inline-block; width: 100%; break-inside: avoid; margin-bottom: var(--grid-gap); position: relative; transition: opacity 0.28s, transform 0.28s; }
-        .gallery-item:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
+        /* Removed hover transform/box-shadow to disable photo hover effects
+           Keep captions visible below images (static layout) */
+        .gallery-item:hover { transform: none; box-shadow: none; }
         .gallery-item .caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            position: static;
+            display: block;
             width: 100%;
-            background: rgba(0,0,0,0.6);
-            color: #fff;
-            padding: 8px;
+            background: transparent;
+            color: #111;
+            padding: 8px 0 0 0;
             font-size: 1rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            text-align: center;
-            box-sizing: border-box; /* ensure padding doesn't expand width */
-            border-radius: 0; /* square caption */
+            opacity: 1;
+            transition: none;
+            text-align: left;
+            box-sizing: border-box;
         }
         .gallery-item:hover .caption {
             opacity: 1;
@@ -229,6 +226,22 @@
             display: block;
             border-radius: 0; /* remove rounded corners */
             transition: transform 0.28s, box-shadow 0.28s;
+        }
+
+        /* Strongly disable any remaining hover/transform/box-shadow effects */
+        .gallery-item,
+        .gallery-item img,
+        .gallery-item a {
+            transition: none !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .gallery-item:hover,
+        .gallery-item:hover img,
+        .gallery-item:hover a {
+            transform: none !important;
+            box-shadow: none !important;
         }
 
         .gallery-item.hidden { opacity: 0; transform: scale(0.98); pointer-events: none; }
@@ -450,8 +463,11 @@
             item.setAttribute('data-caption', photo.caption);
             item.setAttribute('data-img', photo.img);
             item.setAttribute('data-tags', photo.tags || '');
+            // Wrap image with a normal hyperlink so click navigates to the image file
             item.innerHTML = `
-                <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
+                <a href="${photo.img}" target="_blank" rel="noopener">
+                  <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
+                </a>
                 <div class="caption">${photo.caption}</div>
             `;
             gallery.appendChild(item);
@@ -459,14 +475,7 @@
 
         // no placeholder text when fewer photos than a full page
 
-        // click -> lightbox (preserve existing behavior)
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const imgSrc = this.getAttribute('data-img');
-                document.getElementById('lightbox-img').src = imgSrc;
-                document.getElementById('lightbox').classList.add('active');
-            });
-        });
+        // removed lightbox click handlers so image links act as normal hyperlinks
     }
 
     function updatePagination() {
