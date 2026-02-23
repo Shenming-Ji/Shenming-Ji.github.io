@@ -14,8 +14,11 @@
   margin-bottom: 1em;
 
   @media screen and (min-width: 1024px) {
-    position: fixed;
-    padding-top: $masthead-height;
+    /* Use sticky instead of fixed so the sidebar remains in the flow
+       and won't overlap the main content on very wide monitors. */
+    position: sticky;
+    top: $masthead-height;
+    padding-top: 0;
   }
 
   @include breakpoint($large) {
