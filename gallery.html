@@ -203,20 +203,7 @@
            Keep captions visible below images (static layout) */
         .gallery-item:hover { transform: none; box-shadow: none; }
         .gallery-item .caption {
-            position: static;
-            display: block;
-            width: 100%;
-            background: transparent;
-            color: #111;
-            padding: 8px 0 0 0;
-            font-size: 1rem;
-            opacity: 1;
-            transition: none;
-            text-align: left;
-            box-sizing: border-box;
-        }
-        .gallery-item:hover .caption {
-            opacity: 1;
+            display: none; /* hide all captions so only photos are visible */
         }
           /* Images keep their intrinsic proportions and won't be forced to a fixed card size.
               They will scale down to the item width if too large. */
@@ -460,16 +447,15 @@
         pagePhotos.forEach(photo => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
-            item.setAttribute('data-caption', photo.caption);
-            item.setAttribute('data-img', photo.img);
-            item.setAttribute('data-tags', photo.tags || '');
-            // Wrap image with a normal hyperlink so click navigates to the image file
-            item.innerHTML = `
-                <a href="${photo.img}" target="_blank" rel="noopener">
-                  <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
-                </a>
-                <div class="caption">${photo.caption}</div>
-            `;
+                        item.setAttribute('data-img', photo.img);
+                        item.setAttribute('data-tags', photo.tags || '');
+                        // Wrap image with a normal hyperlink so click navigates to the image file
+                        // Use caption as alt when present, otherwise fall back to empty string
+                        item.innerHTML = `
+                                <a href="${photo.img}" target="_blank" rel="noopener">
+                                    <img src="${photo.img}" alt="${photo.caption || ''}" loading="lazy">
+                                </a>
+                        `;
             gallery.appendChild(item);
         });
 
