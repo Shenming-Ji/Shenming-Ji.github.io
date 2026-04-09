@@ -8,7 +8,7 @@ redirect_from:
 <div id="dynamic-greeting" class="dynamic-greeting" role="status" aria-live="polite">Hello!</div>
 I’m a first-year Master’s student in Computer Science at Northwestern University<img src="images/N.svg" class="nu-icon" alt="Northwestern N" aria-hidden="true"/>. I earned my Bachelor’s degree from Xi’an Jiaotong-Liverpool University and the University of Liverpool, advised by [Prof. Jun Qi](https://scholar.xjtlu.edu.cn/en/persons/JunQi) and [Prof. Teng Ma](https://scholar.xjtlu.edu.cn/en/persons/TengMa). I also gained valuable research experience at Texas A&M University with [Prof. Meng Xia](https://www.xiameng.org/), which greatly shaped my academic journey. I am truly grateful for the guidance of my mentors and the support of peers along the way!
 
-My research interests include **Human-Computer Interaction, Human-AI Interaction, Computer-Supported Cooperative Work (CSCW), and Social Computing**. Recently, I focused on designing AI agents to help analyze human behavior and promote well-being. Feel free to contact me by email if you are interested in discussing or collaborating with me.
+My research interests include **Human-Computer Interaction, Human-AI Interaction, Computer-Supported Cooperative Work (CSCW), and Social Computing**. Feel free to contact me by email if you are interested in discussing or collaborating with me.
 
 Outside of academics, I enjoy **soccer**, **music**, and **photography**. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!
 
