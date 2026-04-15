@@ -44,6 +44,9 @@ Outside of academics, I enjoy **soccer**, **music**, and **photography**. Feel f
   .page__content a { 
     color: rgba(78, 42, 132, 1) !important; 
   }
+  .page__content strong {
+    color: rgb(78, 42, 132) !important;
+  }
   .pub-text .pub-title {
     color: #4e2a84;
     /* Use text-decoration so each wrapped line gets its own dashed underline */
