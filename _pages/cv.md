@@ -6,5 +6,6 @@ author_profile: true
 redirect_from:
   - /resume
 ---
+My CV page is currently being refreshed as part of the homepage rebuild.
 
-<iframe src="/assets/Curriculum_Vitae.pdf" width="100%" height="900" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
+If you would like the latest version, please feel free to contact me by email at [shenmingji2027@u.northwestern.edu](mailto:shenmingji2027@u.northwestern.edu), or visit my [LinkedIn profile](https://www.linkedin.com/in/shenming-simon-ji-aa33312b3).

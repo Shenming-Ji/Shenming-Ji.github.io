@@ -1,8 +1,8 @@
 ---
-permalink: /
+permalink: /about/
+title: "About"
 author_profile: true
-redirect_from: 
-  - /about/
+redirect_from:
   - /about.html
 ---
 <div id="dynamic-greeting" class="dynamic-greeting" role="status" aria-live="polite">Hello!</div>
