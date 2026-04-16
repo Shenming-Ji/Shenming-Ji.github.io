@@ -297,7 +297,7 @@ body.theme-luka .section-title {
   border-bottom: 2px solid var(--luka-accent);
   color: var(--luka-accent);
   font-size: 19px;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 body.theme-luka .section-body p {
@@ -306,6 +306,80 @@ body.theme-luka .section-body p {
 
 body.theme-luka #about .section-body p {
   text-align: justify;
+}
+
+body.theme-luka .announcement-card {
+  position: relative;
+  margin: 22px 0 20px;
+  padding: 18px 22px;
+  border: 1.5px solid color-mix(in srgb, var(--luka-accent) 28%, white);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 241, 247, 0.9));
+  box-shadow: 0 10px 26px rgba(214, 121, 157, 0.08);
+}
+
+body.theme-luka .announcement-card::after {
+  content: "📌";
+  position: absolute;
+  top: -14px;
+  right: 18px;
+  font-size: 28px;
+  transform: rotate(12deg);
+}
+
+body.theme-luka .announcement-card p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: left;
+}
+
+body.theme-luka .announcement-card span {
+  color: var(--luka-accent);
+  font-weight: 700;
+}
+
+body.theme-luka .news-card {
+  border: 1px solid var(--luka-border);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 248, 251, 0.92));
+  box-shadow: 0 12px 30px rgba(31, 41, 55, 0.06);
+  overflow: hidden;
+}
+
+body.theme-luka .news-scroll {
+  max-height: 170px;
+  overflow-y: auto;
+  padding: 10px 22px;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--luka-accent) 50%, white) transparent;
+}
+
+body.theme-luka .news-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--luka-border);
+}
+
+body.theme-luka .news-item:last-child {
+  border-bottom: none;
+}
+
+body.theme-luka .news-date {
+  color: color-mix(in srgb, var(--luka-accent) 72%, white);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+body.theme-luka .news-item p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: left;
 }
 
 body.theme-luka .card {
@@ -579,6 +653,11 @@ body.theme-luka strong {
     gap: 12px;
   }
 
+  body.theme-luka .news-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
   body.theme-luka .experience-item {
     grid-template-columns: 112px 1fr;
   }
@@ -602,6 +681,10 @@ body.theme-luka strong {
   body.theme-luka .pub-thumb {
     width: 100%;
     max-width: 280px;
+  }
+
+  body.theme-luka .announcement-card {
+    padding: 16px 18px;
   }
 
   body.theme-luka .pub-row {
