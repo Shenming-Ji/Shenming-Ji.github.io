@@ -3,556 +3,1018 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Photography Gallery</title>
+    <title>Simon Ji | Plog</title>
+    <meta name="description" content="A curated photography plog by Simon Ji, featuring natural light, after dark, and gear notes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #f4efe7;
+            --bg-soft: #ede4d6;
+            --surface: rgba(255, 252, 247, 0.76);
+            --surface-strong: rgba(255, 253, 250, 0.96);
+            --line: rgba(43, 34, 25, 0.12);
+            --line-strong: rgba(43, 34, 25, 0.2);
+            --text: #201a15;
+            --muted: #6d6156;
+            --accent: #8f6a4c;
+            --accent-soft: #ceb091;
+            --shadow: 0 24px 60px rgba(55, 39, 22, 0.08);
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --sans: "Manrope", "Segoe UI", sans-serif;
+            --radius-xl: 30px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+            --radius-sm: 999px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: var(--sans);
+            background:
+                radial-gradient(circle at top left, rgba(206, 176, 145, 0.34), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(143, 106, 76, 0.16), transparent 28%),
+                linear-gradient(180deg, #f8f3eb 0%, var(--bg) 56%, #f2ebe1 100%);
         }
-        header {
-            background: linear-gradient(90deg, #232526 0%, #414345 100%);
-            color: #fff;
-            text-align: center;
-            padding: 2.75rem 1rem 2rem 1rem;
-            border-radius: 18px; /* rounded on all corners for a softer look */
-            box-shadow: 0 8px 40px rgba(0,0,0,0.16);
-            margin: 20px auto 32px auto;
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.16), transparent 72%);
+            opacity: 0.28;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page-shell {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 28px 24px 40px;
+            display: grid;
+            grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+            gap: 30px;
             position: relative;
-            overflow: hidden;
-            max-width: 1200px; /* keep header nicely centered within container */
-            border: 1px solid rgba(255,255,255,0.03);
         }
-        .back-btn {
-            position: absolute;
+
+        .sidebar {
+            position: sticky;
             top: 24px;
-            left: 32px;
-            background: rgba(0,0,0,0.18);
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 22px 10px 38px;
-            font-size: 1.08rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-            transition: background 0.2s, box-shadow 0.2s;
-            z-index: 10;
-            display: flex;
+            align-self: start;
+        }
+
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: var(--radius-xl);
+        }
+
+        .sidebar-card {
+            padding: 24px;
+        }
+
+        .home-link {
+            display: inline-flex;
             align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--muted);
+            margin-bottom: 22px;
+        }
+
+        .home-link::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: var(--line-strong);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .sidebar-title {
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(2.7rem, 4.5vw, 3.7rem);
+            line-height: 0.88;
+            font-weight: 600;
+        }
+
+        .sidebar-copy {
+            margin: 14px 0 0;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 0.92rem;
+        }
+
+        .sidebar-meta {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin: 18px 0 0;
+        }
+
+        .meta-card {
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.52);
+            border: 1px solid rgba(43, 34, 25, 0.08);
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .meta-value {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .filter-block {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(43, 34, 25, 0.09);
+        }
+
+        .filter-heading {
+            margin: 0 0 14px;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .filter-list {
+            display: grid;
             gap: 8px;
         }
-        .back-btn:hover {
-            background: rgba(0,0,0,0.32);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+
+        .tag-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 18px;
+            text-decoration: none;
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.46);
+            color: var(--text);
+            transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, color 0.24s ease;
         }
-        .back-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
-            margin-right: 6px;
+
+        .tag-link:hover {
+            transform: translateY(-1px);
+            border-color: rgba(43, 34, 25, 0.14);
+            background: rgba(255, 255, 255, 0.72);
         }
-        header h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 2.6rem;
+
+        .tag-link.active {
+            background: var(--text);
+            color: #fff;
+        }
+
+        .tag-link.active .tag-count {
+            background: rgba(255, 255, 255, 0.14);
+            color: #fff;
+        }
+
+        .tag-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .tag-count {
+            min-width: 32px;
+            padding: 5px 9px;
+            border-radius: var(--radius-sm);
+            background: rgba(32, 26, 21, 0.08);
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.78rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            z-index: 1;
-            position: relative;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.18);
         }
-        header p {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: #e0e0e0;
-            z-index: 1;
-            position: relative;
-            letter-spacing: 1px;
+
+        .sidebar-footer {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.5;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+
+        .content {
+            display: grid;
+            gap: 24px;
         }
-        /* Gallery wrapper. We'll render the first row separately so it is strictly
-           top-aligned, then render the remaining photos below in a masonry-style
-           column flow so later rows can interleave. */
+
+        .gallery-status {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 0 8px;
+            animation: fadeUp 0.85s ease both;
+        }
+
+        .status-copy {
+            display: grid;
+            gap: 4px;
+        }
+
+        .status-label {
+            font-size: 0.76rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .status-title {
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            font-weight: 600;
+        }
+
+        .status-count {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .page-pill {
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.66);
+            border: 1px solid rgba(43, 34, 25, 0.08);
+            color: var(--muted);
+            font-size: 0.88rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
         .gallery {
+            column-count: 2;
+            column-gap: 22px;
+        }
+
+        .gallery.gear-mode {
+            column-count: 1;
+            column-gap: 0;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 22px;
+            opacity: 0;
+            animation: fadeUp 0.65s ease forwards;
+        }
+
+        .gallery-link {
+            display: block;
+            text-decoration: none;
+            background: var(--surface-strong);
+            border: 1px solid rgba(43, 34, 25, 0.09);
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 0 18px 48px rgba(55, 39, 22, 0.06);
+            transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
+        }
+
+        .gallery-link:hover {
+            transform: translateY(-5px);
+            border-color: rgba(43, 34, 25, 0.15);
+            box-shadow: 0 24px 54px rgba(55, 39, 22, 0.1);
+        }
+
+        .gallery-image-wrap {
+            overflow: hidden;
+            border-radius: 18px;
+            background: #e8dfd2;
+        }
+
+        .gallery-item img {
             display: block;
             width: 100%;
+            height: auto;
+            transition: transform 0.55s ease;
         }
+
+        .gallery-link:hover img {
+            transform: scale(1.035);
+        }
+
+        .caption {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 4px 4px;
+        }
+
+        .caption-title {
+            font-family: var(--serif);
+            font-size: 1.38rem;
+            line-height: 1.05;
+            font-weight: 600;
+        }
+
+        .caption-tag {
+            color: var(--muted);
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .equipment-view,
+        .empty-state {
+            background: var(--surface-strong);
+            border: 1px solid rgba(43, 34, 25, 0.09);
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 18px 48px rgba(55, 39, 22, 0.06);
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .equipment-view {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
+            gap: 28px;
+            align-items: center;
+        }
+
+        .equipment-copy span {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: var(--muted);
+            font-size: 0.76rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .equipment-copy h2 {
+            margin: 0 0 10px;
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 0.98;
+            font-weight: 600;
+        }
+
+        .equipment-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .equipment-specs div {
+            padding: 9px 12px;
+            border-radius: var(--radius-sm);
+            background: rgba(32, 26, 21, 0.06);
+            color: var(--text);
+            font-size: 0.83rem;
+            font-weight: 600;
+        }
+
+        .equipment-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .equipment-image img {
+            display: block;
+            width: min(100%, 340px);
+            height: auto;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .empty-state strong {
+            display: block;
+            color: var(--text);
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
         .pagination {
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin: 32px 0 0 0;
-            gap: 32px;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 8px;
+            padding: 0 8px 8px;
+            animation: fadeUp 0.9s ease both;
         }
-        .page-btn {
-            background: rgba(0,0,0,0.18);
-            border: none;
-            outline: none;
-            cursor: pointer;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
+
+        .pagination-controls {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            position: relative;
+            gap: 12px;
         }
+
+        .page-info {
+            color: var(--muted);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .page-btn {
+            border: 1px solid rgba(43, 34, 25, 0.1);
+            background: rgba(255, 255, 255, 0.68);
+            color: var(--text);
+            border-radius: var(--radius-sm);
+            min-width: 52px;
+            height: 46px;
+            padding: 0 18px;
+            font: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.22s ease, background 0.22s ease, opacity 0.22s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
         .page-btn:disabled {
-            opacity: 0.3;
+            opacity: 0.38;
             cursor: not-allowed;
         }
-        .page-btn svg {
-            width: 32px;
-            height: 32px;
-            fill: #fff;
-            opacity: 0.7;
-        }
-        .page-info {
-            color: #333;
-            font-size: 1.2rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-        /* Gallery items used in the column layout. */
-        .gallery-item {
-            background: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            overflow: visible;
-            transition: transform 0.18s ease;
-            display: block;
-            position: relative;
-            cursor: pointer;
-        }
 
-        /* Layout: two-column page with a sticky sidebar and masonry gallery */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 28px;
-            max-width: 2000px; /* increased so images render larger */
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-            /* duplicate grid declaration removed to allow page scrolling */
-        .sidebar {
-            width: 100%;
-            position: sticky;
-            top: 0;
-            height: 100vh; /* keep sidebar full height and fixed in view */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-sizing: border-box;
-            padding-top: 20px;
-        }
-        .sidebar .filters {
-            background: transparent; /* not a card - plain sidebar */
-            padding: 8px 0; /* small vertical spacing */
-            border-radius: 0;
-            box-shadow: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* center contents horizontally */
-            justify-content: center; /* center vertically within its area */
-            /* center filters vertically inside sidebar */
-            margin-top: auto;
-            margin-bottom: auto;
-        }
-        .sidebar .brand { margin: 0 0 12px 0; font-size: 2.2rem; font-family: "Brush Script MT", "Lucida Handwriting", cursive; font-weight: 600; text-align: center; transform: translateY(-18px); }
-        .sidebar .brand a { color: inherit; text-decoration: none; display: inline-block; }
-        .tags { display: flex; flex-direction: column; gap: 6px; align-items: center; }
-        .tag-row { display:flex; gap:35px; flex-wrap:wrap; justify-content: center; }
-        /* equipment (removed) */
-        .tag-link {
-            background: transparent;
-            border: none;
-            padding: 0;
-            color: #111;
-            text-decoration: none;
-            font-weight: 400; /* not bold */
-            cursor: pointer;
-            transition: color 0.18s, opacity 0.18s;
-        }
-        .tag-link:hover { opacity: 0.7; }
-        .tag-link.active { color: #6b7280; /* gray when active */ }
-
-        /* Masonry via CSS columns */
-        /* Use variables so column (horizontal) and row (vertical) gaps stay equal. */
-        .gallery {
-            --column-width: 500px; /* adjust this to control photo size */
-            --grid-gap: 16px; /* horizontal and vertical gap */
-            column-gap: var(--grid-gap);
-            box-sizing: border-box;
-            column-width: var(--column-width);
-            max-width: calc(var(--column-width) * 2 + var(--grid-gap)); /* 2 columns + gap */
-            margin: 0 auto; /* center the gallery area */
-        }
-        .gallery.masonry { column-count: 2; }
-        .gallery-item { display: inline-block; width: 100%; break-inside: avoid; margin-bottom: var(--grid-gap); position: relative; transition: opacity 0.28s, transform 0.28s; }
-        /* Removed hover transform/box-shadow to disable photo hover effects
-           Keep captions visible below images (static layout) */
-        .gallery-item:hover { transform: none; box-shadow: none; }
-        .gallery-item .caption {
-            display: none; /* hide all captions so only photos are visible */
-        }
-          /* Images keep their intrinsic proportions and won't be forced to a fixed card size.
-              They will scale down to the item width if too large. */
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 0; /* remove rounded corners */
-            transition: transform 0.28s, box-shadow 0.28s;
-        }
-
-        /* Strongly disable any remaining hover/transform/box-shadow effects */
-        .gallery-item,
-        .gallery-item img,
-        .gallery-item a {
-            transition: none !important;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        .gallery-item:hover,
-        .gallery-item:hover img,
-        .gallery-item:hover a {
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
-        .gallery-item.hidden { opacity: 0; transform: scale(0.98); pointer-events: none; }
-        .placeholder {
-            display: block;
-            width: 100%;
-            text-align: center;
-            color: #111111;
-            padding: 12px 8px;
-            box-sizing: border-box;
-        }
-
-        /* Responsive: adjust number of columns (by changing column flex-basis) */
-        /* responsive columns count */
-        @media (max-width: 1199px) { .gallery.masonry { column-count: 2; } }
-        @media (max-width: 899px)  {
-            .gallery.masonry { column-count: 1; }
-            .main-grid { grid-template-columns: 180px 1fr; }
-            /* reduce column width on narrower layouts to avoid overflow */
-            .gallery { --column-width: 420px; max-width: calc(var(--column-width) * 2 + 16px); }
-        }
-        @media (max-width: 599px)  { .gallery.masonry { column-count: 1; } .main-grid { grid-template-columns: 1fr; } .sidebar { order: -1; }
-            .sidebar .filters { display:flex; gap:8px; overflow:auto; justify-content:flex-start; min-height: auto; padding: 8px 0; }
-            .tags { flex-direction:row; }
-        }
         .lightbox {
-            display: none;
             position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 28px;
+            background: rgba(18, 13, 10, 0.86);
             z-index: 9999;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.85);
-            justify-content: center;
-            align-items: center;
         }
-        /* Equipment view: description on the left, photo on the right */
-        .equipment-view {
-            display: flex;
-            gap: 36px;
-            align-items: center;
-            justify-content: center;
-            padding: 72px 20px;
-            box-sizing: border-box;
-            max-width: 1200px; /* larger overall equipment area */
-            margin: 0 auto; /* center the equipment view in the main area */
-        }
-        .equipment-view .equip-desc {
-            width: 36%;
-            font-size: 1.0rem;
-            color: #111;
-                text-align: left;
-                line-height: 1.5;
-                padding-right: 16px;
-                white-space: nowrap; /* keep description on a single line */
-                overflow: hidden;
-                text-overflow: ellipsis;
-            box-sizing: border-box;
-        }
-        .equipment-view .equip-image {
-            width: 64%;
-            display: flex;
-            justify-content: center;
-            box-sizing: border-box;
-        }
-        .equipment-view .equip-image img {
-            max-width: 900px; /* increase image size */
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 6px;
-            background: #f4f4f4;
-        }
-        @media (max-width: 899px) {
-            .equipment-view { flex-direction: column; padding: 36px 12px; }
-            .equipment-view .equip-desc { width: 100%; text-align: center; padding-right: 0; margin-bottom: 12px; font-size: 1rem; }
-                .equipment-view .equip-desc { width: 100%; text-align: center; padding-right: 0; margin-bottom: 12px; font-size: 1rem; white-space: normal; }
-            .equipment-view .equip-image { width: 100%; justify-content: center; }
-            .equipment-view .equip-image img { width: 80%; max-width: 560px; }
-        }
-        .lightbox img {
-            max-width: 90vw;
-            max-height: 80vh;
-            border-radius: 0;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-        }
+
         .lightbox.active {
             display: flex;
         }
+
+        .lightbox-figure {
+            position: relative;
+            margin: 0;
+            max-width: min(92vw, 1240px);
+            max-height: 88vh;
+            display: grid;
+            gap: 14px;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: calc(88vh - 72px);
+            border-radius: 22px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+        }
+
+        .lightbox-caption {
+            color: rgba(255, 255, 255, 0.82);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .lightbox-caption strong {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
         .lightbox-close {
             position: absolute;
-            top: 40px;
-            right: 60px;
+            top: -10px;
+            right: -10px;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.14);
             color: #fff;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
+            line-height: 1;
             cursor: pointer;
-            z-index: 10000;
         }
-        /* footer is positioned inside the sidebar filters and centered horizontally */
-        .sidebar > .site-footer {
-            margin-top: auto;
-            margin-bottom: 50px;
-            align-self: center;
-            color: #000000;
-            font-size: 0.77rem;
-            z-index: 5;
-            background: transparent;
-            padding: 4px 6px;
-            text-align: center;
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-            /* removed internal scrolling on main so page scroll controls layout */
+
+        @media (max-width: 1100px) {
+            .page-shell {
+                grid-template-columns: minmax(240px, 290px) minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 860px) {
+            .page-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .gallery {
+                column-count: 2;
+            }
+
+            .equipment-view {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-shell {
+                padding: 18px 16px 30px;
+                gap: 18px;
+            }
+
+            .sidebar-card,
+            .equipment-view,
+            .empty-state {
+                padding: 22px;
+                border-radius: 24px;
+            }
+
+            .sidebar-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-status,
+            .pagination,
+            .lightbox-caption {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .gallery {
+                column-count: 1;
+                column-gap: 0;
+            }
+
+            .caption {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .pagination-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .page-btn {
+                flex: 1 1 0;
+            }
+
+            .lightbox {
+                padding: 18px;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="page-shell">
+        <aside class="sidebar">
+            <div class="panel sidebar-card">
+                <a class="home-link" href="./">Back Home</a>
+                <span class="eyebrow">Photography Plog</span>
+                <h1 class="sidebar-title">Quiet Frames</h1>
+                <p class="sidebar-copy">
+                    A small collection of streets, light, and the kinds of pauses that usually disappear before we notice them.
+                </p>
 
-
-
-<div class="main-grid">
-    <aside class="sidebar">
-        <div class="filters">
-            <h1 class="brand"><a href="/">Simon Ji</a></h1>
-            <div class="tags tag-row">
-                <a class="tag-link" data-filter="day" href="?filter=day">Natural Light</a>
-                <a class="tag-link" data-filter="night" href="?filter=night">After Dark</a>
-                <a class="tag-link active" data-filter="all" href="?filter=all">All Frames</a>
-                <a class="tag-link" data-filter="gear" href="?filter=gear">Gear</a>
-            </div>
-        </div>
-        <div class="site-footer">© Copyright 2026 Simon Ji</div>
-    </aside>
-    <main>
-        <section class="gallery masonry" id="gallery" aria-live="polite"></section>
-        <div class="pagination" style="margin-bottom: 60px;">
-            <button class="page-btn" id="prevBtn">
-                <svg viewBox="0 0 24 24"><polygon points="15.5,19 9.5,12 15.5,5"/></svg>
-            </button>
-            <span class="page-info" id="pageInfo"></span>
-            <button class="page-btn" id="nextBtn">
-                <svg viewBox="0 0 24 24"><polygon points="8.5,5 14.5,12 8.5,19"/></svg>
-            </button>
-        </div>
-    </main>
-</div>
-
-<div class="lightbox" id="lightbox">
-    <span class="lightbox-close" id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="Enlarged photo">
-    <!-- caption removed from lightbox -->
-</div>
-
-
-<script>
-    const photos = [
-        { caption: "Road back home", img: "images/Road_back_home.JPG", tags: "night" },
-        { caption: "IFS", img: "images/IFS.JPG", tags: "night" },
-        { caption: "Library", img: "images/Lib.JPG", tags: "night" },
-        { caption: "A&M Bell Tower", img: "images/Bell_tower.JPG", tags: "night" },
-        { caption: "Station", img: "images/Station.JPG", tags: "night" },
-        { caption: "Crowd", img: "images/Crowd.JPG", tags: "night" },
-        { caption: "Legacy & Vision", img: "images/DSC_2009.jpg", tags: "night" },
-        { caption: "Lotus", img: "images/DSC_2428.jpg", tags: "day" },
-        { caption: "Ancient Lighthouse", img: "images/DSC_2403.jpg", tags: "day" },
-        // { caption: "San Francisco ChinaTown", img: "images/DSC_2974.JPG", tags: "day" },
-        { caption: "Lake View", img: "images/Lakeview.JPG", tags: "day" },
-        { caption: "Silence", img: "images/f469249cd7dc29f9e1082b942ed40206.JPG", tags: "day" },
-        { caption: "Main Library", img: "images/MainLibrary.JPG", tags: "day" },
-        { caption: "Tech", img: "images/Tech.JPG", tags: "day" },
-        { caption: "Meditation", img: "images/Zone.JPG", tags: "day" },
-        { caption: "Skyscraper", img: "images/Skyscraper.JPG", tags: "night" },
-        { caption: "Aurora", img: "images/Aurora.JPG", tags: "night" },
-        { caption: "Snow Fog", img: "images/Snow fog.jpg", tags: "day" },
-        { caption: "CHRISTKINDL MARKET", img: "images/CHRISTKINDL MARKET.JPG", tags: "night" },
-        { caption: "Christmas tree", img: "images/Christmas tree.JPG", tags: "day" },
-        { caption: "Ferry", img: "images/Ferry.JPG", tags: "day" },
-        { caption: "Lady Liberty", img: "images/Lady Liberty.JPG", tags: "day" },
-        { caption: "Night NYC", img: "images/Night NYC.jpg", tags: "night" },
-        { caption: "Ice Skating", img: "images/Ice Skating.JPG", tags: "night" },
-        { caption: "Sunrise", img: "images/sunrise.jpg", tags: "day" },
-        { caption: "Spring D.C.", img: "images/DC_sakura.JPG", tags: "day"}
-    ];
-
-    // newest first
-    const photosReversed = photos.slice().reverse();
-    const PHOTOS_PER_PAGE = 12;
-    let currentPage = 1;
-    let activeFilter = 'all';
-
-    function getFilteredPhotos() {
-        if (activeFilter === 'all') return photosReversed.slice();
-        return photosReversed.filter(p => (p.tags || '').split(/\s+/).includes(activeFilter));
-    }
-
-    function renderGallery() {
-        const gallery = document.getElementById('gallery');
-        gallery.innerHTML = '';
-        const source = getFilteredPhotos();
-        // If gear view is active, render equipment panel instead of photo tiles
-        if (activeFilter === 'gear') {
-            document.querySelectorAll('.pagination').forEach(p => p.style.display = 'none');
-            gallery.innerHTML = `
-                <div class="equipment-view">
-                    <div class="equip-desc">Nikon Z30 16-55MM + Viltrox 56 1.7</div>
-                    <div class="equip-image"><img src="images/NikonZ30.png" alt="Nikon Z30"></div>
+                <div class="sidebar-meta">
+                    <div class="meta-card">
+                        <span class="meta-label">Current View</span>
+                        <span class="meta-value" id="currentFilterLabel">All Frames</span>
+                    </div>
+                    <div class="meta-card">
+                        <span class="meta-label">On Display</span>
+                        <span class="meta-value" id="photoCount">0 photographs</span>
+                    </div>
                 </div>
+
+                <div class="filter-block">
+                    <p class="filter-heading">Browse</p>
+                    <div class="filter-list">
+                        <a class="tag-link active" data-filter="all" href="?filter=all">
+                            <span class="tag-label">All Frames</span>
+                            <span class="tag-count" data-count-for="all">0</span>
+                        </a>
+                        <a class="tag-link" data-filter="day" href="?filter=day">
+                            <span class="tag-label">Natural Light</span>
+                            <span class="tag-count" data-count-for="day">0</span>
+                        </a>
+                        <a class="tag-link" data-filter="night" href="?filter=night">
+                            <span class="tag-label">After Dark</span>
+                            <span class="tag-count" data-count-for="night">0</span>
+                        </a>
+                        <a class="tag-link" data-filter="gear" href="?filter=gear">
+                            <span class="tag-label">Gear Notes</span>
+                            <span class="tag-count" data-count-for="gear">1</span>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="sidebar-footer">© 2026, Simon Ji</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <section class="gallery-status" aria-live="polite">
+                <div class="status-copy">
+                    <span class="status-label">Current Selection</span>
+                    <span class="status-title" id="statusTitle">All Frames</span>
+                    <span class="status-count" id="statusCount">0 photographs</span>
+                </div>
+                <div class="page-pill" id="pagePill">Page 1 / 1</div>
+            </section>
+
+            <section class="gallery" id="gallery" aria-live="polite"></section>
+
+            <div class="pagination" id="pagination">
+                <span class="page-info" id="pageInfo">Page 1 of 1</span>
+                <div class="pagination-controls">
+                    <button class="page-btn" id="prevBtn" type="button" aria-label="Previous page">&larr;</button>
+                    <button class="page-btn" id="nextBtn" type="button" aria-label="Next page">&rarr;</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+        <figure class="lightbox-figure">
+            <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close viewer">&times;</button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+            <figcaption class="lightbox-caption">
+                <strong id="lightboxTitle"></strong>
+                <span id="lightboxTag"></span>
+            </figcaption>
+        </figure>
+    </div>
+
+    <script>
+        const photos = [
+            { caption: "Road back home", img: "images/Road_back_home.JPG", tags: "night" },
+            { caption: "IFS", img: "images/IFS.JPG", tags: "night" },
+            { caption: "Library", img: "images/Lib.JPG", tags: "night" },
+            { caption: "A&M Bell Tower", img: "images/Bell_tower.JPG", tags: "night" },
+            { caption: "Station", img: "images/Station.JPG", tags: "night" },
+            { caption: "Crowd", img: "images/Crowd.JPG", tags: "night" },
+            { caption: "Legacy & Vision", img: "images/DSC_2009.jpg", tags: "night" },
+            { caption: "Lotus", img: "images/DSC_2428.jpg", tags: "day" },
+            { caption: "Ancient Lighthouse", img: "images/DSC_2403.jpg", tags: "day" },
+            { caption: "Lake View", img: "images/Lakeview.JPG", tags: "day" },
+            { caption: "Silence", img: "images/f469249cd7dc29f9e1082b942ed40206.JPG", tags: "day" },
+            { caption: "Main Library", img: "images/MainLibrary.JPG", tags: "day" },
+            { caption: "Tech", img: "images/Tech.JPG", tags: "day" },
+            { caption: "Meditation", img: "images/Zone.JPG", tags: "day" },
+            { caption: "Skyscraper", img: "images/Skyscraper.JPG", tags: "night" },
+            { caption: "Aurora", img: "images/Aurora.JPG", tags: "night" },
+            { caption: "Snow Fog", img: "images/Snow fog.jpg", tags: "day" },
+            { caption: "CHRISTKINDL MARKET", img: "images/CHRISTKINDL MARKET.JPG", tags: "night" },
+            { caption: "Christmas tree", img: "images/Christmas tree.JPG", tags: "day" },
+            { caption: "Ferry", img: "images/Ferry.JPG", tags: "day" },
+            { caption: "Lady Liberty", img: "images/Lady Liberty.JPG", tags: "day" },
+            { caption: "Night NYC", img: "images/Night NYC.jpg", tags: "night" },
+            { caption: "Ice Skating", img: "images/Ice Skating.JPG", tags: "night" },
+            { caption: "Sunrise", img: "images/sunrise.jpg", tags: "day" },
+            { caption: "Spring D.C.", img: "images/DC_sakura.JPG", tags: "day" }
+        ];
+
+        const filterLabels = {
+            all: "All Frames",
+            day: "Natural Light",
+            night: "After Dark",
+            gear: "Gear Notes"
+        };
+
+        const photosReversed = photos.slice().reverse();
+        const PHOTOS_PER_PAGE = 12;
+        let currentPage = 1;
+        let activeFilter = "all";
+
+        const gallery = document.getElementById("gallery");
+        const pageInfo = document.getElementById("pageInfo");
+        const pagePill = document.getElementById("pagePill");
+        const currentFilterLabel = document.getElementById("currentFilterLabel");
+        const statusTitle = document.getElementById("statusTitle");
+        const statusCount = document.getElementById("statusCount");
+        const photoCount = document.getElementById("photoCount");
+        const pagination = document.getElementById("pagination");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxTitle = document.getElementById("lightboxTitle");
+        const lightboxTag = document.getElementById("lightboxTag");
+        const lightboxClose = document.getElementById("lightboxClose");
+
+        function getFilteredPhotos() {
+            if (activeFilter === "all") return photosReversed.slice();
+            if (activeFilter === "gear") return [];
+            return photosReversed.filter((photo) => (photo.tags || "").split(/\s+/).includes(activeFilter));
+        }
+
+        function getTagLabel(tag) {
+            return filterLabels[tag] || "Collection";
+        }
+
+        function updateFilterCounts() {
+            const counts = {
+                all: photosReversed.length,
+                day: photosReversed.filter((photo) => (photo.tags || "").includes("day")).length,
+                night: photosReversed.filter((photo) => (photo.tags || "").includes("night")).length,
+                gear: 1
+            };
+
+            document.querySelectorAll("[data-count-for]").forEach((node) => {
+                const key = node.getAttribute("data-count-for");
+                node.textContent = counts[key];
+            });
+        }
+
+        function updateTagLinksUI() {
+            document.querySelectorAll(".tag-link").forEach((link) => {
+                const isActive = link.getAttribute("data-filter") === activeFilter;
+                link.classList.toggle("active", isActive);
+                link.setAttribute("aria-current", isActive ? "page" : "false");
+            });
+        }
+
+        function updateSummary(totalPages, totalItems) {
+            const label = getTagLabel(activeFilter);
+            currentFilterLabel.textContent = label;
+            statusTitle.textContent = label;
+
+            if (activeFilter === "gear") {
+                photoCount.textContent = "1 camera setup";
+                statusCount.textContent = "Current camera and lens pairing.";
+                pagePill.textContent = "Equipment Notes";
+                pageInfo.textContent = "Equipment view";
+                return;
+            }
+
+            const noun = totalItems === 1 ? "photograph" : "photographs";
+            photoCount.textContent = totalItems + " " + noun;
+            statusCount.textContent = totalItems + " " + noun + " in this selection.";
+            pagePill.textContent = "Page " + currentPage + " / " + totalPages;
+            pageInfo.textContent = "Page " + currentPage + " of " + totalPages;
+        }
+
+        function renderEquipmentView() {
+            gallery.innerHTML = `
+                <article class="equipment-view">
+                    <div class="equipment-copy">
+                        <span>Current Setup</span>
+                        <h2>Nikon Z30</h2>
+                        <div class="equipment-specs">
+                            <div>16-50mm kit lens</div>
+                            <div>Viltrox 56mm f/1.7</div>
+                        </div>
+                    </div>
+                    <div class="equipment-image">
+                        <img src="images/NikonZ30.png" alt="Nikon Z30 camera setup">
+                    </div>
+                </article>
             `;
-            return;
         }
-        // ensure pagination visible for normal photos
-        document.querySelectorAll('.pagination').forEach(p => p.style.display = 'flex');
-        
-        const start = (currentPage - 1) * PHOTOS_PER_PAGE;
-        const end = start + PHOTOS_PER_PAGE;
-        const pagePhotos = source.slice(start, end);
 
-        if (pagePhotos.length === 0 && currentPage > 1) {
+        function renderEmptyState() {
+            gallery.innerHTML = `
+                <article class="empty-state">
+                    <strong>No frames here yet.</strong>
+                    <span>Try another filter and the gallery will update right away.</span>
+                </article>
+            `;
+        }
+
+        function renderGallery() {
+            gallery.innerHTML = "";
+
+            if (activeFilter === "gear") {
+                gallery.classList.add("gear-mode");
+                pagination.style.display = "none";
+                renderEquipmentView();
+                updateSummary(1, 1);
+                return;
+            }
+
+            gallery.classList.remove("gear-mode");
+            pagination.style.display = "flex";
+
+            const source = getFilteredPhotos();
+            const totalPages = Math.max(1, Math.ceil(source.length / PHOTOS_PER_PAGE));
+
+            if (currentPage > totalPages) {
+                currentPage = 1;
+            }
+
+            const start = (currentPage - 1) * PHOTOS_PER_PAGE;
+            const pagePhotos = source.slice(start, start + PHOTOS_PER_PAGE);
+
+            updateSummary(totalPages, source.length);
+
+            if (pagePhotos.length === 0) {
+                renderEmptyState();
+                return;
+            }
+
+            pagePhotos.forEach((photo, index) => {
+                const item = document.createElement("article");
+                item.className = "gallery-item";
+                item.style.animationDelay = Math.min(index * 45, 360) + "ms";
+                item.innerHTML = `
+                    <a class="gallery-link" href="${photo.img}" data-lightbox="true" data-title="${photo.caption}" data-tag="${getTagLabel(photo.tags)}">
+                        <div class="gallery-image-wrap">
+                            <img src="${photo.img}" alt="${photo.caption}" loading="lazy">
+                        </div>
+                        <div class="caption">
+                            <span class="caption-title">${photo.caption}</span>
+                            <span class="caption-tag">${getTagLabel(photo.tags)}</span>
+                        </div>
+                    </a>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function updatePagination() {
+            if (activeFilter === "gear") {
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                return;
+            }
+
+            const totalPages = Math.max(1, Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE));
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+        }
+
+        function openLightbox(src, title, tag) {
+            lightboxImage.src = src;
+            lightboxImage.alt = title;
+            lightboxTitle.textContent = title;
+            lightboxTag.textContent = tag;
+            lightbox.classList.add("active");
+            lightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+            lightbox.setAttribute("aria-hidden", "true");
+            lightboxImage.src = "";
+            lightboxImage.alt = "";
+            document.body.style.overflow = "";
+        }
+
+        function applyFilter(filter) {
+            activeFilter = filterLabels[filter] ? filter : "all";
             currentPage = 1;
-            return renderGallery();
-        }
 
-        pagePhotos.forEach(photo => {
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-                        item.setAttribute('data-img', photo.img);
-                        item.setAttribute('data-tags', photo.tags || '');
-                        // Wrap image with a normal hyperlink so click navigates to the image file
-                        // Use caption as alt when present, otherwise fall back to empty string
-                        item.innerHTML = `
-                                <a href="${photo.img}" target="_blank" rel="noopener">
-                                    <img src="${photo.img}" alt="${photo.caption || ''}" loading="lazy">
-                                </a>
-                        `;
-            gallery.appendChild(item);
-        });
+            const url = new URL(window.location.href);
+            url.searchParams.set("filter", activeFilter);
+            history.pushState({}, "", url);
 
-        // no placeholder text when fewer photos than a full page
-
-        // removed lightbox click handlers so image links act as normal hyperlinks
-    }
-
-    function updatePagination() {
-        const totalPages = Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE) || 1;
-        document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
-        document.getElementById('prevBtn').disabled = currentPage === 1;
-        document.getElementById('nextBtn').disabled = currentPage === totalPages;
-    }
-
-    document.getElementById('prevBtn').onclick = function() {
-        if (currentPage > 1) {
-            currentPage--;
-            renderGallery();
-            updatePagination();
-        }
-    };
-    document.getElementById('nextBtn').onclick = function() {
-        const totalPages = Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE) || 1;
-        if (currentPage < totalPages) {
-            currentPage++;
-            renderGallery();
-            updatePagination();
-        }
-    };
-
-    // initialize active filter from URL (?filter=...)
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialFilter = urlParams.get('filter');
-    if (initialFilter) activeFilter = initialFilter;
-
-    // tag links behavior: update URL (pushState), apply filter in-page, and highlight
-    function updateTagLinksUI() {
-        document.querySelectorAll('.tag-link').forEach(b => b.classList.remove('active'));
-        if (activeFilter === 'all') {
-            document.querySelectorAll('.tag-link[data-filter="all"]').forEach(b => b.classList.add('active'));
-        } else {
-            document.querySelectorAll(`.tag-link[data-filter="${activeFilter}"]`).forEach(b => b.classList.add('active'));
-        }
-    }
-
-    document.querySelectorAll('.tag-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const filter = this.getAttribute('data-filter');
-            activeFilter = (filter === activeFilter) ? 'all' : filter;
-            // update URL without reload
-            const u = new URL(window.location.href);
-            u.searchParams.set('filter', activeFilter);
-            history.pushState({}, '', u);
             updateTagLinksUI();
-            // (equipment removed) ensure no gear UI remains
+            renderGallery();
+            updatePagination();
+        }
+
+        prevBtn.addEventListener("click", () => {
+            if (currentPage > 1) {
+                currentPage -= 1;
+                renderGallery();
+                updatePagination();
+            }
+        });
+
+        nextBtn.addEventListener("click", () => {
+            const totalPages = Math.max(1, Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE));
+            if (currentPage < totalPages) {
+                currentPage += 1;
+                renderGallery();
+                updatePagination();
+            }
+        });
+
+        document.querySelectorAll(".tag-link").forEach((link) => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                const filter = link.getAttribute("data-filter");
+                applyFilter(filter);
+            });
+        });
+
+        gallery.addEventListener("click", (event) => {
+            const link = event.target.closest("[data-lightbox='true']");
+            if (!link) return;
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+            event.preventDefault();
+            openLightbox(
+                link.getAttribute("href"),
+                link.getAttribute("data-title") || "",
+                link.getAttribute("data-tag") || ""
+            );
+        });
+
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && lightbox.classList.contains("active")) {
+                closeLightbox();
+            }
+        });
+
+        window.addEventListener("popstate", () => {
+            const filterFromUrl = new URLSearchParams(window.location.search).get("filter") || "all";
+            activeFilter = filterLabels[filterFromUrl] ? filterFromUrl : "all";
             currentPage = 1;
+            updateTagLinksUI();
             renderGallery();
             updatePagination();
         });
-    });
 
-    // gear removed: no handler
+        const initialFilter = new URLSearchParams(window.location.search).get("filter");
+        if (initialFilter && filterLabels[initialFilter]) {
+            activeFilter = initialFilter;
+        }
 
-    // handle back/forward navigation
-    window.addEventListener('popstate', function() {
-        const p = new URLSearchParams(window.location.search).get('filter') || 'all';
-        activeFilter = p;
+        updateFilterCounts();
         updateTagLinksUI();
-        currentPage = 1;
         renderGallery();
         updatePagination();
-    });
-
-    // reflect initial filter UI
-    updateTagLinksUI();
-
-    document.getElementById('lightbox-close').onclick = function() {
-        document.getElementById('lightbox').classList.remove('active');
-        document.getElementById('lightbox-img').src = '';
-    };
-    document.getElementById('lightbox').onclick = function(e) {
-        if(e.target === this) {
-            this.classList.remove('active');
-            document.getElementById('lightbox-img').src = '';
-        }
-    };
-
-    // initial render
-    renderGallery();
-    updatePagination();
-</script>
-
+    </script>
 </body>
 </html>
-
-
