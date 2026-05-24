@@ -222,49 +222,6 @@
             gap: 24px;
         }
 
-        .gallery-status {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 0 8px;
-            animation: fadeUp 0.85s ease both;
-        }
-
-        .status-copy {
-            display: grid;
-            gap: 4px;
-        }
-
-        .status-label {
-            font-size: 0.76rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--muted);
-        }
-
-        .status-title {
-            font-family: var(--serif);
-            font-size: 1.65rem;
-            font-weight: 600;
-        }
-
-        .status-count {
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        .page-pill {
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
-            background: rgba(255, 255, 255, 0.66);
-            border: 1px solid rgba(43, 34, 25, 0.08);
-            color: var(--muted);
-            font-size: 0.88rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
         .gallery {
             column-count: 2;
             column-gap: 22px;
@@ -578,7 +535,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .gallery-status,
             .pagination,
             .lightbox-caption {
                 align-items: flex-start;
@@ -658,15 +614,6 @@
         </aside>
 
         <main class="content">
-            <section class="gallery-status" aria-live="polite">
-                <div class="status-copy">
-                    <span class="status-label">Current Selection</span>
-                    <span class="status-title" id="statusTitle">All Frames</span>
-                    <span class="status-count" id="statusCount">0 photographs</span>
-                </div>
-                <div class="page-pill" id="pagePill">Page 1 / 1</div>
-            </section>
-
             <section class="gallery" id="gallery" aria-live="polite"></section>
 
             <div class="pagination" id="pagination">
@@ -733,10 +680,7 @@
 
         const gallery = document.getElementById("gallery");
         const pageInfo = document.getElementById("pageInfo");
-        const pagePill = document.getElementById("pagePill");
         const currentFilterLabel = document.getElementById("currentFilterLabel");
-        const statusTitle = document.getElementById("statusTitle");
-        const statusCount = document.getElementById("statusCount");
         const photoCount = document.getElementById("photoCount");
         const pagination = document.getElementById("pagination");
         const prevBtn = document.getElementById("prevBtn");
@@ -782,20 +726,15 @@
         function updateSummary(totalPages, totalItems) {
             const label = getTagLabel(activeFilter);
             currentFilterLabel.textContent = label;
-            statusTitle.textContent = label;
 
             if (activeFilter === "gear") {
                 photoCount.textContent = "1 camera setup";
-                statusCount.textContent = "Current camera and lens pairing.";
-                pagePill.textContent = "Equipment Notes";
                 pageInfo.textContent = "Equipment view";
                 return;
             }
 
             const noun = totalItems === 1 ? "photograph" : "photographs";
             photoCount.textContent = totalItems + " " + noun;
-            statusCount.textContent = totalItems + " " + noun + " in this selection.";
-            pagePill.textContent = "Page " + currentPage + " / " + totalPages;
             pageInfo.textContent = "Page " + currentPage + " of " + totalPages;
         }
 
