@@ -28,6 +28,12 @@ body.theme-luka *::after {
   --luka-social-bg: #ffffff;
   --luka-social-text: #5f4b85;
   --luka-footer-border: rgba(78, 42, 132, 0.15);
+  --luka-page-top: #f8f6f2;
+  --luka-page-bottom: #f8f6f2;
+  --luka-nav-bg: rgba(248, 246, 242, 0.78);
+  --luka-sidebar-wash: rgba(111, 91, 149, 0.1);
+  --luka-sidebar-line: rgba(111, 91, 149, 0.18);
+  --luka-sidebar-dot: rgba(78, 42, 132, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,6 +47,12 @@ body.theme-luka *::after {
     --luka-social-bg: #22211e;
     --luka-social-text: #d1cec7;
     --luka-footer-border: rgba(182, 161, 216, 0.18);
+    --luka-page-top: #1a1917;
+    --luka-page-bottom: #1a1917;
+    --luka-nav-bg: rgba(26, 25, 23, 0.8);
+    --luka-sidebar-wash: rgba(182, 161, 216, 0.1);
+    --luka-sidebar-line: rgba(209, 206, 199, 0.14);
+    --luka-sidebar-dot: rgba(182, 161, 216, 0.34);
   }
 }
 
@@ -54,6 +66,12 @@ body.theme-luka *::after {
   --luka-social-bg: #22211e;
   --luka-social-text: #d1cec7;
   --luka-footer-border: rgba(182, 161, 216, 0.18);
+  --luka-page-top: #1a1917;
+  --luka-page-bottom: #1a1917;
+  --luka-nav-bg: rgba(26, 25, 23, 0.8);
+  --luka-sidebar-wash: rgba(182, 161, 216, 0.1);
+  --luka-sidebar-line: rgba(209, 206, 199, 0.14);
+  --luka-sidebar-dot: rgba(182, 161, 216, 0.34);
 }
 
 [data-theme="light"] {
@@ -66,15 +84,34 @@ body.theme-luka *::after {
   --luka-social-bg: #ffffff;
   --luka-social-text: #5f4b85;
   --luka-footer-border: rgba(78, 42, 132, 0.15);
+  --luka-page-top: #f8f6f2;
+  --luka-page-bottom: #f8f6f2;
+  --luka-nav-bg: rgba(248, 246, 242, 0.78);
+  --luka-sidebar-wash: rgba(111, 91, 149, 0.1);
+  --luka-sidebar-line: rgba(111, 91, 149, 0.18);
+  --luka-sidebar-dot: rgba(78, 42, 132, 0.3);
 }
 
 body.theme-luka {
+  position: relative;
+  overflow-x: hidden;
   background: var(--luka-bg);
   color: var(--luka-text);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   line-height: 1.65;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.theme-luka::before,
+body.theme-luka::after {
+  content: none;
+}
+
+body.theme-luka .top-nav,
+body.theme-luka .wrapper {
+  position: relative;
+  z-index: 1;
 }
 
 body.theme-luka a {
@@ -95,7 +132,9 @@ body.theme-luka .top-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--luka-bg);
+  background: var(--luka-nav-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--luka-footer-border);
   z-index: 1000;
 }
@@ -106,8 +145,12 @@ body.theme-luka .nav-container {
   padding: 0 40px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
+}
+
+body.theme-luka .nav-left {
+  display: none;
 }
 
 body.theme-luka .nav-left a {
@@ -119,35 +162,29 @@ body.theme-luka .nav-left a {
 body.theme-luka .nav-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 26px;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
+  width: 100%;
 }
 
 body.theme-luka .nav-right a {
-  color: var(--luka-secondary);
-  font-size: 14px;
-  font-weight: 500;
+  color: rgba(61, 57, 41, 0.74);
+  font-family: "IBM Plex Mono", "SFMono-Regular", "Menlo", monospace;
+  font-size: 0.98rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: lowercase;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+body.theme-luka .nav-right a.active {
+  color: var(--luka-text);
+  font-weight: 600;
 }
 
 body.theme-luka .nav-right a:hover {
-  color: var(--luka-accent);
-}
-
-body.theme-luka .theme-toggle {
-  border: none;
-  background: transparent;
-  color: var(--luka-text);
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-body.theme-luka .theme-toggle:hover {
-  background: var(--luka-border);
   color: var(--luka-accent);
 }
 
@@ -172,26 +209,55 @@ body.theme-luka .sidebar {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding-top: 60px;
+  padding: 32px 0;
   z-index: 100;
   scrollbar-width: none;
+  isolation: isolate;
 }
 
 body.theme-luka .sidebar::-webkit-scrollbar {
   display: none;
 }
 
+body.theme-luka .sidebar::before {
+  content: none;
+}
+
+body.theme-luka .sidebar::after {
+  content: none;
+}
+
 body.theme-luka .profile-card {
   width: 100%;
-  padding: 0 20px;
+  min-height: calc(100vh - 148px);
+  padding: 24px 20px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body.theme-luka .profile-card::before {
+  content: none;
+}
+
+body.theme-luka .profile-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 body.theme-luka .image.avatar {
   display: block;
   margin: 0 auto 28px;
+}
+
+body.theme-luka .image.avatar:hover {
+  filter: none;
 }
 
 body.theme-luka .image.avatar img {
@@ -241,6 +307,13 @@ body.theme-luka .social-icons a:hover {
   background: var(--luka-accent);
   color: #fff !important;
   transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.theme-luka::before,
+  body.theme-luka::after {
+    animation: none;
+  }
 }
 
 body.theme-luka .visitor-card {
@@ -602,7 +675,7 @@ body.theme-luka strong {
   }
 
   body.theme-luka .nav-right {
-    gap: 12px;
+    gap: 16px;
   }
 
   body.theme-luka .wrapper {
@@ -615,11 +688,21 @@ body.theme-luka strong {
     left: auto;
     width: 100%;
     height: auto;
-    padding-top: 80px;
+    padding: 80px 0 0;
     overflow: visible;
+    justify-content: flex-start;
+  }
+
+  body.theme-luka .sidebar::before {
+    content: none;
+  }
+
+  body.theme-luka .sidebar::after {
+    content: none;
   }
 
   body.theme-luka .profile-card {
+    min-height: auto;
     padding: 0;
   }
 
@@ -639,6 +722,11 @@ body.theme-luka strong {
 }
 
 @media (max-width: 640px) {
+  body.theme-luka::before,
+  body.theme-luka::after {
+    content: none;
+  }
+
   body.theme-luka .image.avatar img {
     width: 148px;
     height: 148px;
@@ -704,6 +792,7 @@ body.theme-luka strong {
   }
 
   body.theme-luka .nav-right {
+    justify-content: center;
     row-gap: 8px;
   }
 
