@@ -13,112 +13,134 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-  <script src="https://kit.fontawesome.com/a860a211d3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/academicons.min.css">
 
   <link rel="stylesheet" href="assets/luka/css/font_sans_serif.css?v=20260416">
-  <link rel="stylesheet" href="assets/luka/css/theme-luka.css?v=20260416">
+  <link rel="stylesheet" href="assets/luka/css/theme-luka.css?v=20260904b">
 </head>
 <body class="theme-luka">
-  <nav class="top-nav">
+  <nav class="top-nav" aria-label="Main navigation">
     <div class="nav-container">
       <div class="nav-left">
         <a href="./">Shenming Ji</a>
       </div>
       <div class="nav-right">
-        <a class="active" href="#about">about</a>
-        <a href="#news">news</a>
-        <a href="#publications">publications</a>
-        <!-- <a href="#experience">experiences</a> -->
-        <a href="#education">education</a>
-        <a href="gallery.html">plog</a>
+        <a class="active" href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="gallery.html">Blog</a>
       </div>
     </div>
   </nav>
 
   <div class="wrapper">
-    <header class="sidebar">
-      <div class="profile-card">
-        <a class="image avatar" aria-label="Profile photo">
-          <img src="images/portrait.png" alt="Portrait of Shenming Ji">
-        </a>
+    <main class="content">
+      <section class="section about-section" id="about">
+        <header class="profile">
+          <div class="profile-card">
+            <div class="image avatar">
+              <img src="images/portrait.png" alt="Portrait of Shenming Ji">
+            </div>
 
-        <h1 class="site-name">Shenming Ji</h1>
-        <p class="site-email">shenmingji2027@u.northwestern.edu</p>
+            <h1 class="site-name">Shenming Ji</h1>
+            <p class="site-email"><a href="mailto:shenmingji2027@u.northwestern.edu">shenmingji2027@u.northwestern.edu</a></p>
 
-        <div class="social-icons">
-          <a href="mailto:shenmingji2027@u.northwestern.edu" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-          <a href="https://scholar.google.com/citations?user=c8J5tK4AAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-          <a href="https://github.com/Shenming-Ji" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/shenming-simon-ji-aa33312b3" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        </div>
+            <div class="social-icons">
+              <a href="mailto:shenmingji2027@u.northwestern.edu" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+              <a href="https://scholar.google.com/citations?user=c8J5tK4AAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+              <a href="https://github.com/Shenming-Ji" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/shenming-simon-ji-aa33312b3" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
 
-      </div>
-    </header>
-
-    <section class="content">
-      <div class="section" id="about">
-        <h2 class="section-title">ABOUT ME</h2>
-        <div class="section-body">
-          <p>Hi, I'm Shenming (Simon), a rising second-year master's student in Computer Science at <strong>Northwestern University</strong>. I received my bachelor's degree from <strong>Xi'an Jiaotong-Liverpool University</strong> and the <strong>University of Liverpool</strong>, where I was fortunate to be advised by <a href="https://scholar.xjtlu.edu.cn/en/persons/JunQi" target="_blank" rel="noopener">Prof. Jun Qi</a> and <a href="https://scholar.xjtlu.edu.cn/en/persons/TengMa" target="_blank" rel="noopener">Prof. Teng Ma</a>. I also spent a wonderful summer at <strong>Texas A&amp;M University</strong> as a visiting research intern with <a href="https://www.xiameng.org/" target="_blank" rel="noopener">Prof. Meng Xia</a>. Those experiences shaped how I think about research, collaboration, and building systems that support people more thoughtfully.</p>
-          <p>My research interests include <strong>Human-AI Interaction</strong>, <strong>AI in Education</strong>, and <strong>Computational Social Science</strong>. Feel free to contact me by email if you are interested in discussing or collaborating with me!</p>
-          <p>Outside of academics, I enjoy soccer, music, and photography. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!</p>
-          <div class="announcement-card">
-            <p>I am currently applying to PhD programs for Fall 2027 and am also open to research assistant and collaboration opportunities. Please feel free to reach out if you see a potential research fit!</p>
           </div>
-          <!-- <div class="link-chips">
-            <a href="/cv/">CV</a>
-            <a href="https://scholar.google.com/citations?user=c8J5tK4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-            <a href="gallery.html">Plog</a>
-          </div> -->
+        </header>
+
+        <div class="about-content">
+          <h2 class="section-title">ABOUT ME</h2>
+          <div class="section-body">
+            <p>Hi, I'm Shenming (Simon), a rising second-year master's student in Computer Science at <strong>Northwestern University</strong>. I received my bachelor's degree from <strong>Xi'an Jiaotong-Liverpool University</strong> and the <strong>University of Liverpool</strong>, where I was fortunate to be advised by <a href="https://scholar.xjtlu.edu.cn/en/persons/JunQi" target="_blank" rel="noopener">Prof. Jun Qi</a> and <a href="https://scholar.xjtlu.edu.cn/en/persons/TengMa" target="_blank" rel="noopener">Prof. Teng Ma</a>. I also spent a wonderful summer at <strong>Texas A&amp;M University</strong> as a visiting research intern with <a href="https://www.xiameng.org/" target="_blank" rel="noopener">Prof. Meng Xia</a>. Those experiences shaped how I think about research, collaboration, and building systems that support people more thoughtfully.</p>
+            <p>My research interests include <strong>Human-AI Interaction</strong>, <strong>AI in Education</strong>, and <strong>Computational Social Science</strong>. Feel free to contact me by email if you are interested in discussing or collaborating with me!</p>
+            <p>Outside of academics, I enjoy soccer, music, and photography. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!</p>
+            <div class="announcement-card">
+              <p>I am currently applying to PhD programs for Fall 2027 and am also open to research assistant and collaboration opportunities. Please feel free to reach out if you see a potential research fit!</p>
+            </div>
+
+          </div>
         </div>
-      </div>
+      </section>
 
       <div class="section" id="news">
         <h2 class="section-title">NEWS</h2>
         <div class="section-body">
-          <div class="news-card">
-            <div class="news-scroll" aria-label="Recent news">
+          <h3 class="news-subtitle">News + Updates</h3>
+          <div class="news-list" aria-label="Recent news">
+            <article class="news-item">
+              <div class="news-date">[2026/07]</div>
+              <div class="news-content">
+                <p>Participated in <a href="https://learnlab.org/learnlab-summer-school/" target="_blank" rel="noopener noreferrer"> <strong>LearnLab Summer School</strong></a> at <strong>Carnegie Mellon University</strong>, conducting research on student–AI interactions in the Computer Science Education Research track.</p>
+                <span class="news-badge news-badge--milestone">MILESTONE</span>
+              </div>
+            </article>
+
+            <article class="news-item">
+              <div class="news-date">[2026/07]</div>
+              <div class="news-content">
+                <p>Joined the <a href="https://tecd-lab.ucr.edu/prytaneum" target="_blank" rel="noopener noreferrer"><strong>Prytaneum</strong> </a> team under Prof. Kevin Esterling, working on AI-assisted moderation and LLM-based user simulation for online deliberation.</p>
+                <span class="news-badge news-badge--milestone">MILESTONE</span>
+              </div>
+            </article>
+
+            <article class="news-item">
+              <div class="news-date">[2026/04]</div>
+              <div class="news-content">
+                <p>Began working with Prof. Yulin Yu on research in <strong>computational social science</strong> and <strong>human–AI innovation</strong>, with a focus on scientific dataset reuse and novelty.</p>
+                <span class="news-badge news-badge--milestone">MILESTONE</span>
+              </div>
+            </article>
+
+            <article class="news-item">
+              <div class="news-date">[2026/03]</div>
+              <div class="news-content">
+                <p>Began working on the <strong>LearnAnything</strong> project with Prof. David Zaretsky, exploring Computer Science Education and Multi-agent systems.</p>
+                <span class="news-badge news-badge--milestone">MILESTONE</span>
+              </div>
+            </article>
+
+            <article class="news-item">
+              <div class="news-date">[2025/09]</div>
+              <div class="news-content">
+                <p>Started my <strong>M.S. in Computer Science</strong> at <strong>Northwestern University</strong>, with research interests in Human–AI Interaction and Computer Science Education.</p>
+                <span class="news-badge news-badge--milestone">MILESTONE</span>
+              </div>
+            </article>
+            <div id="older-news" hidden>
               <article class="news-item">
-  <div class="news-date">[2026/07]</div>
-  <p>Participated in <a href="https://learnlab.org/learnlab-summer-school/" target="_blank" rel="noopener noreferrer"> <strong>LearnLab Summer School</strong></a> at <strong>Carnegie Mellon University</strong>, conducting research on student–AI interactions in the Computer Science Education Research track.</p>
-</article>
-
-<article class="news-item">
-  <div class="news-date">[2026/07]</div>
-  <p>Joined the <a href="https://tecd-lab.ucr.edu/prytaneum" target="_blank" rel="noopener noreferrer"><strong>Prytaneum</strong> </a> team under Prof. Kevin Esterling, working on AI-assisted moderation and LLM-based user simulation for online deliberation.</p>
-</article>
-
-<article class="news-item">
-  <div class="news-date">[2026/04]</div>
-  <p>Began working with Prof. Yulin Yu on research in <strong>computational social science</strong> and <strong>human–AI innovation</strong>, with a focus on scientific dataset reuse and novelty.</p>
-</article>
-
-<article class="news-item">
-  <div class="news-date">[2026/03]</div>
-  <p>Began working on the <strong>LearnAnything</strong> project with Prof. David Zaretsky, exploring Computer Science Education and Multi-agent systems.</p>
-</article>
-
-<article class="news-item">
-  <div class="news-date">[2025/09]</div>
-  <p>Started my <strong>M.S. in Computer Science</strong> at <strong>Northwestern University</strong>, with research interests in Human–AI Interaction and Computer Science Education.</p>
-</article>
-
-<article class="news-item">
-  <div class="news-date">[2025/05]</div>
-  <p>My first-author paper <strong>EEG-TBSANet</strong> on EEG-based epilepsy diagnosis was accepted to <strong>IEEE INDIN 2025</strong>!</p>
-</article>
-
-<article class="news-item">
-  <div class="news-date">[2025/01]</div>
-  <p>Our paper <strong>CPVis</strong> on multimodal learning analytics for collaborative programming was accepted to <strong>CHI 2025</strong>! See you in Yokohama 🇯🇵!</p>
-</article>
-
-<article class="news-item">
-  <div class="news-date">[2024/05]</div>
-  <p>Joined <strong>Dream Lab</strong> at <strong>Texas A&amp;M University</strong> as a visiting research intern, working on multimodal learning analytics for collaborative programming.</p>
-</article>
+                <div class="news-date">[2025/05]</div>
+                <div class="news-content">
+                  <p>My first-author paper <strong>EEG-TBSANet</strong> on EEG-based epilepsy diagnosis was accepted to <strong>IEEE INDIN 2025</strong>!</p>
+                  <span class="news-badge news-badge--paper">PAPER</span>
+                </div>
+              </article>
+              <article class="news-item">
+                <div class="news-date">[2025/01]</div>
+                <div class="news-content">
+                  <p>Our paper <strong>CPVis</strong> on multimodal learning analytics for collaborative programming was accepted to <strong>CHI 2025</strong>! See you in Yokohama 🇯🇵!</p>
+                  <span class="news-badge news-badge--paper">PAPER</span>
+                </div>
+              </article>
+              <article class="news-item">
+                <div class="news-date">[2024/05]</div>
+                <div class="news-content">
+                  <p>Joined <strong>Dream Lab</strong> at <strong>Texas A&amp;M University</strong> as a visiting research intern, working on multimodal learning analytics for collaborative programming.</p>
+                  <span class="news-badge news-badge--milestone">MILESTONE</span>
+                </div>
+              </article>
             </div>
+          </div>
+          <div class="news-controls">
+            <button class="news-toggle" type="button" aria-expanded="false" aria-controls="older-news">Show More</button>
           </div>
         </div>
       </div>
@@ -165,39 +187,38 @@
         </div>
       </div>
 
-      <!-- <div class="section" id="experience">
-        <h2 class="section-title">EXPERIENCES</h2>
-        <div class="section-body">
-          <div class="card timeline-item">
-            <div class="experience-item">
-              <img src="images/XJTLU_Logo.png" alt="XJTLU logo" class="institution-logo institution-logo--wide">
-              <div class="experience-content">
-                <p class="exp-title"><strong>Xi'an Jiaotong-Liverpool University</strong></p>
-                <p class="exp-detail">Research Assistant</p>
-                <p class="exp-detail"><em>Advisors:</em> Prof. Jun Qi and Prof. Teng Ma</p>
-                <p class="exp-period">Jun. 2023 - Jun. 2025</p>
-              </div>
-            </div>
-          </div>
 
-          <div class="card timeline-item">
-            <div class="experience-item">
-              <img src="images/TAM-Horz-AllWhite-2.png" alt="Texas A&M Dream Lab logo" class="institution-logo institution-logo--wide institution-logo--tam">
-              <div class="experience-content">
-                <p class="exp-title"><strong>Texas A&amp;M University Dream Lab</strong></p>
-                <p class="exp-detail">Visiting Research Intern</p>
-                <p class="exp-detail"><em>Advisor:</em> Prof. Meng Xia</p>
-                <p class="exp-period">Apr. 2024 - Sep. 2024</p>
-              </div>
-            </div>
-          </div>
+
+      <section class="section" id="research">
+        <h2 class="section-title">RESEARCH</h2>
+        <div class="section-body research-list">
+          <article class="research-item">
+            <h3><a href="https://learnlab.org/learnlab-summer-school/" target="_blank" rel="noopener">LearnLab Summer School</a></h3>
+            <p class="research-meta">Carnegie Mellon University · July 2026</p>
+            <p>Research on student–AI interactions in the Computer Science Education Research track.</p>
+          </article>
+          <article class="research-item">
+            <h3><a href="https://tecd-lab.ucr.edu/prytaneum" target="_blank" rel="noopener">Prytaneum</a></h3>
+            <p class="research-meta">Prof. Kevin Esterling · Joined July 2026</p>
+            <p>AI-assisted moderation and LLM-based user simulation for online deliberation.</p>
+          </article>
+          <article class="research-item">
+            <h3>Scientific dataset reuse</h3>
+            <p class="research-meta">Prof. Yulin Yu · Began April 2026</p>
+            <p>Computational social science and human–AI innovation, focusing on scientific dataset reuse and novelty.</p>
+          </article>
+          <article class="research-item">
+            <h3>LearnAnything</h3>
+            <p class="research-meta">Prof. David Zaretsky · Began March 2026</p>
+            <p>Exploring Computer Science Education and Multi-agent systems.</p>
+          </article>
         </div>
-      </div> -->
+      </section>
 
       <div class="section" id="education">
         <h2 class="section-title">EDUCATION</h2>
         <div class="section-body">
-          <div class="card timeline-item">
+          <div class="education-item">
             <div class="experience-item">
               <img src="images/N.svg" alt="Northwestern University logo" class="institution-logo">
               <div class="experience-content">
@@ -208,7 +229,7 @@
             </div>
           </div>
 
-          <div class="card timeline-item">
+          <div class="education-item">
             <div class="experience-item">
               <img src="images/XJTLU_Logo.png" alt="Xi'an Jiaotong-Liverpool University logo" class="institution-logo institution-logo--wide">
               <div class="experience-content">
@@ -221,21 +242,12 @@
         </div>
       </div>
 
-      <!-- <div class="section" id="links">
-        <h2 class="section-title">Selected Links</h2>
-        <div class="section-body">
-          <div class="card note-card">
-            <p>This is the first clean rebuild of my site based on the Luka template. My photography <a href="gallery.html">Plog</a> remains available as a separate page, and more content from the previous site will be migrated gradually.</p>
-          </div>
-        </div>
-      </div> -->
-    </section>
+
+    </main>
 
     <footer class="site-footer">
       <p>
         &copy; 2026 Shenming Ji. All rights reserved.
-        <br>
-        <span class="template-credit"><a href="https://github.com/wzsyyh/luka-homepage-template">Luka Homepage Template</a> by <a href="https://wzsyyh.github.io/">Yuheng Yang</a></span>
       </p>
     </footer>
   </div>
@@ -248,59 +260,98 @@
 
       function setActiveNav(sectionId) {
         navLinks.forEach(function(link) {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + sectionId);
+          const active = link.getAttribute('href') === '#' + sectionId;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
         });
       }
 
-      const initialHash = window.location.hash.replace('#', '');
-      setActiveNav(sections.some(function(section) { return section.id === initialHash; }) ? initialHash : 'about');
+      const nav = document.querySelector('.top-nav');
+      let pendingTarget = null;
+      let settleTimer;
+      let scheduled = false;
 
+      // Anchor landing and scrollspy share one offset, including wrapped mobile navigation.
+      function syncNavOffset() {
+        document.documentElement.style.setProperty('--section-offset', (nav.getBoundingClientRect().height + 32) + 'px');
+        updateActiveNav();
+      }
+      function updateActiveNav() {
+        scheduled = false;
+        if (pendingTarget) return;
+        const marker = parseFloat(getComputedStyle(sections[0]).scrollMarginTop) + 2;
+        let current = sections[0].id;
+        sections.forEach(function(section) {
+          if (section.getBoundingClientRect().top <= marker) current = section.id;
+        });
+        if (window.scrollY > 0 && window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+          current = sections[sections.length - 1].id;
+        }
+        setActiveNav(current);
+      }
+      function finishNavigation() {
+        clearTimeout(settleTimer);
+        pendingTarget = null;
+        updateActiveNav();
+      }
       navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-          const targetId = link.getAttribute('href').replace('#', '');
-          setActiveNav(targetId);
+        link.addEventListener('click', function(event) {
+          if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          pendingTarget = link.hash.slice(1);
+          setActiveNav(pendingTarget);
+          if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+          document.getElementById(pendingTarget).scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+          clearTimeout(settleTimer);
+          settleTimer = setTimeout(finishNavigation, 180);
         });
       });
+      window.addEventListener('scroll', function() {
+        if (pendingTarget) {
+          clearTimeout(settleTimer);
+          settleTimer = setTimeout(finishNavigation, 180);
+        }
+        if (!scheduled) {
+          scheduled = true;
+          requestAnimationFrame(updateActiveNav);
+        }
+      }, { passive: true });
+      window.addEventListener('scrollend', finishNavigation);
+      window.addEventListener('wheel', finishNavigation, { passive: true });
+      window.addEventListener('touchstart', finishNavigation, { passive: true });
+      window.addEventListener('keydown', function(event) {
+        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) finishNavigation();
+      });
+      window.addEventListener('resize', syncNavOffset);
+      window.addEventListener('load', syncNavOffset);
+      if ('ResizeObserver' in window) new ResizeObserver(syncNavOffset).observe(nav);
+      syncNavOffset();
 
-      if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-
-        sections.forEach(function(el) {
-          revealObserver.observe(el);
-        });
-
-        const navObserver = new IntersectionObserver(function(entries) {
-          const visibleEntries = entries.filter(function(entry) {
-            return entry.isIntersecting;
-          });
-
-          if (!visibleEntries.length) return;
-
-          visibleEntries.sort(function(a, b) {
-            return a.boundingClientRect.top - b.boundingClientRect.top;
-          });
-
-          setActiveNav(visibleEntries[0].target.id);
-        }, {
-          rootMargin: '-20% 0px -55% 0px',
-          threshold: [0.15, 0.35, 0.6]
-        });
-
-        sections.forEach(function(el) {
-          navObserver.observe(el);
-        });
-      } else {
-        sections.forEach(function(el) {
-          el.classList.add('visible');
-        });
-      }
+      const newsToggle = document.querySelector('.news-toggle');
+      const olderNews = document.getElementById('older-news');
+      let newsAnimating = false;
+      newsToggle.addEventListener('click', async function() {
+        if (newsAnimating) return;
+        newsAnimating = true;
+        const expand = newsToggle.getAttribute('aria-expanded') !== 'true';
+        newsToggle.setAttribute('aria-expanded', String(expand));
+        newsToggle.textContent = expand ? 'Show Less' : 'Show More';
+        olderNews.hidden = false;
+        olderNews.inert = !expand;
+        const height = olderNews.scrollHeight;
+        if (olderNews.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const animation = olderNews.animate([
+            { height: expand ? '0px' : height + 'px', opacity: expand ? 0 : 1, overflow: 'hidden' },
+            { height: expand ? height + 'px' : '0px', opacity: expand ? 1 : 0, overflow: 'hidden' }
+          ], { duration: 240, easing: 'ease-in-out' });
+          await animation.finished;
+        }
+        olderNews.hidden = !expand;
+        newsAnimating = false;
+        if (!expand) document.getElementById('news').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+        updateActiveNav();
+      });
 
     })();
   </script>
