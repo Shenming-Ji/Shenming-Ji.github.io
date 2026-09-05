@@ -245,6 +245,8 @@ body.theme-luka b { font-weight: 600; }
 .news-badge--paper::before { content: "\f15c"; }
 .news-badge--milestone { color: #B64C68; background: #FBECEF; }
 .news-badge--milestone::before { content: "\f024"; }
+.news-badge--research { color: #617ec8; background: #EEF2FB; }
+.news-badge--research::before { content: "\f135"; }
 #older-news .news-item:first-child { padding-top: 12px; }
 .news-controls { margin-top: 18px; text-align: center; }
 .news-toggle { border: 0; background: transparent; color: var(--luka-accent); font: inherit; font-size: 13px; padding: 10px 18px; min-height: 44px; cursor: pointer; }
