@@ -38,14 +38,16 @@
   <div class="wrapper">
     <main class="content">
       <section class="section about-section" id="about">
-        <header class="profile">
-          <div class="profile-card">
-            <div class="image avatar">
-              <img src="images/portrait.png" alt="Portrait of Shenming Ji">
-            </div>
+        <div class="profile">
+          <div class="image avatar">
+            <img src="images/portrait.png" alt="Portrait of Shenming Ji">
+          </div>
+        </div>
 
+        <div class="about-content">
+          <header class="about-header">
             <h1 class="site-name">Shenming Ji</h1>
-            <p class="site-email"><a href="mailto:shenmingji2027@u.northwestern.edu">shenmingji2027@u.northwestern.edu</a></p>
+            <p class="site-email"><a href="mailto:shenmingji2027@u.northwestern.edu">shenmingji2027 [at] u.northwestern [dot] edu</a></p>
 
             <div class="social-icons">
               <a href="mailto:shenmingji2027@u.northwestern.edu" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
@@ -53,12 +55,7 @@
               <a href="https://github.com/Shenming-Ji" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
               <a href="https://www.linkedin.com/in/shenming-simon-ji-aa33312b3" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             </div>
-
-          </div>
-        </header>
-
-        <div class="about-content">
-          <h2 class="section-title">ABOUT ME</h2>
+          </header>
           <div class="section-body">
             <p>Hi, I'm Shenming (Simon), a rising second-year master's student in Computer Science at <strong>Northwestern University</strong>. I received my bachelor's degree from <strong>Xi'an Jiaotong-Liverpool University</strong> and the <strong>University of Liverpool</strong>, where I was fortunate to be advised by <a href="https://scholar.xjtlu.edu.cn/en/persons/JunQi" target="_blank" rel="noopener">Prof. Jun Qi</a> and <a href="https://scholar.xjtlu.edu.cn/en/persons/TengMa" target="_blank" rel="noopener">Prof. Teng Ma</a>. I also spent a wonderful summer at <strong>Texas A&amp;M University</strong> as a visiting research intern with <a href="https://www.xiameng.org/" target="_blank" rel="noopener">Prof. Meng Xia</a>. Those experiences shaped how I think about research, collaboration, and building systems that support people more thoughtfully.</p>
             <p>My research interests include <strong>Human-AI Interaction</strong>, <strong>AI in Education</strong>, and <strong>Computational Social Science</strong>. Feel free to contact me by email if you are interested in discussing or collaborating with me!</p>
@@ -68,6 +65,13 @@
             </div>
 
           </div>
+          <p class="research-interests">
+            <span class="interest-hai">Human–AI Interaction</span>
+            <span class="interest-separator">·</span>
+            <span class="interest-education">AI in Education</span>
+            <span class="interest-separator">·</span>
+            <span class="interest-social">Computational Social Science</span>
+          </p>
         </div>
       </section>
 
@@ -140,7 +144,7 @@
             </div>
           </div>
           <div class="news-controls">
-            <button class="news-toggle" type="button" aria-expanded="false" aria-controls="older-news">Show More</button>
+            <button class="news-toggle" type="button" aria-expanded="false" aria-controls="older-news" data-list-toggle>Show More</button>
           </div>
         </div>
       </div>
@@ -194,24 +198,46 @@
         <div class="section-body research-list">
           <article class="research-item">
             <h3><a href="https://learnlab.org/learnlab-summer-school/" target="_blank" rel="noopener">LearnLab Summer School</a></h3>
-            <p class="research-meta">Carnegie Mellon University · July 2026</p>
+            <p class="research-meta">Carnegie Mellon University · July 2026 - Present</p>
             <p>Research on student–AI interactions in the Computer Science Education Research track.</p>
           </article>
           <article class="research-item">
             <h3><a href="https://tecd-lab.ucr.edu/prytaneum" target="_blank" rel="noopener">Prytaneum</a></h3>
-            <p class="research-meta">Prof. Kevin Esterling · Joined July 2026</p>
+            <p class="research-meta">Prof. Kevin Esterling · July 2026 - Present</p>
             <p>AI-assisted moderation and LLM-based user simulation for online deliberation.</p>
           </article>
           <article class="research-item">
-            <h3>Scientific dataset reuse</h3>
-            <p class="research-meta">Prof. Yulin Yu · Began April 2026</p>
+            <h3>Scientific Dataset Reuse</h3>
+            <p class="research-meta">Prof. Yulin Yu · April 2026 - Present</p>
             <p>Computational social science and human–AI innovation, focusing on scientific dataset reuse and novelty.</p>
           </article>
           <article class="research-item">
             <h3>LearnAnything</h3>
-            <p class="research-meta">Prof. David Zaretsky · Began March 2026</p>
+            <p class="research-meta">Prof. David Zaretsky · Northwestern University · March 2026 - August 2026</p>
             <p>Exploring Computer Science Education and Multi-agent systems.</p>
           </article>
+          <div id="older-research" hidden>
+            <article class="research-item">
+              <h3>EEG-TBSANet</h3>
+              <p class="research-meta">Prof. Jun Qi · Xi'an Jiaotong-Liverpool University · September 2024 - June 2025</p>
+              <p>Developed a deep learning framework integrating TCN, BiLSTM, and self-attention for robust EEG-based epilepsy diagnosis.</p>
+            </article>
+
+            <article class="research-item">
+              <h3>CPVis</h3>
+              <p class="research-meta">Prof. Meng Xia · Texas A&amp;M University · May 2024 - September 2024</p>
+              <p>Developed multimodal learning analytics for collaborative programming using speech, LLM-based behavioral analysis, and interactive visualization.</p>
+            </article>
+
+            <article class="research-item">
+              <h3>Bilibili Collaboration Network</h3>
+              <p class="research-meta">Prof. Teng Ma · Xi'an Jiaotong-Liverpool University · June 2023 - September 2023</p>
+              <p>Analyzed creator collaboration networks and their relationship with video performance and creator growth on Bilibili.</p>
+            </article>
+          </div>
+        </div>
+        <div class="news-controls">
+          <button class="news-toggle" type="button" aria-expanded="false" aria-controls="older-research" data-list-toggle>Show More</button>
         </div>
       </section>
 
@@ -328,29 +354,31 @@
       if ('ResizeObserver' in window) new ResizeObserver(syncNavOffset).observe(nav);
       syncNavOffset();
 
-      const newsToggle = document.querySelector('.news-toggle');
-      const olderNews = document.getElementById('older-news');
-      let newsAnimating = false;
-      newsToggle.addEventListener('click', async function() {
-        if (newsAnimating) return;
-        newsAnimating = true;
-        const expand = newsToggle.getAttribute('aria-expanded') !== 'true';
-        newsToggle.setAttribute('aria-expanded', String(expand));
-        newsToggle.textContent = expand ? 'Show Less' : 'Show More';
-        olderNews.hidden = false;
-        olderNews.inert = !expand;
-        const height = olderNews.scrollHeight;
-        if (olderNews.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          const animation = olderNews.animate([
-            { height: expand ? '0px' : height + 'px', opacity: expand ? 0 : 1, overflow: 'hidden' },
-            { height: expand ? height + 'px' : '0px', opacity: expand ? 1 : 0, overflow: 'hidden' }
-          ], { duration: 240, easing: 'ease-in-out' });
-          await animation.finished;
-        }
-        olderNews.hidden = !expand;
-        newsAnimating = false;
-        if (!expand) document.getElementById('news').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-        updateActiveNav();
+      // Both lists share disclosure behavior, with independent expansion state.
+      document.querySelectorAll('[data-list-toggle]').forEach(function(toggle) {
+        const olderItems = document.getElementById(toggle.getAttribute('aria-controls'));
+        let animating = false;
+        toggle.addEventListener('click', async function() {
+          if (animating) return;
+          animating = true;
+          const expand = toggle.getAttribute('aria-expanded') !== 'true';
+          toggle.setAttribute('aria-expanded', String(expand));
+          toggle.textContent = expand ? 'Show Less' : 'Show More';
+          olderItems.hidden = false;
+          olderItems.inert = !expand;
+          const height = olderItems.scrollHeight;
+          if (olderItems.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const animation = olderItems.animate([
+              { height: expand ? '0px' : height + 'px', opacity: expand ? 0 : 1, overflow: 'hidden' },
+              { height: expand ? height + 'px' : '0px', opacity: expand ? 1 : 0, overflow: 'hidden' }
+            ], { duration: 240, easing: 'ease-in-out' });
+            await animation.finished;
+          }
+          olderItems.hidden = !expand;
+          animating = false;
+          if (!expand) toggle.closest('.section').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+          updateActiveNav();
+        });
       });
 
     })();
