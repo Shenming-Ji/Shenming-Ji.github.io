@@ -19,6 +19,7 @@ body.theme-luka *::after {
 }
 
 :root {
+  --luka-font: "Avenir Next", Avenir, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --luka-bg: #faf9f7;
   --luka-page-bg: #ffffff;
   --luka-text: #3d3929;
@@ -94,8 +95,10 @@ body.theme-luka .site-footer { background: var(--luka-page-bg); }
 body.theme-luka {
   background: var(--luka-page-bg);
   color: var(--luka-text);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--luka-font);
   font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
   line-height: 1.7;
 }
 a { color: var(--luka-accent); text-decoration: none; }
@@ -117,7 +120,7 @@ a:focus-visible { outline: 2px solid var(--luka-accent); outline-offset: 5px; bo
   padding: 20px 0 17px;
   border-bottom: 2px solid transparent;
   color: var(--luka-text);
-  font-family: "IBM Plex Mono", "SFMono-Regular", "Menlo", monospace;
+  font-family: var(--luka-font);
   font-size: 14px;
   line-height: 1.4;
 }
@@ -133,29 +136,31 @@ a:focus-visible { outline: 2px solid var(--luka-accent); outline-offset: 5px; bo
   border-bottom: 2px solid var(--luka-accent);
   color: var(--luka-accent);
   font-size: 19px;
-  font-weight: 700;
-  letter-spacing: 0.025em;
+  font-weight: 600;
+  letter-spacing: 0;
   line-height: 1.4;
 }
 .section-body p { margin: 0 0 14px; }
+body.theme-luka strong,
+body.theme-luka b { font-weight: 600; }
 /* The profile belongs only to About, leaving later sections the full width. */
 .about-section { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 44px; align-items: center; }
 .profile { text-align: center; }
 .image.avatar { margin: 0 auto; }
 .image.avatar img { display: block; width: 230px; height: 290px; margin: auto; border-radius: 6px; object-fit: cover; box-shadow: 0 4px 18px var(--luka-shadow); }
-.site-name { margin: 0; font-size: 28px; line-height: 1.25; }
-.site-email { margin: 0; font-family: "Ubuntu Mono", "SFMono-Regular", monospace; font-size: 12px; overflow-wrap: anywhere; }
+.site-name { margin: 0; font-size: 2.7rem; font-weight: 400; line-height: 1.25; letter-spacing: 0; }
+.site-email { margin: 0; font-family: var(--luka-font); font-size: 12px; overflow-wrap: anywhere; }
 .site-email a { color: var(--luka-secondary); }
 .social-icons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 .social-icons a { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--luka-social-bg); color: var(--luka-social-text); box-shadow: 0 2px 8px rgba(61, 57, 41, 0.08); }
 .social-icons a:hover { background: var(--luka-accent); color: var(--luka-bg); text-decoration: none; }
-.announcement-card { margin-top: 22px; padding: 16px 20px; border: 1px solid var(--luka-border); border-radius: 10px; background: color-mix(in srgb, var(--luka-accent) 5%, var(--luka-bg)); }
+.announcement-card { margin-top: 22px; padding: 16px 20px; border: 1px solid #E4D8F2; border-radius: 10px; background: #FAF7FF; color: inherit; }
 .section-body .announcement-card p { margin: 0; font-size: 15px; line-height: 1.75; }
 /* Lightweight lists share the same content edges and spacing. */
 .news-item { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 22px; padding: 12px 0; border-bottom: 1px solid var(--luka-footer-border); }
 .news-item:first-child { padding-top: 0; }
 .news-item:last-child { border-bottom: 0; padding-bottom: 0; }
-.news-date { color: var(--luka-accent); font-family: "IBM Plex Mono", monospace; font-size: 14px; font-weight: 500; padding-top: 2px; }
+.news-date { color: var(--luka-accent); font-family: var(--luka-font); font-size: 14px; font-weight: 500; padding-top: 2px; }
 .section-body .news-item p { margin: 0; font-size: 15px; }
 .publications ol.bibliography { list-style: none; padding: 0; margin: 0; }
 .bibliography li + li { margin-top: 30px; }
@@ -250,8 +255,9 @@ a:focus-visible { outline: 2px solid var(--luka-accent); outline-offset: 5px; bo
 }
 
 /* Contact details stay with the biography; the portrait is centered beside it. */
-.about-header { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 16px; margin-bottom: 22px; }
-.about-header .site-name { flex-shrink: 0; }
+.about-header { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 22px; }
+.profile-contact-row { display: flex; align-items: center; width: 100%; flex-wrap: wrap; gap: 6px 16px; }
+.profile-contact-row .social-icons { margin-left: auto; }
 .about-header .social-icons { gap: 6px; flex-wrap: nowrap; }
 .about-header .social-icons a { width: 26px; height: 26px; font-size: 14px; }
 .research-interests { display: flex; justify-content: center; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; margin: 24px 0 0; text-align: center; font-size: 17px; font-weight: 500; line-height: 1.6; }
