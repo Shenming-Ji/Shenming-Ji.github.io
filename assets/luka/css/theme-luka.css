@@ -149,7 +149,7 @@ body.theme-luka b { font-weight: 600; }
 .image.avatar { margin: 0 auto; }
 .image.avatar img { display: block; width: 230px; height: 290px; margin: auto; border-radius: 6px; object-fit: cover; box-shadow: 0 4px 18px var(--luka-shadow); }
 .site-name { display: flex; align-items: baseline; gap: 0.45em; margin: 0; font-size: 2.55rem; font-weight: 400; line-height: 1.25; letter-spacing: 0; white-space: nowrap; }
-.site-name-chinese { font-family: "STKaiti", "KaiTi", "Kaiti SC", "BiauKai", serif; font-size: 0.88em; font-weight: 400; }
+.site-name-chinese { display: inline-flex; align-items: baseline; gap: 0.45em; font-family: "STKaiti", "KaiTi", "Kaiti SC", "BiauKai", serif; font-size: 0.88em; font-weight: 400; white-space: nowrap; }
 .site-email { margin: 0; font-family: var(--luka-font); font-size: 12px; overflow-wrap: anywhere; }
 .site-email a { color: var(--luka-secondary); }
 .social-icons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
