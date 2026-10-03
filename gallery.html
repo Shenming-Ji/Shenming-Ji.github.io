@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Ji | Plog</title>
+    <title>Shenming's Plog</title>
     <meta name="description" content="A curated photography plog by Simon Ji, featuring natural light, after dark, and gear notes.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,51 +96,27 @@
         }
 
         .home-link {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.88rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--muted);
-            margin-bottom: 22px;
-        }
-
-        .home-link::before {
-            content: "";
-            width: 34px;
-            height: 1px;
-            background: var(--line-strong);
-        }
-
-        .sidebar-meta {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-            margin: 8px 0 0;
-        }
-
-        .meta-card {
-            padding: 12px 14px;
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(43, 34, 25, 0.08);
             border-radius: var(--radius-md);
             background: rgba(255, 255, 255, 0.52);
-            border: 1px solid rgba(43, 34, 25, 0.08);
-        }
-
-        .meta-label {
-            display: block;
-            font-size: 0.72rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
+            font-size: 17px;
+            font-weight: 500;
+            text-decoration: none;
             color: var(--muted);
-            margin-bottom: 8px;
+            margin-bottom: 18px;
+            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
         }
 
-        .meta-value {
-            display: block;
-            font-size: 1rem;
-            font-weight: 600;
+        .home-link:hover,
+        .home-link:focus-visible {
+            color: #4e2a84;
+            border-color: rgba(78, 42, 132, 0.3);
+            background: rgba(78, 42, 132, 0.035);
         }
 
         .filter-block {
@@ -193,8 +169,18 @@
         }
 
         .tag-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-size: 0.95rem;
             font-weight: 600;
+        }
+
+        .tag-label svg {
+            width: 18px;
+            height: 18px;
+            flex: 0 0 auto;
+            opacity: 0.8;
         }
 
         .tag-count {
@@ -275,7 +261,7 @@
 
         .caption {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             justify-content: space-between;
             gap: 12px;
             padding: 14px 4px 4px;
@@ -290,10 +276,15 @@
 
         .caption-tag {
             color: var(--muted);
-            font-size: 0.72rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            flex: 0 0 auto;
+            opacity: 0.7;
+        }
+
+        .caption-tag svg {
+            width: 15px;
+            height: 15px;
         }
 
         .equipment-view,
@@ -531,10 +522,6 @@
                 border-radius: 24px;
             }
 
-            .sidebar-meta {
-                grid-template-columns: 1fr;
-            }
-
             .pagination,
             .lightbox-caption {
                 align-items: flex-start;
@@ -575,18 +562,7 @@
     <div class="page-shell">
         <aside class="sidebar">
             <div class="panel sidebar-card">
-                <a class="home-link" href="./">Back Home</a>
-                <div class="sidebar-meta">
-                    <div class="meta-card">
-                        <span class="meta-label">Current View</span>
-                        <span class="meta-value" id="currentFilterLabel">All Frames</span>
-                    </div>
-                    <div class="meta-card">
-                        <span class="meta-label">On Display</span>
-                        <span class="meta-value" id="photoCount">0 photographs</span>
-                    </div>
-                </div>
-
+                <a class="home-link" href="index.html"><span aria-hidden="true">←</span>Shenming's Website</a>
                 <div class="filter-block">
                     <p class="filter-heading">Browse</p>
                     <div class="filter-list">
@@ -609,7 +585,7 @@
                     </div>
                 </div>
 
-                <p class="sidebar-footer">© 2026, Simon Ji</p>
+                <p class="sidebar-footer">© 2026, Shenming Ji</p>
             </div>
         </aside>
 
@@ -637,46 +613,24 @@
         </figure>
     </div>
 
+    <script src="assets/js/plog-data.js"></script>
     <script>
-        const photos = [
-            { caption: "Road back home", img: "images/Road_back_home.JPG", tags: "night" },
-            { caption: "IFS", img: "images/IFS.JPG", tags: "night" },
-            { caption: "Library", img: "images/Lib.JPG", tags: "night" },
-            { caption: "A&M Bell Tower", img: "images/Bell_tower.JPG", tags: "night" },
-            { caption: "Station", img: "images/Station.JPG", tags: "night" },
-            { caption: "Crowd", img: "images/Crowd.JPG", tags: "night" },
-            { caption: "Legacy & Vision", img: "images/DSC_2009.jpg", tags: "night" },
-            { caption: "Lotus", img: "images/DSC_2428.jpg", tags: "day" },
-            { caption: "Ancient Lighthouse", img: "images/DSC_2403.jpg", tags: "day" },
-            { caption: "Lake View", img: "images/Lakeview.JPG", tags: "day" },
-            { caption: "Silence", img: "images/f469249cd7dc29f9e1082b942ed40206.JPG", tags: "day" },
-            { caption: "Main Library", img: "images/MainLibrary.JPG", tags: "day" },
-            { caption: "Tech", img: "images/Tech.JPG", tags: "day" },
-            { caption: "Meditation", img: "images/Zone.JPG", tags: "day" },
-            { caption: "Skyscraper", img: "images/Skyscraper.JPG", tags: "night" },
-            { caption: "Aurora", img: "images/Aurora.JPG", tags: "night" },
-            { caption: "Snow Fog", img: "images/Snow fog.jpg", tags: "day" },
-            { caption: "CHRISTKINDL MARKET", img: "images/CHRISTKINDL MARKET.JPG", tags: "night" },
-            { caption: "Christmas tree", img: "images/Christmas tree.JPG", tags: "day" },
-            { caption: "Ferry", img: "images/Ferry.JPG", tags: "day" },
-            { caption: "Lady Liberty", img: "images/Lady Liberty.JPG", tags: "day" },
-            { caption: "Night NYC", img: "images/Night NYC.jpg", tags: "night" },
-            { caption: "Ice Skating", img: "images/Ice Skating.JPG", tags: "night" },
-            { caption: "Sunrise", img: "images/sunrise.jpg", tags: "day" },
-            { caption: "UoL Tower", img: "images/uol_tower.JPG", tags: "day" },
-            { caption: "Pomp House", img: "images/POMPHOUSE.JPG", tags: "day" },
-            { caption: "UoL Building", img: "images/liverpool_building.JPG", tags: "day" },
-            { caption: "Civic Center", img: "images/liverpool_central.JPG", tags: "day" },
-            { caption: "Match Night: Chicago vs. Miami", img: "images/match_night.jpg", tags: "night" },
-            { caption: "GOAT", img: "images/messi.jpg", tags: "night" }
-        ];
+        const { photos, filterLabels } = window.PlogData;
 
-        const filterLabels = {
-            all: "All Frames",
-            day: "Natural Light",
-            night: "After Dark",
-            gear: "Gear Notes"
+        const categoryIconPaths = {
+            all: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+            day: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>',
+            night: '<path d="M20.3 15.6A8.5 8.5 0 0 1 8.4 3.7 8.5 8.5 0 1 0 20.3 15.6Z"/>',
+            gear: '<path d="M4 7h3l1.5-2h7L17 7h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><circle cx="12" cy="13" r="3.5"/>'
         };
+
+        function getCategoryIcon(tag) {
+            return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${categoryIconPaths[tag] || categoryIconPaths.all}</svg>`;
+        }
+
+        document.querySelectorAll('.tag-link').forEach((link) => {
+            link.querySelector('.tag-label').insertAdjacentHTML('afterbegin', getCategoryIcon(link.dataset.filter));
+        });
 
         const photosReversed = photos.slice().reverse();
         const PHOTOS_PER_PAGE = 12;
@@ -685,8 +639,6 @@
 
         const gallery = document.getElementById("gallery");
         const pageInfo = document.getElementById("pageInfo");
-        const currentFilterLabel = document.getElementById("currentFilterLabel");
-        const photoCount = document.getElementById("photoCount");
         const pagination = document.getElementById("pagination");
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
@@ -728,18 +680,12 @@
             });
         }
 
-        function updateSummary(totalPages, totalItems) {
-            const label = getTagLabel(activeFilter);
-            currentFilterLabel.textContent = label;
-
+        function updateSummary(totalPages) {
             if (activeFilter === "gear") {
-                photoCount.textContent = "1 camera setup";
                 pageInfo.textContent = "Equipment view";
                 return;
             }
 
-            const noun = totalItems === 1 ? "photograph" : "photographs";
-            photoCount.textContent = totalItems + " " + noun;
             pageInfo.textContent = "Page " + currentPage + " of " + totalPages;
         }
 
@@ -777,7 +723,7 @@
                 gallery.classList.add("gear-mode");
                 pagination.style.display = "none";
                 renderEquipmentView();
-                updateSummary(1, 1);
+                updateSummary(1);
                 return;
             }
 
@@ -794,7 +740,7 @@
             const start = (currentPage - 1) * PHOTOS_PER_PAGE;
             const pagePhotos = source.slice(start, start + PHOTOS_PER_PAGE);
 
-            updateSummary(totalPages, source.length);
+            updateSummary(totalPages);
 
             if (pagePhotos.length === 0) {
                 renderEmptyState();
@@ -812,7 +758,7 @@
                         </div>
                         <div class="caption">
                             <span class="caption-title">${photo.caption}</span>
-                            <span class="caption-tag">${getTagLabel(photo.tags)}</span>
+                            <span class="caption-tag" role="img" aria-label="${getTagLabel(photo.tags)}" title="${getTagLabel(photo.tags)}">${getCategoryIcon(photo.tags)}</span>
                         </div>
                     </a>
                 `;

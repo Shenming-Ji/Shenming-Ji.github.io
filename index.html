@@ -15,13 +15,13 @@
 
   <link rel="stylesheet" href="assets/css/academicons.min.css">
 
-  <link rel="stylesheet" href="assets/luka/css/theme-luka.css?v=20260904b">
+  <link rel="stylesheet" href="assets/luka/css/theme-luka.css?v=20261002c">
 </head>
 <body class="theme-luka">
   <nav class="top-nav" aria-label="Main navigation">
     <div class="nav-container">
       <div class="nav-left">
-        <a href="./">Shenming Ji</a>
+        <a href="index.html">Shenming Ji</a>
       </div>
       <div class="nav-right">
         <a class="active" href="#about">About</a>
@@ -29,7 +29,7 @@
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
         <a href="#education">Education</a>
-        <a href="gallery.html">Plog</a>
+        <a href="#plog">Plog</a>
       </div>
     </div>
   </nav>
@@ -60,7 +60,7 @@
           <div class="section-body">
             <p>Hi, I'm Shenming (Simon), a master's student in Computer Science at <strong>Northwestern University</strong>. I received my bachelor's degree from <strong>Xi'an Jiaotong-Liverpool University</strong> and the <strong>University of Liverpool</strong>, where I was fortunate to be advised by <a href="https://scholar.xjtlu.edu.cn/en/persons/JunQi" target="_blank" rel="noopener">Prof. Jun Qi</a> and <a href="https://scholar.xjtlu.edu.cn/en/persons/TengMa" target="_blank" rel="noopener">Prof. Teng Ma</a>. I also spent a wonderful summer at <strong>Texas A&amp;M University</strong> as a visiting research intern with <a href="https://www.xiameng.org/" target="_blank" rel="noopener">Prof. Meng Xia</a>. Those experiences shaped how I think about research, collaboration, and building systems that support people more thoughtfully.</p>
             <p>My research interests include <strong>Human-AI Interaction</strong>, <strong>AI in Education</strong>, and <strong>Computational Social Science</strong>. Feel free to contact me by email if you are interested in discussing or collaborating with me!</p>
-            <p>Outside of academics, I enjoy soccer, music, and photography. Feel free to check out my Plog for a glimpse of my photography journey~Thank you for visiting my page!</p>
+            <p>Outside of academics, I enjoy soccer, music, and photography. I keep a small <a href="#plog">Plog</a> documenting places and moments through my lens.</p>
             <div class="announcement-card">
               <p>✨ I am currently applying to PhD programs for Fall 2027 and am also open to research assistant and collaboration opportunities. Please feel free to reach out if you see a potential research fit!</p>
             </div>
@@ -298,7 +298,19 @@
         </div>
       </div>
 
-
+      <section class="section" id="plog">
+        <div class="plog-heading">
+          <h2 class="section-title">PLOG</h2>
+          <a href="gallery.html">Explore Plog →</a>
+        </div>
+        <div class="section-body">
+          <div class="plog-preview" id="plog-preview" role="region" aria-label="Photography preview" tabindex="0"></div>
+          <div class="plog-controls" aria-label="Plog preview controls">
+            <button class="plog-arrow" type="button" data-plog-prev aria-label="Previous photos" aria-controls="plog-preview" disabled>←</button>
+            <button class="plog-arrow" type="button" data-plog-next aria-label="Next photos" aria-controls="plog-preview">→</button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -309,8 +321,43 @@
   </div>
 
   <script src="assets/luka/js/scale.fix.js"></script>
+  <script src="assets/js/plog-data.js"></script>
   <script>
     (function() {
+      const plogTrack = document.getElementById('plog-preview');
+      const plogPrev = document.querySelector('[data-plog-prev]');
+      const plogNext = document.querySelector('[data-plog-next]');
+      const { photos } = window.PlogData;
+
+      photos.slice().reverse().forEach(function(photo) {
+        const figure = document.createElement('figure');
+        const link = document.createElement('a');
+        const img = document.createElement('img');
+        link.href = 'gallery.html';
+        link.setAttribute('aria-label', 'Explore ' + photo.caption + ' in Plog');
+        img.src = photo.img;
+        img.alt = photo.caption;
+        img.loading = 'lazy';
+        link.appendChild(img);
+        figure.appendChild(link);
+        plogTrack.appendChild(figure);
+      });
+
+      function updatePlogArrows() {
+        plogPrev.disabled = plogTrack.scrollLeft <= 2;
+        plogNext.disabled = plogTrack.scrollLeft + plogTrack.clientWidth >= plogTrack.scrollWidth - 2;
+      }
+      function scrollPlog(direction) {
+        const item = plogTrack.querySelector('figure');
+        const gap = parseFloat(getComputedStyle(plogTrack).columnGap) || 0;
+        plogTrack.scrollBy({ left: direction * (item.getBoundingClientRect().width + gap), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      }
+      plogPrev.addEventListener('click', function() { scrollPlog(-1); });
+      plogNext.addEventListener('click', function() { scrollPlog(1); });
+      plogTrack.addEventListener('scroll', updatePlogArrows, { passive: true });
+      window.addEventListener('resize', updatePlogArrows);
+      updatePlogArrows();
+
       const navLinks = Array.from(document.querySelectorAll('.nav-right a[href^="#"]'));
       const sections = Array.from(document.querySelectorAll('.section[id]'));
 
