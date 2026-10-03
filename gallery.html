@@ -71,15 +71,70 @@
             padding: 28px 24px 40px;
             display: grid;
             grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-            gap: 30px;
+            column-gap: 42px;
             position: relative;
+            transition: grid-template-columns 0.3s ease, column-gap 0.3s ease;
+        }
+
+        .page-shell.sidebar-collapsed {
+            grid-template-columns: 0 minmax(0, 1fr);
+            column-gap: 0;
         }
 
         .sidebar {
             position: sticky;
             top: 112px;
             align-self: start;
+            width: 320px;
             margin-top: 88px;
+            min-width: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s;
+        }
+
+        .sidebar-collapsed .sidebar {
+            transform: translateX(calc(-100% - 30px));
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
+        }
+
+        .sidebar-toggle {
+            z-index: 10;
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            background: var(--surface-strong);
+            color: var(--muted);
+            box-shadow: 0 5px 18px rgba(55, 39, 22, 0.08);
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .sidebar-toggle:hover { background: #fff; transform: scale(1.06); }
+        .sidebar-toggle[hidden] { display: none; }
+        .sidebar-toggle:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+        .sidebar-toggle svg { width: 16px; height: 16px; transition: transform 0.3s ease; }
+
+        .sidebar-reopen {
+            position: fixed;
+            top: 20px;
+            left: 12px;
+            right: auto;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .sidebar-collapsed .sidebar-reopen { visibility: visible; opacity: 1; }
+        .sidebar-reopen svg { transform: rotate(180deg); }
+
+        .sidebar-reopen:hover { transform: scale(1.06); }
+
+        .content {
+            min-width: 0;
         }
 
         .panel {
@@ -203,15 +258,29 @@
             text-transform: uppercase;
         }
 
+        .sidebar-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 14px;
+        }
+
         .content {
             display: grid;
             gap: 24px;
+            width: 100%;
+            max-width: 900px;
+            margin-inline: auto;
+            transition: max-width 0.3s ease;
         }
+
+        .sidebar-collapsed .content { max-width: 1200px; }
 
         .gallery {
             column-count: 2;
-            column-gap: 22px;
+            column-gap: 24px;
         }
+
+        .sidebar-collapsed .gallery:not(.gear-mode) { column-count: 3; }
 
         .gallery.gear-mode {
             column-count: 1;
@@ -362,53 +431,6 @@
             margin-bottom: 10px;
         }
 
-        .pagination {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-top: 8px;
-            padding: 0 8px 8px;
-            animation: fadeUp 0.9s ease both;
-        }
-
-        .pagination-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .page-info {
-            color: var(--muted);
-            font-size: 0.92rem;
-            font-weight: 600;
-        }
-
-        .page-btn {
-            border: 1px solid rgba(43, 34, 25, 0.1);
-            background: rgba(255, 255, 255, 0.68);
-            color: var(--text);
-            border-radius: var(--radius-sm);
-            min-width: 52px;
-            height: 46px;
-            padding: 0 18px;
-            font: inherit;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.22s ease, background 0.22s ease, opacity 0.22s ease;
-        }
-
-        .page-btn:hover:not(:disabled) {
-            transform: translateY(-1px);
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .page-btn:disabled {
-            opacity: 0.38;
-            cursor: not-allowed;
-        }
-
         .lightbox {
             position: fixed;
             inset: 0;
@@ -486,17 +508,40 @@
             .page-shell {
                 grid-template-columns: minmax(240px, 290px) minmax(0, 1fr);
             }
+
+            .page-shell.sidebar-collapsed { grid-template-columns: 0 minmax(0, 1fr); }
+            .sidebar { width: 290px; }
+            .sidebar-collapsed .gallery:not(.gear-mode) { column-count: 2; }
         }
 
         @media (max-width: 860px) {
             .page-shell {
                 grid-template-columns: 1fr;
+                column-gap: 0;
             }
 
             .sidebar {
-                position: static;
-                top: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 20;
+                width: min(320px, calc(100vw - 48px));
+                height: 100dvh;
+                padding: 70px 12px 20px;
                 margin-top: 0;
+                overflow-y: auto;
+                background: var(--bg);
+                box-shadow: 12px 0 35px rgba(55, 39, 22, 0.12);
+            }
+
+            .sidebar-collapsed .sidebar { transform: translateX(-100%); }
+            .page-shell.sidebar-collapsed { grid-template-columns: 1fr; }
+            .sidebar-reopen {
+                position: fixed;
+                top: 20px;
+                left: 12px;
+                right: auto;
+                z-index: 30;
             }
 
             .gallery {
@@ -522,7 +567,6 @@
                 border-radius: 24px;
             }
 
-            .pagination,
             .lightbox-caption {
                 align-items: flex-start;
                 flex-direction: column;
@@ -533,18 +577,11 @@
                 column-gap: 0;
             }
 
+            .sidebar-collapsed .gallery:not(.gear-mode) { column-count: 1; }
+
             .caption {
                 flex-direction: column;
                 align-items: flex-start;
-            }
-
-            .pagination-controls {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .page-btn {
-                flex: 1 1 0;
             }
 
             .lightbox {
@@ -556,11 +593,18 @@
                 right: 10px;
             }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .page-shell, .sidebar, .sidebar-collapsed .sidebar, .content, .sidebar-toggle, .sidebar-toggle svg,
+            .gallery-item, .equipment-view, .empty-state { transition: none; animation: none; }
+            .gallery-item { opacity: 1; }
+        }
     </style>
 </head>
 <body>
-    <div class="page-shell">
-        <aside class="sidebar">
+    <div class="page-shell" id="pageShell">
+        <aside class="sidebar" id="sidebar">
             <div class="panel sidebar-card">
                 <a class="home-link" href="index.html"><span aria-hidden="true">←</span>Shenming's Website</a>
                 <div class="filter-block">
@@ -586,19 +630,19 @@
                 </div>
 
                 <p class="sidebar-footer">© 2026, Shenming Ji</p>
+                <div class="sidebar-actions">
+                    <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Collapse sidebar" aria-controls="sidebar" aria-expanded="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                </div>
             </div>
         </aside>
+        <button class="sidebar-toggle sidebar-reopen" id="sidebarReopen" type="button" aria-label="Expand sidebar" aria-controls="sidebar" aria-expanded="false" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
 
         <main class="content">
             <section class="gallery" id="gallery" aria-live="polite"></section>
-
-            <div class="pagination" id="pagination">
-                <span class="page-info" id="pageInfo">Page 1 of 1</span>
-                <div class="pagination-controls">
-                    <button class="page-btn" id="prevBtn" type="button" aria-label="Previous page">&larr;</button>
-                    <button class="page-btn" id="nextBtn" type="button" aria-label="Next page">&rarr;</button>
-                </div>
-            </div>
         </main>
     </div>
 
@@ -633,15 +677,13 @@
         });
 
         const photosReversed = photos.slice().reverse();
-        const PHOTOS_PER_PAGE = 12;
-        let currentPage = 1;
         let activeFilter = "all";
 
         const gallery = document.getElementById("gallery");
-        const pageInfo = document.getElementById("pageInfo");
-        const pagination = document.getElementById("pagination");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
+        const pageShell = document.getElementById("pageShell");
+        const sidebar = document.getElementById("sidebar");
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebarReopen = document.getElementById("sidebarReopen");
         const lightbox = document.getElementById("lightbox");
         const lightboxImage = document.getElementById("lightboxImage");
         const lightboxTitle = document.getElementById("lightboxTitle");
@@ -680,15 +722,6 @@
             });
         }
 
-        function updateSummary(totalPages) {
-            if (activeFilter === "gear") {
-                pageInfo.textContent = "Equipment view";
-                return;
-            }
-
-            pageInfo.textContent = "Page " + currentPage + " of " + totalPages;
-        }
-
         function renderEquipmentView() {
             gallery.innerHTML = `
                 <article class="equipment-view">
@@ -721,33 +754,20 @@
 
             if (activeFilter === "gear") {
                 gallery.classList.add("gear-mode");
-                pagination.style.display = "none";
                 renderEquipmentView();
-                updateSummary(1);
                 return;
             }
 
             gallery.classList.remove("gear-mode");
-            pagination.style.display = "flex";
 
             const source = getFilteredPhotos();
-            const totalPages = Math.max(1, Math.ceil(source.length / PHOTOS_PER_PAGE));
 
-            if (currentPage > totalPages) {
-                currentPage = 1;
-            }
-
-            const start = (currentPage - 1) * PHOTOS_PER_PAGE;
-            const pagePhotos = source.slice(start, start + PHOTOS_PER_PAGE);
-
-            updateSummary(totalPages);
-
-            if (pagePhotos.length === 0) {
+            if (source.length === 0) {
                 renderEmptyState();
                 return;
             }
 
-            pagePhotos.forEach((photo, index) => {
+            source.forEach((photo, index) => {
                 const item = document.createElement("article");
                 item.className = "gallery-item";
                 item.style.animationDelay = Math.min(index * 45, 360) + "ms";
@@ -764,18 +784,6 @@
                 `;
                 gallery.appendChild(item);
             });
-        }
-
-        function updatePagination() {
-            if (activeFilter === "gear") {
-                prevBtn.disabled = true;
-                nextBtn.disabled = true;
-                return;
-            }
-
-            const totalPages = Math.max(1, Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE));
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
         }
 
         function openLightbox(src, title, tag) {
@@ -798,7 +806,6 @@
 
         function applyFilter(filter) {
             activeFilter = filterLabels[filter] ? filter : "all";
-            currentPage = 1;
 
             const url = new URL(window.location.href);
             url.searchParams.set("filter", activeFilter);
@@ -806,25 +813,22 @@
 
             updateTagLinksUI();
             renderGallery();
-            updatePagination();
         }
 
-        prevBtn.addEventListener("click", () => {
-            if (currentPage > 1) {
-                currentPage -= 1;
-                renderGallery();
-                updatePagination();
-            }
-        });
+        function setSidebarCollapsed(collapsed) {
+            pageShell.classList.toggle("sidebar-collapsed", collapsed);
+            sidebar.inert = collapsed;
+            sidebarToggle.setAttribute("aria-expanded", String(!collapsed));
+            sidebarReopen.hidden = !collapsed;
+            sidebarReopen.setAttribute("aria-expanded", String(!collapsed));
+        }
 
-        nextBtn.addEventListener("click", () => {
-            const totalPages = Math.max(1, Math.ceil(getFilteredPhotos().length / PHOTOS_PER_PAGE));
-            if (currentPage < totalPages) {
-                currentPage += 1;
-                renderGallery();
-                updatePagination();
-            }
+        sidebarToggle.addEventListener("click", () => {
+            setSidebarCollapsed(true);
         });
+        sidebarReopen.addEventListener("click", () => setSidebarCollapsed(false));
+
+        setSidebarCollapsed(window.matchMedia("(max-width: 860px)").matches);
 
         document.querySelectorAll(".tag-link").forEach((link) => {
             link.addEventListener("click", (event) => {
@@ -863,10 +867,8 @@
         window.addEventListener("popstate", () => {
             const filterFromUrl = new URLSearchParams(window.location.search).get("filter") || "all";
             activeFilter = filterLabels[filterFromUrl] ? filterFromUrl : "all";
-            currentPage = 1;
             updateTagLinksUI();
             renderGallery();
-            updatePagination();
         });
 
         const initialFilter = new URLSearchParams(window.location.search).get("filter");
@@ -877,7 +879,6 @@
         updateFilterCounts();
         updateTagLinksUI();
         renderGallery();
-        updatePagination();
     </script>
 </body>
 </html>
